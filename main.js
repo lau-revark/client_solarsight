@@ -1,4 +1,6 @@
 import './style.css'
+import './assets/css/home.css'
+import './assets/css/pages.css'
 
 // ─── Component Loader ─────────────────────────────────
 async function loadComponent(id, url) {
@@ -102,18 +104,6 @@ function initPreQualForm() {
 
     // ─── HubSpot Integration ──────────────────────────
     // TODO: Replace this stub with the real HubSpot form endpoint once supplied by Don.
-    // Expected format:
-    //   const HUBSPOT_PORTAL_ID = 'XXXXXXXX';
-    //   const HUBSPOT_FORM_ID   = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
-    //   const endpoint = `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_ID}`;
-    //   const payload = {
-    //     fields: [
-    //       { name: 'address', value: address },
-    //       { name: 'email',   value: email },
-    //     ],
-    //     context: { pageUri: window.location.href, pageName: document.title },
-    //   };
-    //   await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
     console.log('[SolarSight] Pre-Qual submission (HubSpot stub):', { address, email });
 
     // Simulate async (remove once real endpoint is live)
@@ -152,8 +142,8 @@ function initActiveNav() {
 // ─── Init ─────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
   await Promise.all([
-    loadComponent('header', '/src/header.html'),
-    loadComponent('footer', '/src/footer.html'),
+    loadComponent('header', '/components/header.html'),
+    loadComponent('footer', '/components/footer.html'),
   ]);
 
   initStickyHeader();

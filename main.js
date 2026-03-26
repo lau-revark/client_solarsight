@@ -7,10 +7,10 @@ async function loadComponent(id, url) {
     if (!res.ok) throw new Error(`Failed to load ${url}: ${res.status}`);
     
     const text = await res.text();
-    // Safety check: if the content looks like a full HTML document (contains <html> or <!DOCTYPE),
-    // it's likely a redirect to index.html. DO NOT inject it as it causes infinite duplication.
-    if (text.toLowerCase().includes('<!doctype') || text.toLowerCase().includes('<html')) {
-      throw new Error(`Component fetch for ${url} returned a full HTML document instead of a partial. Check path resolution.`);
+    // Strict safety check: if the content contains a <html> or <!DOCTYPE tag,
+    // it's almost certainly a redirect to index.html. DO NOT inject it.
+    if (/<!doctype|<html>/i.test(text)) {
+      throw new Error(`Component fetch for ${url} returned a full HTML document. Check path resolution on your server.`);
     }
 
     el.innerHTML = text;
@@ -146,8 +146,8 @@ function initActiveNav() {
 // ─── Init ─────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
   await Promise.all([
-    loadComponent('header', '/components/header.html'),
-    loadComponent('footer', '/components/footer.html'),
+    loadComponent('header', '/header.html'),
+    loadComponent('footer', '/footer.html'),
   ]);
 
   initStickyHeader();

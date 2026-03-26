@@ -1,5 +1,3 @@
-import './style.css'
-
 // ─── Component Loader ─────────────────────────────────
 async function loadComponent(id, url) {
   const el = document.getElementById(id);

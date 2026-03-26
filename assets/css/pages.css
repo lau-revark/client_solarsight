@@ -1,0 +1,431 @@
+/* =====================================================
+   Solar Sight – Secondary Pages Shared Styles
+   ANTIGRAVITY-001 | v0.1
+   ===================================================== */
+
+/* ─── Page setup ─── */
+body { padding-top: 68px; }
+#app { width: 100%; max-width: 100%; margin: 0; border: none; min-height: auto; display: block; text-align: left; }
+
+/* ─── Page Hero ─── */
+.page-hero {
+  background: var(--navy);
+  padding: 72px 0 68px;
+  border-bottom: 4px solid var(--amber);
+}
+
+.page-hero .ss-eyebrow { color: var(--amber); opacity: 0.9; }
+
+.page-hero__title {
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.2;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+  max-width: 760px;
+}
+
+.page-hero__sub {
+  font-size: 17px;
+  color: rgba(255,255,255,0.65);
+  max-width: 640px;
+  line-height: 1.65;
+}
+
+/* ─── Content Sections ─── */
+.content-section {
+  padding: var(--section-v) 0;
+  background: var(--white);
+}
+
+.content-section--alt { background: var(--off-white); }
+
+.content-section--navy {
+  background: var(--navy);
+}
+
+.content-section--navy .ss-eyebrow { opacity: 0.8; }
+
+.section-intro {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 56px;
+}
+
+.section-intro .ss-section-sub {
+  margin: 14px auto 0;
+}
+
+/* ─── Two Column ─── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.two-col__text { display: flex; flex-direction: column; gap: 16px; }
+
+.two-col__text .ss-section-title { margin-bottom: 4px; }
+
+.two-col__text p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.feature-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.feature-list li {
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--navy);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+/* ─── Callout Box ─── */
+.callout-box {
+  background: var(--slate-50);
+  border: 1px solid var(--slate-100);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  border-left: 4px solid var(--amber);
+}
+
+.callout-box__icon { font-size: 28px; margin-bottom: 14px; }
+
+.callout-box h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+.callout-box p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 10px;
+}
+
+.callout-box p strong { color: var(--navy); }
+
+/* ─── Data Cards (About page) ─── */
+.data-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.data-card {
+  background: var(--white);
+  border: 1px solid var(--slate-100);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--t);
+}
+
+.data-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--amber);
+}
+
+.data-card__ico {
+  font-size: 28px;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.data-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.data-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* ─── Placeholder block ─── */
+.placeholder-block {
+  background: #FFFBEB;
+  border: 1px solid #FDE68A;
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.placeholder-block p {
+  font-size: 14px;
+  color: #78350F;
+  line-height: 1.65;
+}
+
+.placeholder-badge {
+  font-size: 11px;
+  font-weight: 700;
+  background: #FEF3C7;
+  color: #92400E;
+  border: 1px solid #FDE68A;
+  border-radius: 4px;
+  padding: 4px 10px;
+  display: inline-block;
+  align-self: flex-start;
+}
+
+/* ─── Stat Highlight ─── */
+.stat-highlight {
+  background: var(--slate-50);
+  border-radius: var(--radius-lg);
+  padding: 40px 32px;
+  text-align: center;
+  border: 1px solid var(--slate-100);
+}
+
+.stat-highlight__num {
+  font-size: 52px;
+  font-weight: 800;
+  color: var(--amber);
+  letter-spacing: -2px;
+  margin-bottom: 8px;
+}
+
+.stat-highlight__label {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ─── Report Items (Services page) ─── */
+.report-items {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border: 1px solid var(--slate-100);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.report-item {
+  display: flex;
+  gap: 24px;
+  padding: 32px;
+  background: var(--white);
+  border-bottom: 1px solid var(--slate-100);
+  align-items: flex-start;
+  transition: var(--t);
+}
+
+.report-item:last-child { border-bottom: none; }
+.report-item:hover { background: var(--slate-50); }
+
+.report-item__num {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--amber);
+  min-width: 32px;
+  line-height: 1.3;
+  letter-spacing: -1px;
+  flex-shrink: 0;
+}
+
+.report-item__body h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.report-item__body p {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* ─── Not List (Services page) ─── */
+.not-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.not-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.not-icon {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--amber);
+  min-width: 28px;
+  flex-shrink: 0;
+  line-height: 1.4;
+}
+
+.not-item h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+
+.not-item p {
+  font-size: 14.5px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.65;
+}
+
+/* ─── Contact page ─── */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.contact-form-wrap {
+  background: var(--white);
+  border: 1px solid var(--slate-100);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: var(--shadow-md);
+}
+
+.contact-form { display: flex; flex-direction: column; gap: 20px; }
+
+.form-group textarea {
+  padding: 13px 16px;
+  border: 1.5px solid var(--slate-100);
+  border-radius: var(--radius);
+  font-family: var(--font);
+  font-size: 15px;
+  color: var(--text);
+  background: var(--white);
+  transition: var(--t);
+  outline: none;
+  width: 100%;
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-group textarea::placeholder { color: var(--slate-400); }
+.form-group textarea:focus {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(27,42,74,0.08);
+}
+
+/* ─── Articles stub ─── */
+.articles-coming-soon {
+  text-align: center;
+  padding: 80px 0 40px;
+}
+
+.coming-soon-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.articles-coming-soon h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+.articles-coming-soon p {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.article-card-stub {
+  height: 240px;
+  background: var(--slate-50);
+  border: 2px dashed var(--slate-100);
+  border-radius: var(--radius-lg);
+}
+
+/* ─── CTA Banner (shared) ─── */
+.cta-banner {
+  padding: var(--section-v) 0;
+  background: var(--amber);
+}
+
+.cta-banner__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.cta-banner__title {
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+
+.cta-banner__text p {
+  font-size: 15px;
+  color: rgba(255,255,255, 0.85);
+  line-height: 1.6;
+}
+
+.cta-banner .ss-btn--primary {
+  background: var(--white);
+  color: var(--amber-dark);
+  border-color: var(--white);
+  flex-shrink: 0;
+}
+
+.cta-banner .ss-btn--primary:hover {
+  background: var(--navy);
+  color: var(--white);
+  border-color: var(--navy);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1024px) {
+  .two-col { grid-template-columns: 1fr; gap: 40px; }
+  .data-cards { grid-template-columns: 1fr; }
+  .contact-layout { grid-template-columns: 1fr; }
+  .cta-banner__inner { flex-direction: column; text-align: center; }
+  .cta-banner .ss-btn--primary { flex-shrink: unset; }
+}
+
+@media (max-width: 768px) {
+  .page-hero { padding: 52px 0 48px; }
+  .contact-form-wrap { padding: 28px 20px; }
+  .article-grid { grid-template-columns: 1fr; }
+  .report-item { flex-direction: column; gap: 10px; }
+}

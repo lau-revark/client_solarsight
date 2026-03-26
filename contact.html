@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact SolarSight with a question about your solar pre-qualification or the SolarSight platform." />
+  <title>Contact | SolarSight</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/assets/css/pages.css" />
+</head>
+<body>
+  <div id="header"></div>
+
+  <main id="app">
+
+    <!-- Hero -->
+    <section class="page-hero">
+      <div class="ss-container">
+        <span class="ss-eyebrow">Get in Touch</span>
+        <h1 class="page-hero__title">Contact SolarSight</h1>
+        <p class="page-hero__sub">Have a question about your pre-qualification or the platform? Send us a message and we'll get back to you.</p>
+      </div>
+    </section>
+
+    <!-- Contact form -->
+    <section class="content-section" id="contact-form-section">
+      <div class="ss-container">
+        <div class="contact-layout">
+          <div class="contact-form-wrap reveal">
+            <form id="contact-form" class="contact-form" novalidate>
+              <div class="form-group">
+                <label for="contact-name">Your Name</label>
+                <input type="text" id="contact-name" name="name" placeholder="Jane Smith" autocomplete="name" required />
+              </div>
+              <div class="form-group">
+                <label for="contact-email">Email Address</label>
+                <input type="email" id="contact-email" name="email" placeholder="jane@email.com" autocomplete="email" required />
+              </div>
+              <div class="form-group">
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" name="message" rows="5" placeholder="How can we help?" required></textarea>
+              </div>
+
+              <div id="contact-error" class="form-error" role="alert" style="display:none"></div>
+
+              <button type="submit" id="contact-submit" class="ss-btn ss-btn--primary" style="width:100%">
+                Send Message
+              </button>
+
+              <!-- ⚠️ TODO: Route to HubSpot or designated inbox — Don to confirm endpoint -->
+            </form>
+
+            <div id="contact-success" class="prequal-success" style="display:none">
+              <div class="success-icon">✓</div>
+              <h3>Message sent.</h3>
+              <p>We'll get back to you as soon as possible.</p>
+            </div>
+          </div>
+
+          <aside class="contact-aside reveal">
+            <div class="callout-box">
+              <h3>Looking for your Pre-Qual report?</h3>
+              <p>If you already submitted your address and haven't received your report, check your spam folder first. If it's not there, use the contact form and we'll look into it.</p>
+              <a href="/#prequal-form" class="ss-btn ss-btn--navy ss-btn--sm" style="margin-top:16px">Start a New Pre-Qualification</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer"></div>
+  <script type="module" src="/main.js"></script>
+  <script>
+    // Contact form handler
+    const form = document.getElementById('contact-form');
+    const errEl = document.getElementById('contact-error');
+    const successEl = document.getElementById('contact-success');
+
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        errEl.style.display = 'none';
+
+        const name    = document.getElementById('contact-name').value.trim();
+        const email   = document.getElementById('contact-email').value.trim();
+        const message = document.getElementById('contact-message').value.trim();
+
+        if (!name)    { errEl.textContent = 'Please enter your name.'; errEl.style.display = 'block'; return; }
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { errEl.textContent = 'Please enter a valid email address.'; errEl.style.display = 'block'; return; }
+        if (!message) { errEl.textContent = 'Please enter a message.'; errEl.style.display = 'block'; return; }
+
+        const btn = document.getElementById('contact-submit');
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+
+        // TODO: POST to HubSpot / designated inbox — Don to supply endpoint
+        console.log('[SolarSight] Contact form submission (stub):', { name, email, message });
+        await new Promise(r => setTimeout(r, 1200));
+
+        form.style.display = 'none';
+        successEl.style.display = 'block';
+      });
+    }
+  </script>
+</body>
+</html>

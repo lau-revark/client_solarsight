@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="DC and Maryland homeowners are saving $2,340/year with solar. Find out what your home qualifies for — in under 2 minutes. No sales call required." />
+    <title>SolarSight | Solar Pre-Qualification for DC &amp; Maryland</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/css/home.css" />
+  </head>
+  <body>
+
+    <div id="header"></div>
+
+    <main id="app">
+
+      <!-- ══════════════════════════════════════════════
+           1.2 HERO + 1.3 PRE-QUAL FORM — two column
+      ══════════════════════════════════════════════ -->
+      <section class="hero" id="hero">
+        <div class="hero__img">
+          <img src="/assets/img/hero-dc.png" alt="Aerial view of Washington DC residential neighbourhood" />
+          <div class="hero__img-overlay"></div>
+        </div>
+        <div class="hero__content ss-container">
+
+          <!-- Left col: headline + trust bar -->
+          <div class="hero__col hero__col--left">
+            <span class="ss-eyebrow">DC &amp; Maryland Solar Pre-Qualification</span>
+            <h1 class="hero__headline">
+              DC homeowners are saving <mark class="hero__dollar">$2,340<span class="hero__per">/year</span></mark><br>
+              on electricity with solar.
+            </h1>
+            <p class="hero__sub">
+              Find out what your home qualifies for — in under 2 minutes.
+            </p>
+            <p class="hero__sub2">
+              SolarSight uses satellite imagery, utility data, and your roof's actual specifications to give you a real pre-qualification — not a sales pitch.
+            </p>
+
+            <!-- Trust bar -->
+            <div class="trust-bar">
+              <div class="trust-item">
+                <span class="trust-icon">🛰</span>
+                <span>Google Solar API data</span>
+              </div>
+              <div class="trust-item">
+                <span class="trust-icon">🗺</span>
+                <span>Nearmap aerial imagery</span>
+              </div>
+              <div class="trust-item">
+                <span class="trust-icon">⚡</span>
+                <span>Live utility rate data</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right col: form intro + opt-in box -->
+          <div class="hero__col hero__col--right" id="prequal-form">
+            <span class="ss-eyebrow hero__form-eyebrow">Get Started</span>
+            <h2 class="hero__form-title">Enter your address to see your Solar Pre-Qualification</h2>
+            <p class="hero__form-sub">No site visit. No sales call. Just your address and your email — and your results are on their way.</p>
+
+            <div class="prequal__form-wrap">
+              <form id="prequal-form" class="prequal-form" novalidate>
+                <div class="form-group">
+                  <label for="address">Property Address</label>
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    placeholder="e.g. 1234 Oak St NW, Washington, DC 20001"
+                    autocomplete="street-address"
+                    required
+                  />
+                  <!-- Google Places autocomplete will be attached here by main.js once API key is available -->
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="your@email.com"
+                    autocomplete="email"
+                    required
+                  />
+                </div>
+
+                <div id="prequal-error" class="form-error" role="alert" style="display:none;"></div>
+
+                <button type="submit" id="prequal-submit" class="ss-btn ss-btn--primary ss-btn--lg prequal-submit-btn">
+                  Get My Pre-Qualification
+                </button>
+
+                <p class="form-microcopy">Your results will be emailed to you within 60 seconds. No sales call required.</p>
+                <p class="form-privacy">
+                  We respect your privacy. Your details are used only to generate your pre-qualification report.
+                  <a href="#">Privacy Policy</a>
+                </p>
+              </form>
+
+              <!-- Loading state -->
+              <div id="prequal-loading" class="prequal-loading" style="display:none;">
+                <div class="loading-spinner"></div>
+                <p>Analysing your roof data…</p>
+              </div>
+
+              <!-- Success state -->
+              <div id="prequal-success" class="prequal-success" style="display:none;">
+                <div class="success-icon">✓</div>
+                <h3>Your Solar Pre-Qualification is on its way.</h3>
+                <p>Check your inbox — your personalised report will arrive within 60 seconds.</p>
+                <p class="success-note">Didn't receive it? Check your spam folder or <a href="/contact.html">contact us</a>.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════
+           ACCREDITATION / TRUST LOGOS
+      ══════════════════════════════════════════════ -->
+      <section class="accred-bar" id="accreditation" aria-label="Accreditations and certifications">
+        <div class="ss-container">
+          <p class="accred-bar__label">Certified &amp; accredited by</p>
+          <div class="accred-bar__logos">
+            <img src="/assets/img/accreditation/nabcep.webp"   alt="NABCEP Certified PV Installation Professional" />
+            <img src="/assets/img/accreditation/te-certified.png" alt="Tesla Energy Certified Installer" style="transform: scale(1.35);" />
+            <img src="/assets/img/accreditation/pepco.png"     alt="Pepco Renewable Energy Contractor" />
+            <img src="/assets/img/accreditation/cbe.png"       alt="Certified Business Enterprise Program" />
+            <img src="/assets/img/accreditation/jatc.png"      alt="JATC Baltimore Electrical" />
+            <img src="/assets/img/accreditation/eco7.png"      alt="e7 Energy" />
+            <img src="/assets/img/accreditation/cerc.png"      alt="CERC" />
+            <img src="/assets/img/accreditation/cnhed.png"     alt="CNHED" />
+            <img src="/assets/img/accreditation/nlhic.png"     alt="NLHIC" style="transform: scale(1.35);" />
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════
+           1.4 HOW IT WORKS
+      ══════════════════════════════════════════════ -->
+      <section class="how-it-works" id="how-it-works">
+        <div class="ss-container">
+          <div class="hiw__header reveal">
+            <span class="ss-eyebrow">The Process</span>
+            <h2 class="ss-section-title">How Solar Pre-Qualification Works</h2>
+            <p class="ss-section-sub">Three steps. Under two minutes. No commitment required.</p>
+          </div>
+
+          <div class="hiw__steps">
+            <div class="hiw-step reveal">
+              <div class="hiw-step__num">01</div>
+              <div class="hiw-step__body">
+                <h3>Enter Your Address</h3>
+                <p>We pull your roof geometry, orientation, and shading data from satellite imagery. No site visit needed.</p>
+              </div>
+            </div>
+            <div class="hiw-step__divider" aria-hidden="true">→</div>
+            <div class="hiw-step reveal" style="transition-delay:0.1s">
+              <div class="hiw-step__num">02</div>
+              <div class="hiw-step__body">
+                <h3>We Run the Numbers</h3>
+                <p>SolarSight cross-references solar irradiance, your utility rates, and current incentive data to calculate your real savings potential.</p>
+              </div>
+            </div>
+            <div class="hiw-step__divider" aria-hidden="true">→</div>
+            <div class="hiw-step reveal" style="transition-delay:0.2s">
+              <div class="hiw-step__num">03</div>
+              <div class="hiw-step__body">
+                <h3>Get Your Report</h3>
+                <p>Your personalised Solar Pre-Qualification Report lands in your inbox within 60 seconds. It shows your estimated savings in dollars — not vague percentages.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="hiw__cta reveal">
+            <a href="#prequal-form" class="ss-btn ss-btn--navy">Get My Pre-Qualification</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════
+           1.5 TRUST / DATA SECTION
+      ══════════════════════════════════════════════ -->
+      <section class="trust-section" id="trust">
+        <div class="ss-container">
+          <div class="trust-hdr reveal">
+            <span class="ss-eyebrow">Why Trust SolarSight</span>
+            <h2 class="ss-section-title">Real data. Real numbers.<br>No sales pressure.</h2>
+          </div>
+
+          <div class="trust-cards">
+            <div class="trust-card reveal">
+              <div class="trust-card__icon">📡</div>
+              <h3>The Data</h3>
+              <p>SolarSight uses Google Solar API, Nearmap high-resolution imagery, and EIA utility data — the same data sources used by engineers and government agencies.</p>
+            </div>
+            <div class="trust-card reveal" style="transition-delay:0.1s">
+              <div class="trust-card__icon">📐</div>
+              <h3>The Methodology</h3>
+              <p>Your pre-qualification is generated from your roof's actual dimensions and orientation, your local utility rate, and verified solar production data for your postcode.</p>
+            </div>
+            <div class="trust-card reveal" style="transition-delay:0.2s">
+              <div class="trust-card__icon">🤝</div>
+              <h3>No Obligation</h3>
+              <p>Your pre-qualification report is yours. No sales call is scheduled automatically. You decide what happens next.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════
+           1.6 SOCIAL PROOF — PLACEHOLDER
+      ══════════════════════════════════════════════ -->
+      <section class="testimonials" id="testimonials">
+        <div class="ss-container">
+          <div class="testimonials__hdr reveal">
+            <span class="ss-eyebrow">From DC &amp; Maryland Homeowners</span>
+            <h2 class="ss-section-title">Stories from real homeowners</h2>
+          </div>
+
+          <!-- ⚠️ PLACEHOLDER TESTIMONIALS — Revark to replace with real quotes from Karl/Sam BEFORE LAUNCH. Do NOT go live with these. -->
+          <div class="testimonials__grid">
+            <div class="testimonial-card reveal placeholder-content">
+              <div class="placeholder-badge">⚠️ Placeholder — Replace before launch</div>
+              <blockquote>
+                "Quote from homeowner describing their experience — ideally mentioning the speed, the dollar figure in their report, and the absence of pressure."
+              </blockquote>
+              <cite>— First Name, Neighbourhood, DC</cite>
+            </div>
+            <div class="testimonial-card reveal placeholder-content" style="transition-delay:0.1s">
+              <div class="placeholder-badge">⚠️ Placeholder — Replace before launch</div>
+              <blockquote>
+                "Quote from homeowner describing their experience — ideally mentioning the speed, the dollar figure in their report, and the absence of pressure."
+              </blockquote>
+              <cite>— First Name, Neighbourhood, MD</cite>
+            </div>
+            <div class="testimonial-card reveal placeholder-content" style="transition-delay:0.2s">
+              <div class="placeholder-badge">⚠️ Placeholder — Replace before launch</div>
+              <blockquote>
+                "Quote from homeowner describing their experience — ideally mentioning the speed, the dollar figure in their report, and the absence of pressure."
+              </blockquote>
+              <cite>— First Name, Neighbourhood, MD</cite>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════
+           1.7 SECONDARY CTA
+      ══════════════════════════════════════════════ -->
+      <section class="cta-banner" id="cta-banner">
+        <div class="ss-container">
+          <div class="cta-banner__inner reveal">
+            <div class="cta-banner__text">
+              <h2 class="cta-banner__title">Ready to see what your home qualifies for?</h2>
+              <p>It takes less than 2 minutes. No site visit. No sales call. Just your address and your email.</p>
+            </div>
+            <a href="#prequal-form" class="ss-btn ss-btn--primary ss-btn--lg">Start My Pre-Qualification</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <div id="footer"></div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

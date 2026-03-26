@@ -1,24 +1,3 @@
-// ─── Component Loader ─────────────────────────────────
-async function loadComponent(id, url) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  try {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`Failed to load ${url}: ${res.status}`);
-    
-    const text = await res.text();
-    // Strict safety check: if the content contains a <html> or <!DOCTYPE tag,
-    // it's almost certainly a redirect to index.html. DO NOT inject it.
-    if (/<!doctype|<html>/i.test(text)) {
-      throw new Error(`Component fetch for ${url} returned a full HTML document. Check path resolution on your server.`);
-    }
-
-    el.innerHTML = text;
-  } catch (err) {
-    console.error(`[SolarSight] Component Error [${id}]:`, err);
-  }
-}
-
 // ─── Sticky Header ────────────────────────────────────
 function initStickyHeader() {
   const header = document.getElementById('site-header');
@@ -144,12 +123,7 @@ function initActiveNav() {
 }
 
 // ─── Init ─────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', async () => {
-  await Promise.all([
-    loadComponent('header', './header.html'),
-    loadComponent('footer', './footer.html'),
-  ]);
-
+document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();
   initMobileNav();
   initSmoothScrollCTAs();

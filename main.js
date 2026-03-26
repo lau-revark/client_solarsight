@@ -1,6 +1,4 @@
 import './style.css'
-import './assets/css/home.css'
-import './assets/css/pages.css'
 
 // ─── Component Loader ─────────────────────────────────
 async function loadComponent(id, url) {

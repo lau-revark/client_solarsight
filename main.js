@@ -5,9 +5,17 @@ async function loadComponent(id, url) {
   try {
     const res = await fetch(url);
     if (!res.ok) throw new Error(`Failed to load ${url}: ${res.status}`);
-    el.innerHTML = await res.text();
+    
+    const text = await res.text();
+    // Safety check: if the content looks like a full HTML document (contains <html> or <!DOCTYPE),
+    // it's likely a redirect to index.html. DO NOT inject it as it causes infinite duplication.
+    if (text.toLowerCase().includes('<!doctype') || text.toLowerCase().includes('<html')) {
+      throw new Error(`Component fetch for ${url} returned a full HTML document instead of a partial. Check path resolution.`);
+    }
+
+    el.innerHTML = text;
   } catch (err) {
-    console.error(err);
+    console.error(`[SolarSight] Component Error [${id}]:`, err);
   }
 }
 

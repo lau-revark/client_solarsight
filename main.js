@@ -146,8 +146,8 @@ function initActiveNav() {
 // ─── Init ─────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
   await Promise.all([
-    loadComponent('header', '/header.html'),
-    loadComponent('footer', '/footer.html'),
+    loadComponent('header', './header.html'),
+    loadComponent('footer', './footer.html'),
   ]);
 
   initStickyHeader();

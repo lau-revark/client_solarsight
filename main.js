@@ -1,3 +1,5 @@
+import { initTracking, trackLead } from './assets/js/tracking.js';
+
 // ─── Sticky Header ────────────────────────────────────
 function initStickyHeader() {
   const header = document.getElementById('site-header');
@@ -96,6 +98,9 @@ function initPreQualForm() {
     form.style.display = 'none';
     if (loadingEl) loadingEl.style.display = 'none';
     if (successEl) successEl.style.display = 'block';
+
+    // ─── Tracking ─────────────────────────────────────
+    trackLead();
   });
 }
 
@@ -124,6 +129,7 @@ function initActiveNav() {
 
 // ─── Init ─────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
+  initTracking();
   initStickyHeader();
   initMobileNav();
   initSmoothScrollCTAs();

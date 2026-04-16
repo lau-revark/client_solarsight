@@ -135,7 +135,7 @@ a { color: inherit; }
 }
 
 .ss-section-sub {
-  font-size: 17px;
+  font-size: 18px;
   color: var(--text-muted);
   line-height: 1.7;
   max-width: 620px;
@@ -150,7 +150,7 @@ a { color: inherit; }
   padding: 14px 28px;
   border-radius: var(--radius);
   font-family: var(--font);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
@@ -219,7 +219,7 @@ a { color: inherit; }
 }
 
 .ss-btn--lg { padding: 17px 36px; font-size: 16px; }
-.ss-btn--sm { padding: 10px 20px; font-size: 13px; }
+.ss-btn--sm { padding: 10px 20px; font-size: 14px; }
 
 /* ─── Header ─── */
 header {
@@ -271,7 +271,7 @@ nav ul {
 nav a {
   display: block;
   padding: 8px 14px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   color: var(--slate-600);
   text-decoration: none;
@@ -331,14 +331,14 @@ footer {
 .footer-brand .logo-text span { color: var(--amber); }
 
 .footer-brand p {
-  font-size: 13.5px;
+  font-size: 15px;
   line-height: 1.7;
   max-width: 260px;
   margin-bottom: 16px;
 }
 
 .footer-disclaimer {
-  font-size: 11.5px;
+  font-size: 12.5px;
   color: rgba(255,255,255,0.35);
   line-height: 1.6;
   /* ⚠️ PLACEHOLDER — Karl/Sam to provide DC/MD regulatory compliant disclaimer text before launch */
@@ -362,7 +362,7 @@ footer {
 }
 
 .footer-col a {
-  font-size: 13.5px;
+  font-size: 15px;
   color: rgba(255,255,255,0.55);
   text-decoration: none;
   transition: var(--t);
@@ -376,7 +376,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 12px;
+  font-size: 13px;
   gap: 16px;
 }
 
@@ -404,7 +404,7 @@ footer {
 }
 
 .form-group label {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--navy);
   letter-spacing: 0.2px;
@@ -417,7 +417,7 @@ footer {
   border: 1.5px solid var(--slate-100);
   border-radius: var(--radius);
   font-family: var(--font);
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text);
   background: var(--white);
   transition: var(--t);
@@ -429,7 +429,7 @@ footer {
   resize: vertical;
   min-height: 120px;
   padding: 13px 16px;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .form-group select {
@@ -457,7 +457,7 @@ footer {
   color: #DC2626;
   border-radius: var(--radius);
   padding: 10px 14px;
-  font-size: 13.5px;
+  font-size: 15px;
   font-weight: 500;
 }
 
@@ -488,7 +488,7 @@ footer {
 }
 
 .prequal-success p {
-  font-size: 15px;
+  font-size: 16px;
   color: var(--text-muted);
   line-height: 1.6;
 }

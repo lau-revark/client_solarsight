@@ -5,6 +5,22 @@ All notable changes to the **Solar Sight** project will be documented in this fi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to **Major.Minor.Bugfix** versioning.
 
+## [0.2.1] - 2026-04-16
+
+### Added
+- Integrated contact form with Formspree for live delivery to `info@solarsight.io`.
+
+### Changed
+- Transitioned Home page hero and DCPQ pages to a high-contrast light theme (`slate-50`).
+- Improved hero section readability by increasing contrast for `hero__sub` and `hero__sub2` text.
+- Standardized CTA banners across all pages with high-contrast navy backgrounds and white inverse buttons.
+- Refined focal section on Services page with high-contrast "What'll Receive" grid.
+
+### Fixed
+- Resolved visibility issues for hero testimonial buttons by switching to brand blue on white background.
+- Fixed "blue-on-blue" contrast issues in Residential audience path cards.
+- Corrected checkmark visibility in the Pre-Qualification explainer box on Home and Services pages.
+
 ## [0.2.0] - 2026-04-16
 
 ### Added

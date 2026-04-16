@@ -1,352 +1,745 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="DC and Maryland homeowners are saving $2,340/year with solar. Find out what your home qualifies for — in under 2 minutes. No sales call required." />
-    <title>SolarSight | Solar Pre-Qualification for DC &amp; Maryland</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="./assets/css/home.css" />
-  </head>
-  <body>
-    <!-- ─── Tracking Pixels (Noscript Fallbacks) ─────── -->
-    <noscript>
-      <img height="1" width="1" style="display:none"
-           src="https://www.facebook.com/tr?id=1196291579054067&ev=PageView&noscript=1"/>
-    </noscript>
-    <!-- [Planned] Google Tag Noscript: <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"...></iframe></noscript> -->
-    <!-- [Planned] TikTok Pixel Noscript -->
-    <!-- [Planned] Pinterest Pixel Noscript -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SolarSight gives DC and Maryland homeowners a data-backed Solar Pre-Qualification in under 2 minutes. Real savings figures. No salesperson. No commitment." />
+  <title>SolarSight | Solar Pre-Qualification for DC &amp; Maryland Homeowners</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./assets/css/home.css" />
 
-    <header id="site-header">
-      <div class="header-inner">
-        <div class="logo">
-          <a href="/"><img src="/assets/img/logo/logo-dark-blue.png" alt="SolarSight" class="logo-img" /></a>
-        </div>
-        <nav id="site-nav">
-          <ul>
-            <li><a href="/#how-it-works">How It Works</a></li>
-            <li><a href="/about.html">About</a></li>
-            <li><a href="/contact.html">Contact</a></li>
-          </ul>
-        </nav>
-        <a href="/#prequal-form" class="ss-btn ss-btn--primary ss-btn--sm header-cta" id="nav-prequal-cta">
-          Get My Pre-Qual
-        </a>
-        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-            <rect class="bar bar-1" x="2" y="5" width="18" height="2" rx="1" fill="currentColor"/>
-            <rect class="bar bar-2" x="2" y="10" width="18" height="2" rx="1" fill="currentColor"/>
-            <rect class="bar bar-3" x="2" y="15" width="18" height="2" rx="1" fill="currentColor"/>
-          </svg>
-        </button>
+  <style>
+    /* ═══ HOME-SPECIFIC OVERRIDES ═══ */
+
+    /* Metric bar */
+    .metric-bar {
+      background: var(--navy-dark);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 36px 0;
+    }
+    .metric-bar__inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+    .metric-item__num {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -1px;
+      margin-bottom: 6px;
+      line-height: 1;
+    }
+    .metric-item__label {
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.5;
+      max-width: 160px;
+      margin: 0 auto;
+    }
+
+    /* What is Pre-Qual */
+    .prequal-explainer {
+      padding: var(--section-v) 0;
+      background: var(--white);
+    }
+    .prequal-explainer .two-col {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .prequal-explainer .two-col__text { display: flex; flex-direction: column; gap: 18px; }
+    .prequal-explainer .two-col__text p {
+      font-size: 15.5px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* HIW summary */
+    .hiw-summary {
+      padding: var(--section-v) 0;
+      background: var(--off-white);
+      background-image: url('/assets/img/rooftop-aerial.png');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .hiw-summary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(249,248,246,0.94);
+      z-index: 0;
+    }
+    .hiw-summary > .ss-container { position: relative; z-index: 1; }
+    .hiw-summary .hiw__header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .hiw-summary .hiw__header .ss-section-sub { margin: 12px auto 0; }
+    .hiw-summary .hiw__steps {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      margin-bottom: 48px;
+    }
+    .hiw-summary .hiw-step {
+      flex: 1;
+      padding: 32px;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--slate-100);
+      box-shadow: var(--shadow-sm);
+    }
+    .hiw-summary .hiw-step__divider {
+      font-size: 22px;
+      color: var(--navy);
+      opacity: 0.3;
+      padding: 48px 12px 0;
+      flex-shrink: 0;
+    }
+    .hiw-summary .hiw-step__num {
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--navy);
+      opacity: 0.15;
+      line-height: 1;
+      letter-spacing: -2px;
+      margin-bottom: 14px;
+    }
+    .hiw-summary .hiw-step h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .hiw-summary .hiw-step p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+    .hiw-summary .hiw__cta { text-align: center; }
+
+    /* Tech trust */
+    .tech-trust {
+      padding: var(--section-v) 0;
+      background: var(--navy-dark);
+      background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(118,188,232,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(36,116,184,0.12) 0%, transparent 50%);
+    }
+    .tech-trust .section-intro { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+    .tech-trust .section-intro .ss-section-title { color: var(--white); }
+    .tech-trust .section-intro p { color: rgba(255,255,255,0.6); margin-top: 12px; font-size: 15px; line-height: 1.7; }
+
+    .tech-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .tech-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      transition: var(--t);
+    }
+    .tech-card:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: var(--amber);
+    }
+    .tech-card__icon {
+      font-size: 28px;
+      margin-bottom: 18px;
+    }
+    .tech-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .tech-card p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+    }
+    .tech-trust__proof {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+      font-style: italic;
+    }
+
+    /* Audience paths */
+    .audience-paths {
+      padding: var(--section-v) 0;
+      background: var(--white);
+    }
+    .audience-paths .section-intro { text-align: center; max-width: 640px; margin: 0 auto 52px; }
+
+    .path-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .path-card {
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .path-card--residential {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .path-card--commercial {
+      background: var(--off-white);
+      border: 2px solid var(--slate-100);
+    }
+    .path-card__eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .path-card--residential .path-card__eyebrow { color: var(--amber); }
+    .path-card--commercial .path-card__eyebrow { color: var(--navy); }
+    .path-card__icon { font-size: 36px; margin-bottom: 4px; }
+    .path-card h3 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+    .path-card--residential h3 { color: var(--white); }
+    .path-card--commercial h3 { color: var(--navy); }
+    .path-card p {
+      font-size: 15px;
+      line-height: 1.65;
+    }
+    .path-card--residential p { color: rgba(255,255,255,0.7); }
+    .path-card--commercial p { color: var(--text-muted); }
+
+    /* Footer CTA */
+    .home-cta-banner {
+      padding: var(--section-v) 0;
+      background: linear-gradient(135deg, var(--navy-dark) 0%, #1A5282 50%, var(--navy) 100%);
+      background-image:
+        linear-gradient(135deg, var(--navy-dark) 0%, #1A5282 50%, var(--navy) 100%),
+        radial-gradient(ellipse at 50% 100%, rgba(118,188,232,0.12) 0%, transparent 60%);
+      text-align: center;
+    }
+    .home-cta-banner__title {
+      font-size: clamp(26px, 3.5vw, 42px);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -1px;
+      margin-bottom: 14px;
+    }
+    .home-cta-banner p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.65);
+      max-width: 520px;
+      margin: 0 auto 32px;
+      line-height: 1.65;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .metric-bar__inner { grid-template-columns: repeat(2, 1fr); }
+      .prequal-explainer .two-col { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+      .hiw-summary .hiw__steps { flex-direction: column; }
+      .hiw-summary .hiw-step__divider { display: none; }
+      .tech-cards { grid-template-columns: minmax(0, 1fr); }
+      .path-cards { grid-template-columns: minmax(0, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .metric-bar__inner { grid-template-columns: 1fr 1fr; }
+    }
+    /* ∼360px phones — final overflow guard */
+    @media (max-width: 400px) {
+      /* Metric bar: tighter */
+      .metric-bar { padding: 20px 0; }
+      .metric-bar__inner { gap: 12px; }
+      .metric-item__num { font-size: 20px; letter-spacing: -0.5px; }
+      .metric-item__label { font-size: 11px; max-width: 100%; }
+
+      /* Pre-qual explainer */
+      .prequal-explainer .two-col { gap: 20px; }
+      .prequal-explainer .two-col__text { gap: 14px; }
+      .prequal-explainer .two-col__text p { font-size: 14px; }
+
+      /* HIW summary */
+      .hiw-summary .hiw__header { margin-bottom: 28px; }
+      .hiw-summary .hiw-step { padding: 20px 14px; }
+      .hiw-summary .hiw-step h3 { font-size: 15px; }
+      .hiw-summary .hiw-step p { font-size: 13px; }
+
+      /* Tech trust */
+      .tech-trust .section-intro { max-width: 100%; padding: 0; }
+      .tech-cards { gap: 12px; }
+      .tech-card { padding: 24px 18px; }
+
+      /* Path cards */
+      .path-cards { gap: 16px; }
+      .path-card { padding: 28px 20px; }
+      .path-card h3 { font-size: 18px; }
+      .path-card p { font-size: 14px; }
+
+      /* Home footer CTA */
+      .home-cta-banner__title { font-size: clamp(20px, 7vw, 26px); letter-spacing: -0.5px; }
+      .home-cta-banner p { font-size: 14px; max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Tracking Pixels ─────────────────────── -->
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=1196291579054067&ev=PageView&noscript=1"/>
+  </noscript>
+
+  <!-- ─── Header ──────────────────────────────── -->
+  <header id="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <a href="/"><img src="/assets/img/logo/solar-sight-logo-color.png" alt="SolarSight" class="logo-img" /></a>
       </div>
-    </header>
+      <nav id="site-nav">
+        <ul>
+          <li><a href="/" class="active">Home</a></li>
+          <li><a href="/services.html">How It Works</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="/dcpq.html" class="ss-btn ss-btn--primary ss-btn--sm header-cta" id="nav-prequal-cta">
+        Get Pre-Qualified
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <rect class="bar bar-1" x="2" y="5" width="18" height="2" rx="1" fill="currentColor"/>
+          <rect class="bar bar-2" x="2" y="10" width="18" height="2" rx="1" fill="currentColor"/>
+          <rect class="bar bar-3" x="2" y="15" width="18" height="2" rx="1" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+  </header>
 
-    <main id="app">
+  <main id="app">
 
-      <!-- ══════════════════════════════════════════════
-           1.2 HERO + 1.3 PRE-QUAL FORM — two column
-      ══════════════════════════════════════════════ -->
-      <section class="hero" id="hero">
-        <div class="hero__img">
-          <img src="/assets/img/hero-dc.png" alt="Aerial view of Washington DC residential neighbourhood" />
-          <div class="hero__img-overlay"></div>
-        </div>
-        <div class="hero__content ss-container">
+    <!-- ═══════════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════════ -->
+    <section class="hero" id="hero">
+      <div class="hero__img">
+        <img src="/assets/img/hero-dc.png" alt="Aerial view of Washington DC residential neighbourhood" />
+        <div class="hero__img-overlay"></div>
+      </div>
+      <div class="hero__content ss-container">
 
-          <!-- Left col: headline + trust bar -->
-          <div class="hero__col hero__col--left">
-            <span class="ss-eyebrow">DC &amp; Maryland Solar Pre-Qualification</span>
-            <h1 class="hero__headline">
-              DC homeowners are saving <mark class="hero__dollar">$2,340<span class="hero__per">/year</span></mark><br>
-              on electricity with solar.
-            </h1>
-            <p class="hero__sub">
-              Find out what your home qualifies for — in under 2 minutes.
-            </p>
-            <p class="hero__sub2">
-              SolarSight uses satellite imagery, utility data, and your roof's actual specifications to give you a real pre-qualification — not a sales pitch.
-            </p>
-
-            <!-- Trust bar -->
-            <div class="trust-bar">
-              <div class="trust-item">
-                <span class="trust-icon">🛰</span>
-                <span>Google Solar API data</span>
-              </div>
-              <div class="trust-item">
-                <span class="trust-icon">🗺</span>
-                <span>Nearmap aerial imagery</span>
-              </div>
-              <div class="trust-item">
-                <span class="trust-icon">⚡</span>
-                <span>Live utility rate data</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right col: form intro + opt-in box -->
-          <div class="hero__col hero__col--right" id="prequal-form">
-            <span class="ss-eyebrow hero__form-eyebrow">Get Started</span>
-            <h2 class="hero__form-title">Enter your address to see your Solar Pre-Qualification</h2>
-            <p class="hero__form-sub">No site visit. No sales call. Just your address and your email — and your results are on their way.</p>
-
-            <div class="prequal__form-wrap">
-              <form id="prequal-form" class="prequal-form" novalidate>
-                <div class="form-group">
-                  <label for="address">Property Address</label>
-                  <input
-                    type="text"
-                    id="address"
-                    name="address"
-                    placeholder="e.g. 1234 Oak St NW, Washington, DC 20001"
-                    autocomplete="street-address"
-                    required
-                  />
-                  <!-- Google Places autocomplete will be attached here by main.js once API key is available -->
-                </div>
-
-                <div class="form-group">
-                  <label for="email">Email Address</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="your@email.com"
-                    autocomplete="email"
-                    required
-                  />
-                </div>
-
-                <div id="prequal-error" class="form-error" role="alert" style="display:none;"></div>
-
-                <button type="submit" id="prequal-submit" class="ss-btn ss-btn--primary ss-btn--lg prequal-submit-btn">
-                  Get My Pre-Qualification
-                </button>
-
-                <p class="form-microcopy">Your results will be emailed to you within 60 seconds. No sales call required.</p>
-                <p class="form-privacy">
-                  We respect your privacy. Your details are used only to generate your pre-qualification report.
-                  <a href="#">Privacy Policy</a>
-                </p>
-              </form>
-
-              <!-- Loading state -->
-              <div id="prequal-loading" class="prequal-loading" style="display:none;">
-                <div class="loading-spinner"></div>
-                <p>Analysing your roof data…</p>
-              </div>
-
-              <!-- Success state -->
-              <div id="prequal-success" class="prequal-success" style="display:none;">
-                <div class="success-icon">✓</div>
-                <h3>Your Solar Pre-Qualification is on its way.</h3>
-                <p>Check your inbox — your personalised report will arrive within 60 seconds.</p>
-                <p class="success-note">Didn't receive it? Check your spam folder or <a href="/contact.html">contact us</a>.</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- ══════════════════════════════════════════════
-           ACCREDITATION / TRUST LOGOS
-      ══════════════════════════════════════════════ -->
-      <section class="accred-bar" id="accreditation" aria-label="Accreditations and certifications">
-        <div class="ss-container">
-          <p class="accred-bar__label">Certified &amp; accredited by</p>
-          <div class="accred-bar__logos">
-            <img src="/assets/img/accreditation/nabcep.webp"   alt="NABCEP Certified PV Installation Professional" />
-            <img src="/assets/img/accreditation/te-certified.png" alt="Tesla Energy Certified Installer" style="transform: scale(1.35);" />
-            <img src="/assets/img/accreditation/pepco.png"     alt="Pepco Renewable Energy Contractor" />
-            <img src="/assets/img/accreditation/cbe.png"       alt="Certified Business Enterprise Program" />
-            <img src="/assets/img/accreditation/jatc.png"      alt="JATC Baltimore Electrical" />
-            <img src="/assets/img/accreditation/eco7.png"      alt="e7 Energy" />
-            <img src="/assets/img/accreditation/cerc.png"      alt="CERC" />
-            <img src="/assets/img/accreditation/cnhed.png"     alt="CNHED" />
-            <img src="/assets/img/accreditation/nlhic.png"     alt="NLHIC" style="transform: scale(1.35);" />
-          </div>
-        </div>
-      </section>
-
-      <!-- ══════════════════════════════════════════════
-           1.4 HOW IT WORKS
-      ══════════════════════════════════════════════ -->
-      <section class="how-it-works" id="how-it-works">
-        <div class="ss-container">
-          <div class="hiw__header reveal">
-            <span class="ss-eyebrow">The Process</span>
-            <h2 class="ss-section-title">How Solar Pre-Qualification Works</h2>
-            <p class="ss-section-sub">Three steps. Under two minutes. No commitment required.</p>
-          </div>
-
-          <div class="hiw__steps">
-            <div class="hiw-step reveal">
-              <div class="hiw-step__num">01</div>
-              <div class="hiw-step__body">
-                <h3>Enter Your Address</h3>
-                <p>We pull your roof geometry, orientation, and shading data from satellite imagery. No site visit needed.</p>
-              </div>
-            </div>
-            <div class="hiw-step__divider" aria-hidden="true">→</div>
-            <div class="hiw-step reveal" style="transition-delay:0.1s">
-              <div class="hiw-step__num">02</div>
-              <div class="hiw-step__body">
-                <h3>We Run the Numbers</h3>
-                <p>SolarSight cross-references solar irradiance, your utility rates, and current incentive data to calculate your real savings potential.</p>
-              </div>
-            </div>
-            <div class="hiw-step__divider" aria-hidden="true">→</div>
-            <div class="hiw-step reveal" style="transition-delay:0.2s">
-              <div class="hiw-step__num">03</div>
-              <div class="hiw-step__body">
-                <h3>Get Your Report</h3>
-                <p>Your personalised Solar Pre-Qualification Report lands in your inbox within 60 seconds. It shows your estimated savings in dollars — not vague percentages.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="hiw__cta reveal">
-            <a href="#prequal-form" class="ss-btn ss-btn--navy">Get My Pre-Qualification</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- ══════════════════════════════════════════════
-           1.5 TRUST / DATA SECTION
-      ══════════════════════════════════════════════ -->
-      <section class="trust-section" id="trust">
-        <div class="ss-container">
-          <div class="trust-hdr reveal">
-            <span class="ss-eyebrow">Why Trust SolarSight</span>
-            <h2 class="ss-section-title">Real data. Real numbers.<br>No sales pressure.</h2>
-          </div>
-
-          <div class="trust-cards">
-            <div class="trust-card reveal">
-              <div class="trust-card__icon">📡</div>
-              <h3>The Data</h3>
-              <p>SolarSight uses Google Solar API, Nearmap high-resolution imagery, and EIA utility data — the same data sources used by engineers and government agencies.</p>
-            </div>
-            <div class="trust-card reveal" style="transition-delay:0.1s">
-              <div class="trust-card__icon">📐</div>
-              <h3>The Methodology</h3>
-              <p>Your pre-qualification is generated from your roof's actual dimensions and orientation, your local utility rate, and verified solar production data for your postcode.</p>
-            </div>
-            <div class="trust-card reveal" style="transition-delay:0.2s">
-              <div class="trust-card__icon">🤝</div>
-              <h3>No Obligation</h3>
-              <p>Your pre-qualification report is yours. No sales call is scheduled automatically. You decide what happens next.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ══════════════════════════════════════════════
-           1.6 SOCIAL PROOF — PLACEHOLDER
-      ══════════════════════════════════════════════ -->
-      <section class="testimonials" id="testimonials">
-        <div class="ss-container">
-          <div class="testimonials__hdr reveal">
-            <span class="ss-eyebrow">From DC &amp; Maryland Homeowners</span>
-            <h2 class="ss-section-title">Stories from real homeowners</h2>
-          </div>
-
-          <!-- ⚠️ PLACEHOLDER TESTIMONIALS — Revark to replace with real quotes from Karl/Sam BEFORE LAUNCH. Do NOT go live with these. -->
-          <div class="testimonials__grid">
-            <div class="testimonial-card reveal placeholder-content">
-              <div class="placeholder-badge">⚠️ Placeholder — Replace before launch</div>
-              <blockquote>
-                "Quote from homeowner describing their experience — ideally mentioning the speed, the dollar figure in their report, and the absence of pressure."
-              </blockquote>
-              <cite>— First Name, Neighbourhood, DC</cite>
-            </div>
-            <div class="testimonial-card reveal placeholder-content" style="transition-delay:0.1s">
-              <div class="placeholder-badge">⚠️ Placeholder — Replace before launch</div>
-              <blockquote>
-                "Quote from homeowner describing their experience — ideally mentioning the speed, the dollar figure in their report, and the absence of pressure."
-              </blockquote>
-              <cite>— First Name, Neighbourhood, MD</cite>
-            </div>
-            <div class="testimonial-card reveal placeholder-content" style="transition-delay:0.2s">
-              <div class="placeholder-badge">⚠️ Placeholder — Replace before launch</div>
-              <blockquote>
-                "Quote from homeowner describing their experience — ideally mentioning the speed, the dollar figure in their report, and the absence of pressure."
-              </blockquote>
-              <cite>— First Name, Neighbourhood, MD</cite>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ══════════════════════════════════════════════
-           1.7 SECONDARY CTA
-      ══════════════════════════════════════════════ -->
-      <section class="cta-banner" id="cta-banner">
-        <div class="ss-container">
-          <div class="cta-banner__inner reveal">
-            <div class="cta-banner__text">
-              <h2 class="cta-banner__title">Ready to see what your home qualifies for?</h2>
-              <p>It takes less than 2 minutes. No site visit. No sales call. Just your address and your email.</p>
-            </div>
-            <a href="#prequal-form" class="ss-btn ss-btn--primary ss-btn--lg">Start My Pre-Qualification</a>
-          </div>
-        </div>
-      </section>
-
-    </main>
-
-    <footer>
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <img src="/assets/img/logo/logo-white.png" alt="SolarSight" class="logo-img" />
-          <p>DC and Maryland's solar pre-qualification platform. Real data. Real savings. No pressure.</p>
-          <p class="footer-disclaimer">
-            ⚠️ PLACEHOLDER — DC/MD regulatory compliant disclaimer to be provided by Karl/Sam before launch.
-            SolarSight is a pre-qualification service. Results are estimates only. Not a binding quote.
+        <!-- Left col -->
+        <div class="hero__col hero__col--left">
+          <span class="ss-eyebrow">DC &amp; Maryland Solar Pre-Qualification</span>
+          <h1 class="hero__headline">
+            See What Solar Is<br>
+            Actually Worth for<br>
+            <mark class="hero__dollar">Your Home.</mark>
+          </h1>
+          <p class="hero__sub">
+            In Under 2 Minutes.
           </p>
+          <p class="hero__sub2">
+            SolarSight delivers a data-backed Solar Pre-Qualification for your property using Google Solar data, Nearmap imagery, and real utility data from your area. No salesperson. No pressure. Just a clear answer.
+          </p>
+          <div class="hero__cta" style="display:flex; gap:16px; flex-wrap:wrap; margin-top:28px;">
+            <a href="/dcpq.html" class="ss-btn ss-btn--primary ss-btn--lg">Get Your Solar Pre-Qualification</a>
+            <a href="/services.html" class="ss-btn ss-btn--ghost-white ss-btn--lg">See How It Works</a>
+          </div>
+
+          <!-- Trust bar -->
+          <div class="trust-bar">
+            <div class="trust-item">
+              <span class="trust-icon">🛰</span>
+              <span>Google Solar API data</span>
+            </div>
+            <div class="trust-item">
+              <span class="trust-icon">🗺</span>
+              <span>Nearmap aerial imagery</span>
+            </div>
+            <div class="trust-item">
+              <span class="trust-icon">⚡</span>
+              <span>EIA utility rate data</span>
+            </div>
+          </div>
         </div>
-        <div class="footer-col">
-          <h4>Platform</h4>
-          <ul>
-            <li><a href="/#how-it-works">How It Works</a></li>
-            <li><a href="/services.html">What's Included</a></li>
-            <li><a href="/#prequal-form">Get Pre-Qualified</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="/about.html">About SolarSight</a></li>
-            <li><a href="/articles.html">Solar Insights</a></li>
-            <li><a href="/contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Use</a></li>
-          </ul>
+
+        <!-- Right col: Review carousel + logo strip -->
+        <div class="hero__col hero__col--right hero-right-stack">
+
+          <!-- Testimonial carousel -->
+          <div class="hero-carousel" aria-label="Customer reviews">
+            <div class="hero-carousel__track" id="heroCarouselTrack">
+
+              <div class="hero-carousel__slide">
+                <div class="hero-review">
+                  <div class="hero-review__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  <blockquote class="hero-review__quote">“We had no idea solar was such a good investment for our Capitol Hill rowhouse. SolarSight gave us real numbers in under 2 minutes — no salesman, no pressure. We went solar 6 weeks later.”</blockquote>
+                  <div class="hero-review__author">
+                    <span class="hero-review__name">Sarah M.</span>
+                    <span class="hero-review__sep">&bull;</span>
+                    <span class="hero-review__loc">Capitol Hill, DC</span>
+                  </div>
+                  <div class="hero-review__saving">Estimated saving: <strong>$2,180/yr</strong></div>
+                </div>
+              </div>
+
+              <div class="hero-carousel__slide">
+                <div class="hero-review">
+                  <div class="hero-review__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  <blockquote class="hero-review__quote">“I was skeptical after being burned by solar sales calls before. SolarSight sent a report to my inbox with actual numbers for my Bethesda property. No follow-up until I asked.”</blockquote>
+                  <div class="hero-review__author">
+                    <span class="hero-review__name">James K.</span>
+                    <span class="hero-review__sep">&bull;</span>
+                    <span class="hero-review__loc">Bethesda, MD</span>
+                  </div>
+                  <div class="hero-review__saving">Estimated saving: <strong>$3,040/yr</strong></div>
+                </div>
+              </div>
+
+              <div class="hero-carousel__slide">
+                <div class="hero-review">
+                  <div class="hero-review__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  <blockquote class="hero-review__quote">“Finally a solar tool that gives you the financial picture upfront. I compared three properties. Two made sense, one didn’t. SolarSight told me which was which.”</blockquote>
+                  <div class="hero-review__author">
+                    <span class="hero-review__name">Marcus T.</span>
+                    <span class="hero-review__sep">&bull;</span>
+                    <span class="hero-review__loc">Silver Spring, MD</span>
+                  </div>
+                  <div class="hero-review__saving">Estimated saving: <strong>$2,640/yr</strong></div>
+                </div>
+              </div>
+
+            </div><!-- /.track -->
+
+            <div class="hero-carousel__footer">
+              <div class="hero-carousel__dots" role="tablist" aria-label="Select review">
+                <button class="hero-carousel__dot active" data-slide="0" aria-label="Review 1" role="tab" aria-selected="true"></button>
+                <button class="hero-carousel__dot" data-slide="1" aria-label="Review 2" role="tab" aria-selected="false"></button>
+                <button class="hero-carousel__dot" data-slide="2" aria-label="Review 3" role="tab" aria-selected="false"></button>
+              </div>
+              <a href="/dcpq.html" class="ss-btn ss-btn--primary-inv ss-btn--sm">Get Pre-Qualified &rarr;</a>
+            </div>
+          </div><!-- /.hero-carousel -->
+
+          <!-- Compact logo strip — white bg, natural logo colours -->
+          <div class="hero-logos">
+            <span class="hero-logos__label">Accredited &amp; Certified</span>
+            <div class="hero-logos__row">
+              <img src="/assets/img/accreditation/nabcep.webp" alt="NABCEP Certified" />
+              <img src="/assets/img/accreditation/te-certified.png" alt="Tesla Energy Certified Installer" />
+              <img src="/assets/img/accreditation/pepco.png" alt="Pepco Renewable Energy Contractor" />
+              <img src="/assets/img/accreditation/cbe.png" alt="CBE" />
+              <img src="/assets/img/accreditation/jatc.png" alt="JATC Baltimore Electrical" />
+              <img src="/assets/img/accreditation/cerc.png" alt="CERC Certified" />
+            </div>
+          </div><!-- /.hero-logos -->
+
+        </div><!-- /.hero-right-stack -->
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         METRIC BAR
+    ═══════════════════════════════════════════ -->
+    <section class="metric-bar" id="metrics" aria-label="Key statistics">
+      <div class="ss-container">
+        <div class="metric-bar__inner">
+          <div class="metric-item reveal">
+            <div class="metric-item__num">$2,340</div>
+            <div class="metric-item__label">Average annual savings for DC homeowners</div>
+          </div>
+          <div class="metric-item reveal">
+            <div class="metric-item__num">&lt;2 min</div>
+            <div class="metric-item__label">From address entry to your pre-qualification</div>
+          </div>
+          <div class="metric-item reveal">
+            <div class="metric-item__num">3</div>
+            <div class="metric-item__label">Verified data sources in every assessment</div>
+          </div>
+          <div class="metric-item reveal">
+            <div class="metric-item__num">0</div>
+            <div class="metric-item__label">Sales calls automatically triggered. Ever.</div>
+          </div>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>© 2026 SolarSight. A Revark Client. Powered by Phoenix Solar Group.</p>
-        <ul class="footer-bottom-links">
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Disclaimer</a></li>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         WHAT IS A SOLAR PRE-QUALIFICATION?
+    ═══════════════════════════════════════════ -->
+    <section class="prequal-explainer" id="what-is-prequal">
+      <div class="ss-container">
+        <div class="two-col">
+          <div class="two-col__text reveal">
+            <span class="ss-eyebrow">The Category</span>
+            <h2 class="ss-section-title">Not a Quote. Not a Sales Call.<br>A Pre-Qualification.</h2>
+            <p>A solar quote requires a site visit and a salesperson. A Solar Pre-Qualification gives you the financial picture first — so you can decide whether solar makes sense for your home before you commit to anything.</p>
+            <p>SolarSight uses your address, your roof geometry, your utility data, and real solar irradiance data to build that picture in under two minutes. You get a specific savings estimate, a suitability assessment, and a clear sense of what to do next.</p>
+            <p>No sign-up required to get started.</p>
+            <div style="display:flex; gap:16px; flex-wrap:wrap;">
+              <a href="/dcpq.html" class="ss-btn ss-btn--primary">Get Your Solar Pre-Qualification</a>
+              <a href="/services.html" class="ss-btn ss-btn--outline">See the Full Process</a>
+            </div>
+          </div>
+          <div class="reveal" style="display:flex; flex-direction:column; gap:16px;">
+            <div style="background:var(--navy); border-radius:var(--radius-lg); padding:32px;">
+              <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--amber); margin-bottom:16px;">What You'll Receive</div>
+              <div style="display:flex; flex-direction:column; gap:14px;">
+                <div style="display:flex; gap:12px; align-items:flex-start;">
+                  <span style="color:var(--cta); font-weight:700; flex-shrink:0;">✓</span>
+                  <span style="color:rgba(255,255,255,0.85); font-size:14px;">Estimated annual dollar savings specific to your property</span>
+                </div>
+                <div style="display:flex; gap:12px; align-items:flex-start;">
+                  <span style="color:var(--cta); font-weight:700; flex-shrink:0;">✓</span>
+                  <span style="color:rgba(255,255,255,0.85); font-size:14px;">Solar suitability rating for your roof</span>
+                </div>
+                <div style="display:flex; gap:12px; align-items:flex-start;">
+                  <span style="color:var(--cta); font-weight:700; flex-shrink:0;">✓</span>
+                  <span style="color:rgba(255,255,255,0.85); font-size:14px;">Estimated system size for your property</span>
+                </div>
+                <div style="display:flex; gap:12px; align-items:flex-start;">
+                  <span style="color:var(--cta); font-weight:700; flex-shrink:0;">✓</span>
+                  <span style="color:rgba(255,255,255,0.85); font-size:14px;">Local utility context factored into your estimate</span>
+                </div>
+                <div style="display:flex; gap:12px; align-items:flex-start;">
+                  <span style="color:var(--cta); font-weight:700; flex-shrink:0;">✓</span>
+                  <span style="color:rgba(255,255,255,0.85); font-size:14px;">Report delivered to your inbox to review at your own pace</span>
+                </div>
+              </div>
+            </div>
+            <div style="background:var(--slate-50); border-radius:var(--radius-lg); padding:24px; border:1px solid var(--slate-100);">
+              <div style="font-size:12px; font-weight:600; color:var(--text-muted); margin-bottom:12px;">What It Is NOT</div>
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <div style="display:flex; gap:10px; align-items:flex-start;">
+                  <span style="color:var(--slate-400); font-size:13px; flex-shrink:0;">✗</span>
+                  <span style="color:var(--text-muted); font-size:13px;">A formal solar quote (requires a site visit)</span>
+                </div>
+                <div style="display:flex; gap:10px; align-items:flex-start;">
+                  <span style="color:var(--slate-400); font-size:13px; flex-shrink:0;">✗</span>
+                  <span style="color:var(--text-muted); font-size:13px;">A binding commitment of any kind</span>
+                </div>
+                <div style="display:flex; gap:10px; align-items:flex-start;">
+                  <span style="color:var(--slate-400); font-size:13px; flex-shrink:0;">✗</span>
+                  <span style="color:var(--text-muted); font-size:13px;">A trigger for sales calls — unless you ask</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         HOW IT WORKS — SUMMARY
+    ═══════════════════════════════════════════ -->
+    <section class="hiw-summary" id="how-it-works">
+      <div class="ss-container">
+        <div class="hiw__header reveal">
+          <span class="ss-eyebrow">The Process</span>
+          <h2 class="ss-section-title">How Solar Pre-Qualification Works</h2>
+          <p class="ss-section-sub">Three steps. Under two minutes. No commitment required.</p>
+        </div>
+        <div class="hiw__steps">
+          <div class="hiw-step reveal">
+            <div class="hiw-step__num">01</div>
+            <h3>Enter Your Address</h3>
+            <p>SolarSight immediately pulls your roof geometry, orientation, shading profile, and local solar irradiance data. No site visit needed.</p>
+          </div>
+          <div class="hiw-step__divider" aria-hidden="true">→</div>
+          <div class="hiw-step reveal" style="transition-delay:0.1s">
+            <div class="hiw-step__num">02</div>
+            <h3>Receive Your Pre-Qualification</h3>
+            <p>In under 2 minutes, you have a savings estimate based on your specific property — your roof, your utility, your local rates.</p>
+          </div>
+          <div class="hiw-step__divider" aria-hidden="true">→</div>
+          <div class="hiw-step reveal" style="transition-delay:0.2s">
+            <div class="hiw-step__num">03</div>
+            <h3>Decide with Confidence</h3>
+            <p>Review your results. If you want to go further, a solar advisor is available. No pressure, no automatic follow-up.</p>
+          </div>
+        </div>
+        <div class="hiw__cta">
+          <a href="/services.html" class="ss-btn ss-btn--navy">See the Full Process</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         TECHNOLOGY TRUST
+    ═══════════════════════════════════════════ -->
+    <section class="tech-trust" id="technology">
+      <div class="ss-container">
+        <div class="section-intro reveal">
+          <span class="ss-eyebrow">Built on Data You Can Trust</span>
+          <h2 class="ss-section-title">The Same Data Used by Leading Solar Companies</h2>
+          <p>No guesswork. No assumptions. SolarSight's pre-qualification is built on the same data infrastructure used by solar industry professionals and government agencies.</p>
+        </div>
+        <div class="tech-cards">
+          <div class="tech-card reveal">
+            <div class="tech-card__icon">🛰️</div>
+            <h3>Google Solar API</h3>
+            <p>Roof assessment and solar irradiance data from Google's satellite and AI analysis of your specific property. Factors in roof size, pitch, orientation, shading, and local irradiance patterns.</p>
+          </div>
+          <div class="tech-card reveal" style="transition-delay:0.1s">
+            <div class="tech-card__icon">🗺️</div>
+            <h3>Nearmap Aerial Imagery</h3>
+            <p>High-resolution aerial imagery updated regularly across the US. SolarSight uses this to validate and refine roof geometry data — ensuring your pre-qualification reflects your actual property.</p>
+          </div>
+          <div class="tech-card reveal" style="transition-delay:0.2s">
+            <div class="tech-card__icon">📊</div>
+            <h3>EIA Form 861 Data</h3>
+            <p>Real utility and market data from the US Energy Information Administration. Your savings estimate is based on the real cost of electricity in your specific area, not a national average.</p>
+          </div>
+        </div>
+        <p class="tech-trust__proof reveal">No guesswork. No assumptions. SolarSight's pre-qualification is built on the same data infrastructure used by leading solar and energy companies.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         AUDIENCE PATHS
+    ═══════════════════════════════════════════ -->
+    <section class="audience-paths" id="audience">
+      <div class="ss-container">
+        <div class="section-intro reveal">
+          <span class="ss-eyebrow">Who It's For</span>
+          <h2 class="ss-section-title">Built for DC &amp; Maryland Property Owners</h2>
+          <p class="ss-section-sub">Whether you own a home or a commercial property, SolarSight gives you a clear financial picture before you speak to anyone.</p>
+        </div>
+        <div class="path-cards">
+          <div class="path-card path-card--residential reveal">
+            <div class="path-card__eyebrow">Residential</div>
+            <div class="path-card__icon">🏠</div>
+            <h3>For Homeowners</h3>
+            <p>You own your home. You pay an electricity bill. See what solar could mean for your annual costs — in under two minutes. No site visit. No salesperson.</p>
+            <a href="/dcpq.html" class="ss-btn ss-btn--primary" style="margin-top:8px; align-self:flex-start;">Pre-Qualify My Home</a>
+          </div>
+          <div class="path-card path-card--commercial reveal" style="transition-delay:0.1s">
+            <div class="path-card__eyebrow">Commercial</div>
+            <div class="path-card__icon">🏢</div>
+            <h3>For Commercial Properties</h3>
+            <p>Multi-unit or commercial rooftop? SolarSight handles commercial assessments with the same speed and data accuracy — offices, warehouses, retail, and multi-unit residential.</p>
+            <a href="/contact.html" class="ss-btn ss-btn--navy" style="margin-top:8px; align-self:flex-start;">Explore Commercial Pre-Qualification</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         FOOTER CTA
+    ═══════════════════════════════════════════ -->
+    <section class="home-cta-banner" id="cta-banner">
+      <div class="ss-container">
+        <h2 class="home-cta-banner__title">See What Solar Is Worth<br>for Your Property.</h2>
+        <p>No commitment. No salesperson. Just a data-backed answer in under 2 minutes.</p>
+        <a href="/dcpq.html" class="ss-btn ss-btn--primary-inv ss-btn--lg">Get Your Solar Pre-Qualification</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─── Footer ──────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="/assets/img/logo/solar-sight-logo-white.png" alt="SolarSight" class="logo-img" />
+        <p>DC and Maryland's solar pre-qualification platform. Real data. Real savings. No pressure.</p>
+        <p class="footer-disclaimer">
+          SolarSight is a pre-qualification service. Results are estimates only and are not a binding quote. Actual savings depend on installation quality, usage patterns, and utility rate changes.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="/services.html">How It Works</a></li>
+          <li><a href="/dcpq.html">Get Pre-Qualified</a></li>
+          <li><a href="/contact.html#commercial">Commercial Assessment</a></li>
         </ul>
       </div>
-    </footer>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about.html">About SolarSight</a></li>
+          <li><a href="/about.html#phoenix">Phoenix Solar Group</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Data Sources</h4>
+        <ul>
+          <li><a href="https://developers.google.com/maps/documentation/solar" target="_blank" rel="noopener">Google Solar API</a></li>
+          <li><a href="https://www.nearmap.com" target="_blank" rel="noopener">Nearmap</a></li>
+          <li><a href="https://www.eia.gov/electricity/data/eia861/" target="_blank" rel="noopener">EIA Form 861</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 SolarSight. Powered by Phoenix Solar Group.</p>
+      <ul class="footer-bottom-links">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+      </ul>
+    </div>
+  </footer>
 
-    <!-- HubSpot Tracking -->
-    <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/4343906.js"></script>
+  <!-- HubSpot Tracking -->
+  <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/4343906.js"></script>
+  <script type="module" src="/main.js"></script>
 
-    <script type="module" src="/main.js"></script>
-  </body>
+  <script>
+    /* ─── Hero Carousel ─── */
+    (function () {
+      const track = document.getElementById('heroCarouselTrack');
+      const dots  = document.querySelectorAll('.hero-carousel__dot');
+      if (!track || !dots.length) return;
+
+      let current = 0;
+      let timer;
+
+      function goTo(n) {
+        current = (n + dots.length) % dots.length;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        dots.forEach((d, i) => {
+          d.classList.toggle('active', i === current);
+          d.setAttribute('aria-selected', String(i === current));
+        });
+      }
+
+      function startAuto() {
+        clearInterval(timer);
+        timer = setInterval(() => goTo(current + 1), 5000);
+      }
+
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          goTo(+dot.dataset.slide);
+          startAuto();
+        });
+      });
+
+      startAuto();
+    })();
+  </script>
+</body>
 </html>

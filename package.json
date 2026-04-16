@@ -8,6 +8,9 @@
     "build": "vite build",
     "preview": "vite preview"
   },
+  "dependencies": {
+    "@mapbox/search-js-web": "^1.5.1"
+  },
   "devDependencies": {
     "vite": "^8.0.1"
   }

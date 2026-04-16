@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar Sight Brand Book</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: var(--off-white);
+      color: var(--text);
+      padding: 40px 0;
+      font-family: var(--font);
+    }
+    .brand-book-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      padding: 60px;
+    }
+    .bb-header {
+      text-align: center;
+      margin-bottom: 60px;
+      border-bottom: 2px solid var(--slate-100);
+      padding-bottom: 40px;
+    }
+    .bb-logo {
+      height: 60px;
+      margin-bottom: 20px;
+    }
+    .bb-section {
+      margin-bottom: 60px;
+    }
+    .bb-section-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 30px;
+    }
+    /* Logo Showcase */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+    .logo-card {
+      background: var(--slate-50);
+      padding: 40px;
+      border-radius: var(--radius);
+      text-align: center;
+      border: 1px solid var(--slate-100);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-card--dark {
+      background: var(--navy-dark);
+      border-color: var(--navy-dark);
+      color: var(--white);
+    }
+    .logo-card img {
+      max-width: 100%;
+      height: auto;
+      max-height: 80px;
+      margin-bottom: 15px;
+    }
+    /* Colors */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+    }
+    .color-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--slate-100);
+    }
+    .color-swatch {
+      height: 120px;
+      width: 100%;
+    }
+    .color-details {
+      padding: 15px;
+      background: var(--white);
+    }
+    .color-name {
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    .color-hex {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-family: monospace;
+    }
+    /* Typography */
+    .typo-sample {
+      background: var(--slate-50);
+      padding: 40px;
+      border-radius: var(--radius);
+      border: 1px solid var(--slate-100);
+    }
+    h1, h2, h3, p {
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="brand-book-container">
+  <div class="bb-header">
+    <img src="assets/img/logo/solar-sight-logo-color.png" alt="Solar Sight Logo" class="bb-logo">
+    <h1>Brand Guidelines</h1>
+    <p class="ss-section-sub" style="margin: 0 auto;">Core visual identity, typography, and colors.</p>
+  </div>
+
+  <div class="bb-section">
+    <h2 class="bb-section-title">1. Logos</h2>
+    <div class="logo-grid">
+      <div class="logo-card">
+        <img src="assets/img/logo/solar-sight-logo-color.png" alt="Color Logo">
+        <span class="ss-eyebrow" style="margin-top:10px; margin-bottom:0;">Primary Color</span>
+      </div>
+      <div class="logo-card logo-card--dark">
+        <img src="assets/img/logo/solar-sight-logo-white.png" alt="White Logo">
+        <span class="ss-eyebrow" style="margin-top:10px; margin-bottom:0;">White (Inverse)</span>
+      </div>
+      <div class="logo-card">
+        <img src="assets/img/logo/solar-sight-logo-black.png" alt="Black Logo">
+        <span class="ss-eyebrow" style="margin-top:10px; margin-bottom:0;">Black (Monochrome)</span>
+      </div>
+      <div class="logo-card">
+        <img src="assets/img/logo/solar-sight-icon-color.png" alt="Icon Only">
+        <span class="ss-eyebrow" style="margin-top:10px; margin-bottom:0;">Icon Only</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="bb-section">
+    <h2 class="bb-section-title">2. Color Palette</h2>
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="color-swatch" style="background: var(--navy);"></div>
+        <div class="color-details">
+          <div class="color-name">Solar Blue (Primary)</div>
+          <div class="color-hex">#2474B8</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: var(--amber);"></div>
+        <div class="color-details">
+          <div class="color-name">Light Blue (Secondary)</div>
+          <div class="color-hex">#76BCE8</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: var(--navy-dark);"></div>
+        <div class="color-details">
+          <div class="color-name">Dark Blue</div>
+          <div class="color-hex">#1A5282</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: linear-gradient(135deg, var(--navy), var(--amber));"></div>
+        <div class="color-details">
+          <div class="color-name">Brand Gradient</div>
+          <div class="color-hex">#2474B8 to #76BCE8</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bb-section">
+    <h2 class="bb-section-title">3. Typography</h2>
+    <div class="typo-sample">
+      <div style="margin-bottom:30px;">
+        <span class="ss-eyebrow">Primary Typeface</span>
+        <h3 style="font-size:32px; color:var(--navy); margin-bottom:5px;">Lota Grotesque</h3>
+        <p style="color:var(--text-muted); font-size:14px;">(Fallback: Inter, system-ui, sans-serif)</p>
+      </div>
+      
+      <div style="display:flex; flex-direction:column; gap:20px;">
+        <div>
+          <span style="font-size:12px; color:var(--slate-400); text-transform:uppercase;">Heading 1 - Bold 800</span>
+          <h1 style="font-size:42px; font-weight:800; line-height:1.2; margin:0;">Solar Solutions for a Brighter Future</h1>
+        </div>
+        <div>
+          <span style="font-size:12px; color:var(--slate-400); text-transform:uppercase;">Heading 2 - Bold 700</span>
+          <h2 style="font-size:32px; font-weight:700; line-height:1.2; margin:0;">Power your home with clean energy</h2>
+        </div>
+        <div>
+          <span style="font-size:12px; color:var(--slate-400); text-transform:uppercase;">Body - Regular 400</span>
+          <p style="font-size:16px; font-weight:400; line-height:1.6; margin:0; max-width:600px;">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,3 +1,4 @@
+import '@mapbox/search-js-web';
 import { initTracking, trackLead } from './assets/js/tracking.js';
 
 // ─── Sticky Header ────────────────────────────────────
@@ -60,6 +61,30 @@ function initPreQualForm() {
   const successEl    = document.getElementById('prequal-success');
   const errorEl      = document.getElementById('prequal-error');
 
+  const searchBox = document.querySelector('mapbox-search-box');
+  if (searchBox) {
+    searchBox.options = {
+      country: 'US',
+      types: 'address',
+      language: 'en',
+      limit: 5,
+      proximity: '-77.0369,38.9072'
+    };
+
+    searchBox.addEventListener('retrieve', (e) => {
+      const [feature] = e.detail.features;
+      if (!feature) return;
+
+      const [lng, lat] = feature.geometry.coordinates;
+      const address = feature.properties.full_address;
+      const state = feature.properties.context.region.region_code;
+      
+      if (addressInput) addressInput.value = address;
+      const stateInput = document.getElementById('state');
+      if (stateInput) stateInput.value = state;
+    });
+  }
+
   function showError(msg) {
     if (errorEl) { errorEl.textContent = msg; errorEl.style.display = 'block'; }
   }
@@ -78,7 +103,7 @@ function initPreQualForm() {
     const email   = emailInput?.value.trim() || '';
 
     // Validation
-    if (!address) { showError('Please enter your property address.'); addressInput?.focus(); return; }
+    if (!address) { showError('Please select a valid property address.'); if (searchBox) searchBox.focus(); return; }
     if (!email)   { showError('Please enter your email address.'); emailInput?.focus(); return; }
     if (!isValidEmail(email)) { showError('Please enter a valid email address.'); emailInput?.focus(); return; }
 

@@ -3,37 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="SolarSight uses Google Solar API, Nearmap imagery and real utility data to give DC and Maryland homeowners a genuine solar pre-qualification — not a sales pitch." />
-  <title>About SolarSight | Solar Pre-Qualification Built on Real Data</title>
+  <meta name="description" content="SolarSight is a solar pre-qualification platform built by Phoenix Solar Group — DC and Maryland solar professionals committed to giving property owners honest, data-backed answers." />
+  <title>About SolarSight | Built on Real Data, Not Sales Promises</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="./style.css" />
   <link rel="stylesheet" href="./assets/css/pages.css" />
+
+  <style>
+    /* ═══ ABOUT PAGE ═══ */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 32px;
+    }
+    .value-card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .value-card__icon {
+      width: 52px;
+      height: 52px;
+      background: var(--navy);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .value-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .value-card p {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* FAQ / Questions section */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      border: 1px solid var(--slate-100);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .faq-item {
+      padding: 28px 32px;
+      background: var(--white);
+      border-bottom: 1px solid var(--slate-100);
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item__q {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .faq-item__a {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .faq-item__a strong { color: var(--navy); }
+
+    @media (max-width: 768px) {
+      .values-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+    @media (max-width: 400px) {
+      .values-grid { gap: 24px; }
+      .faq-item { padding: 20px 16px; }
+    }
+  </style>
 </head>
 <body>
-    <!-- ─── Tracking Pixels (Noscript Fallbacks) ─────── -->
-    <noscript>
-      <img height="1" width="1" style="display:none"
-           src="https://www.facebook.com/tr?id=1196291579054067&ev=PageView&noscript=1"/>
-    </noscript>
-    <!-- [Planned] Google Tag Noscript -->
-    <!-- [Planned] TikTok Pixel Noscript -->
-    <!-- [Planned] Pinterest Pixel Noscript -->
+
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=1196291579054067&ev=PageView&noscript=1"/>
+  </noscript>
+
   <header id="site-header">
     <div class="header-inner">
       <div class="logo">
-        <a href="/"><img src="/assets/img/logo/logo-dark-blue.png" alt="SolarSight" class="logo-img" /></a>
+        <a href="/"><img src="/assets/img/logo/solar-sight-logo-color.png" alt="SolarSight" class="logo-img" /></a>
       </div>
       <nav id="site-nav">
         <ul>
-          <li><a href="/#how-it-works">How It Works</a></li>
-          <li><a href="/about.html">About</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/services.html">How It Works</a></li>
+          <li><a href="/about.html" class="active">About</a></li>
           <li><a href="/contact.html">Contact</a></li>
         </ul>
       </nav>
-      <a href="/#prequal-form" class="ss-btn ss-btn--primary ss-btn--sm header-cta" id="nav-prequal-cta">
-        Get My Pre-Qual
+      <a href="/dcpq.html" class="ss-btn ss-btn--primary ss-btn--sm header-cta" id="nav-prequal-cta">
+        Get Pre-Qualified
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
@@ -51,85 +120,125 @@
     <section class="page-hero">
       <div class="ss-container">
         <span class="ss-eyebrow">About SolarSight</span>
-        <h1 class="page-hero__title">Solar Pre-Qualification built on real data — not sales promises.</h1>
-        <p class="page-hero__sub">SolarSight is a pre-qualification platform designed for DC and Maryland homeowners who want real answers before they talk to anyone.</p>
+        <h1 class="page-hero__title">A Solar Pre-Qualification Platform Built by Solar Industry Professionals.</h1>
+        <p class="page-hero__sub">SolarSight exists because getting a straight answer about whether solar makes financial sense for your property should not require a site visit or a two-hour sales presentation.</p>
       </div>
     </section>
 
-    <!-- What is Pre-Qual -->
-    <section class="content-section" id="what-is-prequal">
+    <!-- ═══ THE STORY ═══ -->
+    <section class="content-section" id="story">
       <div class="ss-container">
         <div class="two-col">
           <div class="two-col__text reveal">
-            <span class="ss-eyebrow">What it is</span>
-            <h2 class="ss-section-title">What is Solar Pre-Qualification?</h2>
-            <p>Solar pre-qualification is different from a quote or a sales pitch. It's a data-driven assessment of your home's solar potential, generated entirely from satellite and utility data — no site visit, no salesperson.</p>
-            <p>You get a personalised report showing your estimated annual savings in dollars. What you do with that information is entirely up to you.</p>
-            <ul class="feature-list">
-              <li>✓ Generated from your roof's actual data — not an average</li>
-              <li>✓ Results in 60 seconds, emailed directly to you</li>
-              <li>✓ No sales call scheduled automatically</li>
-              <li>✓ Not a binding quote — just real information</li>
-            </ul>
+            <span class="ss-eyebrow">Origin</span>
+            <h2 class="ss-section-title">The SolarSight Story</h2>
+            <p>SolarSight was built by Phoenix Solar Group, a solar company with direct operational experience in the DC and Maryland market. The platform exists because the team saw how opaque and sales-heavy the solar assessment process had become for homeowners and commercial property owners.</p>
+            <p>Getting a straight answer about whether solar makes financial sense for a specific property should not require a site visit or a two-hour sales presentation. SolarSight was built to fix that.</p>
+            <p>It combines Google Solar API data, Nearmap aerial imagery, and EIA utility data to give property owners a credible, data-backed pre-qualification in under two minutes. The platform is available directly to DC and Maryland property owners through solarsight.io, and through a network of trusted solar partners.</p>
           </div>
-          <div class="two-col__aside reveal">
-            <div class="callout-box">
-              <div class="callout-box__icon">📋</div>
-              <h3>Pre-Qualification vs Quote</h3>
-              <p><strong>Pre-Qualification:</strong> Fast, data-driven estimate of your savings potential. No commitment. No visit. Yours to keep.</p>
-              <p><strong>Quote:</strong> Requires a site inspection and a conversation with a sales team. A later step, only if you want to proceed.</p>
+          <div class="reveal" style="display:flex; flex-direction:column; gap:20px;">
+            <div style="background:var(--navy); border-radius:var(--radius-lg); padding:36px;">
+              <span class="ss-eyebrow" style="color:var(--amber); opacity:0.9;">Why We Built This</span>
+              <p style="color:rgba(255,255,255,0.75); font-size:15px; line-height:1.75; margin-top:8px;">The DC and Maryland market is heavily advertised and increasingly cynical. Homeowners have seen the ads, dealt with the door-to-door visits, and still don't have a clear answer on whether solar makes sense for their home. SolarSight changes that.</p>
+            </div>
+            <div style="background:var(--off-white); border-radius:var(--radius-lg); padding:32px; border:1px solid var(--slate-100);">
+              <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--navy); margin-bottom:16px;">Data sources powering every assessment</div>
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <div style="display:flex; gap:10px; align-items:center;">
+                  <span style="font-size:18px;">🛰️</span>
+                  <span style="font-size:14px; font-weight:600; color:var(--navy);">Google Solar API</span>
+                </div>
+                <div style="display:flex; gap:10px; align-items:center;">
+                  <span style="font-size:18px;">🗺️</span>
+                  <span style="font-size:14px; font-weight:600; color:var(--navy);">Nearmap Aerial Imagery</span>
+                </div>
+                <div style="display:flex; gap:10px; align-items:center;">
+                  <span style="font-size:18px;">📊</span>
+                  <span style="font-size:14px; font-weight:600; color:var(--navy);">EIA Form 861 Data</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Platform -->
-    <section class="content-section content-section--alt" id="platform">
-      <div class="ss-container">
-        <div class="section-intro reveal">
-          <span class="ss-eyebrow">The Platform</span>
-          <h2 class="ss-section-title">How the SolarSight Platform Works</h2>
-          <p class="ss-section-sub">SolarSight combines three best-in-class data sources to build a pre-qualification that reflects your home's specific situation.</p>
-        </div>
-        <div class="data-cards">
-          <div class="data-card reveal">
-            <span class="data-card__ico">🛰</span>
-            <h3>Google Solar API</h3>
-            <p>Provides precise roof geometry, orientation, tilt angle, and annual solar exposure hours for every section of your roof.</p>
-          </div>
-          <div class="data-card reveal" style="transition-delay:0.1s">
-            <span class="data-card__ico">🗺</span>
-            <h3>Nearmap Aerial Imagery</h3>
-            <p>High-resolution aerial imagery updated more frequently than Google Maps — used to verify roof condition, obstructions and shading.</p>
-          </div>
-          <div class="data-card reveal" style="transition-delay:0.2s">
-            <span class="data-card__ico">⚡</span>
-            <h3>EIA Utility Rate Data</h3>
-            <p>Live utility rate data from the US Energy Information Administration — so your savings estimate reflects what you actually pay for electricity in DC or Maryland.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Phoenix Solar Group -->
-    <section class="content-section" id="phoenix">
+    <!-- ═══ PHOENIX SOLAR GROUP ═══ -->
+    <section class="content-section content-section--alt" id="phoenix">
       <div class="ss-container">
         <div class="two-col">
           <div class="two-col__text reveal">
             <span class="ss-eyebrow">Backed by</span>
-            <h2 class="ss-section-title">About Phoenix Solar Group</h2>
-            <!-- ⚠️ PLACEHOLDER — Sam to provide real Phoenix Solar Group company history, credentials, and DC/MD track record before launch -->
+            <h2 class="ss-section-title">Built by Phoenix Solar Group</h2>
+            <!-- ⚠️ PLACEHOLDER — Sam/Karl to provide approved Phoenix Solar Group copy, tenure, credentials, and DC/MD track record before launch -->
             <div class="placeholder-block">
               <div class="placeholder-badge">⚠️ Placeholder — Sam to supply real company copy before launch</div>
-              <p>Phoenix Solar Group is an experienced DC/MD solar operator with a track record of helping homeowners make informed solar decisions. [Real company history, years of operation, installations completed, and market focus to be provided by Sam.]</p>
+              <p>Phoenix Solar Group is an established solar operations company serving DC and Maryland. [Real company history, years of operation, installations completed, and market focus to be provided by Sam/Karl. Do not fabricate tenure claims, revenue claims, or project counts without confirmation.]</p>
+              <p>Phoenix Solar Group also operates through its Prism Solar Power brand for residential and commercial installations in the DC/MD area.</p>
             </div>
           </div>
-          <div class="two-col__aside reveal">
+          <div class="reveal" style="display:flex; flex-direction:column; gap:16px;">
             <div class="stat-highlight">
-              <div class="stat-highlight__num">⚠️</div>
-              <div class="stat-highlight__label">Placeholder stats — replace with real Phoenix Solar Group data before launch</div>
+              <!-- ⚠️ PLACEHOLDER — Replace all figures with real Phoenix Solar Group data before launch -->
+              <div class="placeholder-badge" style="margin-bottom:16px;">⚠️ Placeholder — replace with real data</div>
+              <div class="stat-highlight__num" style="font-size:32px; color:var(--slate-400);">TBD</div>
+              <div class="stat-highlight__label">Real Phoenix Solar Group stats to be supplied by Sam/Karl before launch</div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ OUR APPROACH / VALUES ═══ -->
+    <section class="content-section" id="approach">
+      <div class="ss-container">
+        <div class="section-intro reveal">
+          <span class="ss-eyebrow">Our Approach</span>
+          <h2 class="ss-section-title">How We Think About Solar Pre-Qualification</h2>
+        </div>
+        <div class="values-grid">
+          <div class="value-card reveal">
+            <div class="value-card__icon">📊</div>
+            <h3>Data, not guesswork.</h3>
+            <p>Every SolarSight pre-qualification is built from verified, current data. We do not use national averages or generic estimates. Your pre-qualification reflects your property, your roof, and your local utility rates.</p>
+          </div>
+          <div class="value-card reveal" style="transition-delay:0.1s">
+            <div class="value-card__icon">🕐</div>
+            <h3>Your timeline, not ours.</h3>
+            <p>A pre-qualification is not a trigger for a sales process. You receive your results by email and decide what happens next. If you want to speak to a solar advisor, we make that easy. If you do not, that is equally fine.</p>
+          </div>
+          <div class="value-card reveal" style="transition-delay:0.2s">
+            <div class="value-card__icon">🤝</div>
+            <h3>Honesty over hype.</h3>
+            <p>If solar does not make financial sense for a property, SolarSight will tell you that. The solar industry has a trust problem. Our job is to be part of the solution — not to maximise conversions at the expense of accuracy.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ COMMON QUESTIONS ═══ -->
+    <section class="content-section content-section--alt" id="questions">
+      <div class="ss-container">
+        <div class="section-intro reveal">
+          <span class="ss-eyebrow">Common Questions</span>
+          <h2 class="ss-section-title">What DC &amp; MD Homeowners Are Asking</h2>
+        </div>
+        <div class="faq-list reveal">
+          <div class="faq-item">
+            <div class="faq-item__q">"Is solar actually worth it for my house?"</div>
+            <div class="faq-item__a">It depends on your roof, your utility rate, and your current usage. That is exactly what SolarSight calculates. Most DC homeowners on Pepco save an average of $2,340 per year. <strong>Your property may be different — we'll show you the real number.</strong></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-item__q">"Will I get bombarded with sales calls?"</div>
+            <div class="faq-item__a">No. SolarSight delivers your pre-qualification to your inbox. <strong>We do not pass your details to installers without your permission.</strong> No automatic sales calls, no third-party hand-offs.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-item__q">"How accurate is this?"</div>
+            <div class="faq-item__a">Your pre-qualification is based on Google Solar API data, Nearmap aerial imagery, and EIA utility data. It is not a guaranteed quote — but it is <strong>built on the same data used by leading solar companies in the US.</strong> It is the most accurate picture you can get without a site visit.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-item__q">"How long does this take?"</div>
+            <div class="faq-item__a"><strong>Under two minutes</strong> from address entry to results in your inbox.</div>
           </div>
         </div>
       </div>
@@ -140,10 +249,10 @@
       <div class="ss-container">
         <div class="cta-banner__inner reveal">
           <div class="cta-banner__text">
-            <h2 class="cta-banner__title">See what your home qualifies for.</h2>
-            <p>Enter your address and get your Solar Pre-Qualification in under 2 minutes.</p>
+            <h2 class="cta-banner__title">See What SolarSight Can Tell You About Your Property.</h2>
+            <p>No commitment. No salesperson. Under 2 minutes.</p>
           </div>
-          <a href="/#prequal-form" class="ss-btn ss-btn--primary ss-btn--lg">Start My Pre-Qualification</a>
+          <a href="/dcpq.html" class="ss-btn ss-btn--primary-inv ss-btn--lg">Get Your Solar Pre-Qualification</a>
         </div>
       </div>
     </section>
@@ -153,48 +262,47 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
-        <img src="/assets/img/logo/logo-white.png" alt="SolarSight" class="logo-img" />
+        <img src="/assets/img/logo/solar-sight-logo-white.png" alt="SolarSight" class="logo-img" />
         <p>DC and Maryland's solar pre-qualification platform. Real data. Real savings. No pressure.</p>
         <p class="footer-disclaimer">
-          ⚠️ PLACEHOLDER — DC/MD regulatory compliant disclaimer to be provided by Karl/Sam before launch.
-          SolarSight is a pre-qualification service. Results are estimates only. Not a binding quote.
+          SolarSight is a pre-qualification service. Results are estimates only and are not a binding quote. Actual savings depend on installation quality, usage patterns, and utility rate changes.
         </p>
       </div>
       <div class="footer-col">
         <h4>Platform</h4>
         <ul>
-          <li><a href="/#how-it-works">How It Works</a></li>
-          <li><a href="/services.html">What's Included</a></li>
-          <li><a href="/#prequal-form">Get Pre-Qualified</a></li>
+          <li><a href="/services.html">How It Works</a></li>
+          <li><a href="/dcpq.html">Get Pre-Qualified</a></li>
+          <li><a href="/contact.html">Commercial Assessment</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
         <ul>
           <li><a href="/about.html">About SolarSight</a></li>
-          <li><a href="/articles.html">Solar Insights</a></li>
+          <li><a href="/about.html#phoenix">Phoenix Solar Group</a></li>
           <li><a href="/contact.html">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Legal</h4>
+        <h4>Data Sources</h4>
         <ul>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Use</a></li>
+          <li><a href="https://developers.google.com/maps/documentation/solar" target="_blank" rel="noopener">Google Solar API</a></li>
+          <li><a href="https://www.nearmap.com" target="_blank" rel="noopener">Nearmap</a></li>
+          <li><a href="https://www.eia.gov/electricity/data/eia861/" target="_blank" rel="noopener">EIA Form 861</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 SolarSight. A Revark Client. Powered by Phoenix Solar Group.</p>
+      <p>© 2026 SolarSight. Powered by Phoenix Solar Group.</p>
       <ul class="footer-bottom-links">
         <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Disclaimer</a></li>
+        <li><a href="#">Terms of Use</a></li>
       </ul>
     </div>
   </footer>
-  <!-- HubSpot Tracking -->
-  <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/4343906.js"></script>
 
+  <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/4343906.js"></script>
   <script type="module" src="/main.js"></script>
 </body>
 </html>

@@ -4,16 +4,53 @@
    Palette: Deep navy primary, solar amber accent
    ===================================================== */
 
+/* Solar Sight uses Lota Grotesque for Typography */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@font-face {
+  font-family: 'Lota Grotesque';
+  src: url('/assets/fonts/lota-grotesque-alt-1/Los Andes  Lota Grotesque Alt 1 Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lota Grotesque';
+  src: url('/assets/fonts/lota-grotesque-alt-1/Los Andes  Lota Grotesque Alt 1 Semi Bold.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lota Grotesque';
+  src: url('/assets/fonts/lota-grotesque-alt-1/Los Andes  Lota Grotesque Alt 1 Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lota Grotesque';
+  src: url('/assets/fonts/lota-grotesque-alt-1/Los Andes  Lota Grotesque Alt 1 Black.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* ─── Tokens ─── */
 :root {
   /* Colours */
-  --navy:        #1B2A4A;
-  --navy-dark:   #111D35;
-  --navy-light:  #243455;
-  --amber:       #F5A623;
-  --amber-dark:  #D4891A;
+  --navy:        #2474B8;
+  --navy-dark:   #1A5282;
+  --navy-light:  #3A8BCD;
+  --amber:       #76BCE8;
+  --amber-dark:  #53A2D4;
+  /* CTA colour — dark navy blue for light backgrounds */
+  --cta:         #2474B8;
+  --cta-dark:    #1A5282;
+
   --white:       #FFFFFF;
   --off-white:   #F9F8F6;
   --slate-50:    #F1F3F7;
@@ -24,7 +61,7 @@
   --text-muted:  #5A6478;
 
   /* Typography */
-  --font:        'Inter', system-ui, sans-serif;
+  --font:        'Lota Grotesque', 'Inter', system-ui, sans-serif;
 
   /* Spacing */
   --section-v:   96px;
@@ -43,13 +80,19 @@
 
 /* ─── Reset ─── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  overflow-x: hidden; /* prevent ANY element from creating horizontal scroll */
+}
 body {
   font-family: var(--font);
   color: var(--text);
   background: var(--white);
   -webkit-font-smoothing: antialiased;
   line-height: 1.6;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; }
@@ -66,9 +109,21 @@ a { color: inherit; }
   font-weight: 700;
   letter-spacing: 2.5px;
   text-transform: uppercase;
-  color: var(--amber);
+  color: var(--navy);            /* dark blue – readable on white/light backgrounds */
   margin-bottom: 14px;
   display: block;
+}
+
+/* Eyebrow on dark/navy section backgrounds — use light blue for contrast */
+.page-hero .ss-eyebrow,
+.content-section--navy .ss-eyebrow,
+.metric-bar .ss-eyebrow,
+.tech-trust .ss-eyebrow,
+.home-cta-banner .ss-eyebrow,
+.cta-banner .ss-eyebrow,
+.ss-eyebrow.on-dark {
+  color: var(--amber);           /* light blue #76BCE8 – readable on dark navy */
+  opacity: 1;
 }
 
 .ss-section-title {
@@ -106,15 +161,29 @@ a { color: inherit; }
 }
 
 .ss-btn--primary {
-  background: var(--amber);
+  background: var(--cta);
   color: var(--white);
-  border-color: var(--amber);
+  border-color: var(--cta);
 }
 .ss-btn--primary:hover {
-  background: var(--amber-dark);
-  border-color: var(--amber-dark);
+  background: var(--cta-dark);
+  border-color: var(--cta-dark);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(245,166,35,0.35);
+  box-shadow: 0 6px 20px rgba(36,116,184,0.35);
+}
+
+/* Inverse primary — white button for dark/navy section backgrounds */
+.ss-btn--primary-inv {
+  background: var(--white);
+  color: var(--navy);
+  border-color: var(--white);
+}
+.ss-btn--primary-inv:hover {
+  background: var(--amber);
+  color: var(--navy);
+  border-color: var(--amber);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
 }
 
 .ss-btn--navy {
@@ -327,6 +396,103 @@ footer {
 /* Legacy overrides — remove old .footer-nav */
 .footer-nav { display: none !important; }
 
+/* ─── Forms (global) ─── */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: 0.2px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 11px 14px;
+  border: 1.5px solid var(--slate-100);
+  border-radius: var(--radius);
+  font-family: var(--font);
+  font-size: 14px;
+  color: var(--text);
+  background: var(--white);
+  transition: var(--t);
+  outline: none;
+  width: 100%;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+  padding: 13px 16px;
+  font-size: 15px;
+}
+
+.form-group select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238896B3' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--slate-400); }
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(36,116,184,0.08);
+}
+
+.form-error {
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  color: #DC2626;
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+.prequal-success {
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.success-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #ECFDF5;
+  color: #059669;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  border: 2px solid #D1FAE5;
+}
+
+.prequal-success h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.prequal-success p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
 /* ─── Scroll reveal ─── */
 .reveal {
   opacity: 0;
@@ -365,4 +531,38 @@ footer {
 
 @media (max-width: 480px) {
   .footer-inner { grid-template-columns: 1fr; }
+}
+
+/* ─── Very small screens: 400px and below (∼360px target) ─── */
+@media (max-width: 400px) {
+  :root { --section-v: 48px; }
+
+  /* Tighter container + header */
+  .ss-container   { padding: 0 14px; }
+  .header-inner   { padding: 0 14px; }
+
+  /* Hide primary nav CTA in header — too cramped at 360px;
+     every hero section already has a full CTA */
+  .header-cta     { display: none; }
+
+  /* Navigation mobile panel */
+  nav ul { padding: 10px 14px 16px; }
+
+  /* Headings: prevent long words from breaking layout */
+  .ss-section-title,
+  .cta-banner__title,
+  h1, h2, h3 {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Buttons: shrink large variant */
+  .ss-btn--lg   { padding: 13px 18px; font-size: 14px; }
+  .ss-btn--sm   { padding: 9px 14px;  font-size: 12px; }
+
+  /* Footer */
+  .footer-inner       { grid-template-columns: 1fr; gap: 20px; padding: 36px 14px 24px; }
+  .footer-bottom      { padding: 16px 14px; }
+  .footer-brand p     { font-size: 13px; }
+  .footer-disclaimer  { font-size: 11px; }
 }

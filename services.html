@@ -3,37 +3,215 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Your SolarSight Pre-Qualification Report includes estimated annual savings in dollars, roof suitability, system size, and DC/MD incentive overview. No obligation." />
-  <title>What's Included | SolarSight Pre-Qualification Report</title>
+  <meta name="description" content="Learn how SolarSight works — from address entry to a data-backed Solar Pre-Qualification in under 2 minutes. Built for DC and Maryland homeowners and commercial properties." />
+  <title>How It Works | SolarSight</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="./style.css" />
   <link rel="stylesheet" href="./assets/css/pages.css" />
+
+  <style>
+    /* ═══ SERVICES / HOW IT WORKS ═══ */
+
+    /* Step process — expanded */
+    .process-step {
+      display: grid;
+      grid-template-columns: 80px minmax(0, 1fr);
+      gap: 32px;
+      align-items: start;
+      padding: 40px 0;
+      border-bottom: 1px solid var(--slate-100);
+    }
+    .process-step:last-child { border-bottom: none; }
+    .process-step__num {
+      font-size: 52px;
+      font-weight: 800;
+      color: var(--navy);
+      opacity: 0.15;
+      line-height: 1;
+      letter-spacing: -2px;
+      text-align: right;
+    }
+    .process-step__body h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 14px;
+      letter-spacing: -0.3px;
+    }
+    .process-step__body p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+    .process-step__body p:last-child { margin-bottom: 0; }
+
+    /* Data sources */
+    .data-source-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .data-source-card {
+      background: var(--white);
+      border: 1px solid var(--slate-100);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--t);
+      border-top: 3px solid var(--navy);
+    }
+    .data-source-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-top-color: var(--cta);
+    }
+    .data-source-card__icon { font-size: 30px; margin-bottom: 14px; }
+    .data-source-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .data-source-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Get vs Not get */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 32px;
+    }
+    .compare-col {
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+    }
+    /* What's Included = white card — pops against the navy section background */
+    .compare-col--yes {
+      background: var(--white);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+    }
+    /* What It Is Not = ghost panel — de-emphasised */
+    .compare-col--no {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .compare-col__header {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+    }
+    .compare-col--yes .compare-col__header { color: var(--navy); border-bottom: 1px solid var(--slate-100); }
+    .compare-col--no .compare-col__header { color: rgba(255,255,255,0.4); border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .compare-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .compare-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 14.5px;
+      line-height: 1.5;
+    }
+    .compare-col--yes .compare-list li { color: var(--navy); }
+    .compare-col--no .compare-list li { color: rgba(255,255,255,0.45); }
+    .compare-list li::before {
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .compare-col--yes .compare-list li::before { content: '\2713'; color: var(--cta); }
+    .compare-col--no .compare-list li::before { content: '\2717'; color: rgba(255,255,255,0.2); }
+
+    /* Audience tabs */
+    .audience-section {
+      padding: var(--section-v) 0;
+      background: var(--off-white);
+    }
+    .audience-cards {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 24px;
+    }
+    .audience-card {
+      background: var(--white);
+      border: 1px solid var(--slate-100);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      box-shadow: var(--shadow-sm);
+    }
+    .audience-card__icon { font-size: 32px; margin-bottom: 16px; }
+    .audience-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .audience-card p {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+    .audience-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .audience-card ul li {
+      font-size: 14px;
+      color: var(--text-muted);
+      display: flex;
+      gap: 8px;
+    }
+    .audience-card ul li::before { content: '–'; color: var(--slate-400); flex-shrink: 0; }
+
+    @media (max-width: 768px) {
+      .data-source-grid { grid-template-columns: minmax(0, 1fr); }
+      .compare-grid { grid-template-columns: minmax(0, 1fr); }
+      .audience-cards { grid-template-columns: minmax(0, 1fr); }
+      .process-step { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+      .process-step__num { text-align: left; font-size: 36px; }
+    }
+    @media (max-width: 400px) {
+      .process-step { padding: 28px 0; }
+      .process-step__num { font-size: 28px; }
+      .data-source-card { padding: 22px 18px; }
+      .compare-grid { gap: 16px; }
+      .compare-col { padding: 24px 18px; }
+      .audience-cards { gap: 16px; }
+      .audience-card { padding: 24px 18px; }
+    }
+  </style>
 </head>
 <body>
-    <!-- ─── Tracking Pixels (Noscript Fallbacks) ─────── -->
-    <noscript>
-      <img height="1" width="1" style="display:none"
-           src="https://www.facebook.com/tr?id=1196291579054067&ev=PageView&noscript=1"/>
-    </noscript>
-    <!-- [Planned] Google Tag Noscript -->
-    <!-- [Planned] TikTok Pixel Noscript -->
-    <!-- [Planned] Pinterest Pixel Noscript -->
+
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=1196291579054067&ev=PageView&noscript=1"/>
+  </noscript>
+
   <header id="site-header">
     <div class="header-inner">
       <div class="logo">
-        <a href="/"><img src="/assets/img/logo/logo-dark-blue.png" alt="SolarSight" class="logo-img" /></a>
+        <a href="/"><img src="/assets/img/logo/solar-sight-logo-color.png" alt="SolarSight" class="logo-img" /></a>
       </div>
       <nav id="site-nav">
         <ul>
-          <li><a href="/#how-it-works">How It Works</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/services.html" class="active">How It Works</a></li>
           <li><a href="/about.html">About</a></li>
           <li><a href="/contact.html">Contact</a></li>
         </ul>
       </nav>
-      <a href="/#prequal-form" class="ss-btn ss-btn--primary ss-btn--sm header-cta" id="nav-prequal-cta">
-        Get My Pre-Qual
+      <a href="/dcpq.html" class="ss-btn ss-btn--primary ss-btn--sm header-cta" id="nav-prequal-cta">
+        Get Pre-Qualified
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
@@ -50,88 +228,149 @@
     <!-- Hero -->
     <section class="page-hero">
       <div class="ss-container">
-        <span class="ss-eyebrow">The Pre-Qualification Report</span>
-        <h1 class="page-hero__title">What's in your Solar Pre-Qualification Report</h1>
-        <p class="page-hero__sub">A detailed breakdown of what SolarSight calculates for your home — and what it doesn't commit you to.</p>
+        <span class="ss-eyebrow">The Process</span>
+        <h1 class="page-hero__title">How SolarSight Works</h1>
+        <p class="page-hero__sub">From your address to a data-backed Solar Pre-Qualification in under two minutes.</p>
       </div>
     </section>
 
-    <!-- What's included -->
-    <section class="content-section" id="whats-included">
+    <!-- ═══ THREE-STEP PROCESS — EXPANDED ═══ -->
+    <section class="content-section" id="process">
       <div class="ss-container">
         <div class="section-intro reveal">
-          <span class="ss-eyebrow">Report Contents</span>
-          <h2 class="ss-section-title">Five things your report includes</h2>
+          <span class="ss-eyebrow">Step by Step</span>
+          <h2 class="ss-section-title">The Three-Step Process</h2>
+          <p class="ss-section-sub">No site visit. No account creation. No sales call unless you want one.</p>
         </div>
-        <div class="report-items">
-          <div class="report-item reveal">
-            <div class="report-item__num">1</div>
-            <div class="report-item__body">
-              <h3>Estimated Annual Savings (in dollars)</h3>
-              <p>The dollar figure your home is estimated to save each year on electricity based on your local utility rate and your roof's solar production capacity. This is a specific number — not a range or a percentage.</p>
+
+        <div>
+          <div class="process-step reveal">
+            <div class="process-step__num">01</div>
+            <div class="process-step__body">
+              <h3>Enter Your Address</h3>
+              <p>You type in your property address. That's it. No account creation. No form filling. SolarSight immediately pulls your roof geometry, orientation, shading profile, and local solar irradiance data from Google Solar API and Nearmap's high-resolution aerial imagery.</p>
+              <p>Behind the scenes, we also pull your local utility context using EIA Form 861 data, so your savings estimate reflects real energy pricing in your area — not a national average.</p>
             </div>
           </div>
-          <div class="report-item reveal" style="transition-delay:0.05s">
-            <div class="report-item__num">2</div>
-            <div class="report-item__body">
-              <h3>Roof Suitability Assessment</h3>
-              <p>An assessment of your roof's orientation, tilt angle, usable area, and shading conditions — derived from Google Solar API and Nearmap imagery data.</p>
+
+          <div class="process-step reveal">
+            <div class="process-step__num">02</div>
+            <div class="process-step__body">
+              <h3>SolarSight Builds Your Pre-Qualification</h3>
+              <p>In under two minutes, SolarSight processes your property data and generates a Solar Pre-Qualification report. This is not a quote and it is not a commitment. It is a data-backed starting point that gives you the financial picture before you engage with anyone.</p>
+              <p>Your report includes an estimated annual electricity savings in dollar terms, a solar suitability rating for your roof, an estimated system size appropriate for your property, and your local utility context and how it affects your savings potential.</p>
             </div>
           </div>
-          <div class="report-item reveal" style="transition-delay:0.1s">
-            <div class="report-item__num">3</div>
-            <div class="report-item__body">
-              <h3>Estimated System Size</h3>
-              <p>The approximate solar system size (in kilowatts) that your roof can accommodate and that would optimise your savings potential.</p>
-            </div>
-          </div>
-          <div class="report-item reveal" style="transition-delay:0.15s">
-            <div class="report-item__num">4</div>
-            <div class="report-item__body">
-              <h3>Available Incentives Overview (DC/MD)</h3>
-              <p>A summary of relevant solar incentive programs available in DC and Maryland, including the federal Investment Tax Credit (ITC). Note: incentive details are provided for information only — amounts depend on individual circumstances and regulatory conditions at the time of installation.</p>
-            </div>
-          </div>
-          <div class="report-item reveal" style="transition-delay:0.2s">
-            <div class="report-item__num">5</div>
-            <div class="report-item__body">
-              <h3>Next Steps (if you want to proceed)</h3>
-              <p>If your pre-qualification looks promising and you'd like to explore further, the report outlines how to take the next step — on your terms, in your own time.</p>
+
+          <div class="process-step reveal">
+            <div class="process-step__num">03</div>
+            <div class="process-step__body">
+              <h3>Receive Your Report and Decide</h3>
+              <p>Your pre-qualification report is delivered to your email. You can review it at your own pace. If the numbers make sense and you want to go further, a solar advisor is available to discuss next steps. If the numbers do not make sense for your situation, we will tell you that too.</p>
+              <p>No pressure. No follow-up sales calls unless you ask for them.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- What it's NOT -->
-    <section class="content-section content-section--navy" id="not-a-quote">
+    <!-- ═══ DATA SOURCES ═══ -->
+    <section class="content-section content-section--alt" id="data-sources">
       <div class="ss-container">
-        <div class="section-intro reveal" style="color:white">
-          <span class="ss-eyebrow">Clarity matters</span>
-          <h2 class="ss-section-title" style="color:white">What Pre-Qual is NOT</h2>
-          <p class="ss-section-sub" style="color:rgba(255,255,255,0.65)">We believe in being clear about what you're getting — and what you're not.</p>
+        <div class="section-intro reveal">
+          <span class="ss-eyebrow">The Data</span>
+          <h2 class="ss-section-title">What Powers Your Pre-Qualification</h2>
+          <p class="ss-section-sub">Three verified, reputable data sources — combined into one assessment built for your specific property.</p>
         </div>
-        <div class="not-list reveal">
-          <div class="not-item">
-            <span class="not-icon">✗</span>
-            <div>
-              <h3>Not a binding quote</h3>
-              <p>Your pre-qualification report does not constitute a quote, proposal, or offer from SolarSight or Phoenix Solar Group.</p>
-            </div>
+        <div class="data-source-grid">
+          <div class="data-source-card reveal">
+            <div class="data-source-card__icon">🛰️</div>
+            <h3>Google Solar API</h3>
+            <p>Google's Solar API uses aerial imagery and machine learning to assess solar potential at the rooftop level. It factors in roof size, pitch, orientation, shading, and local solar irradiance patterns. It is the same data layer used by major solar installers and energy companies across the US.</p>
           </div>
-          <div class="not-item">
-            <span class="not-icon">✗</span>
-            <div>
-              <h3>Not a system design</h3>
-              <p>A full system design requires a qualified installer to conduct a site inspection. The pre-qualification report is a data-based estimate, not a technical design document.</p>
-            </div>
+          <div class="data-source-card reveal" style="transition-delay:0.1s">
+            <div class="data-source-card__icon">🗺️</div>
+            <h3>Nearmap Aerial Imagery</h3>
+            <p>Nearmap provides high-resolution aerial photography updated regularly across the US. SolarSight uses this to validate and refine roof geometry data, ensuring your pre-qualification reflects your actual property — not a generic assumption.</p>
           </div>
-          <div class="not-item">
-            <span class="not-icon">✗</span>
-            <div>
-              <h3>Not a commitment</h3>
-              <p>Receiving your pre-qualification report creates no obligation on your part — or ours. No sales call will be scheduled automatically.</p>
-            </div>
+          <div class="data-source-card reveal" style="transition-delay:0.1s">
+            <div class="data-source-card__icon">📊</div>
+            <h3>EIA Form 861 Data</h3>
+            <p>The US Energy Information Administration's Form 861 provides detailed data on electricity sales, revenue, and pricing by utility. This means your savings estimate is based on the real cost of electricity in your specific area, not a national average or a salesperson's ballpark.</p>
+          </div>
+          <div class="data-source-card reveal" style="transition-delay:0.2s">
+            <div class="data-source-card__icon">⚙️</div>
+            <h3>SolarSight's Assessment Engine</h3>
+            <p>These three data sources are combined by SolarSight's assessment engine to produce a pre-qualification that is specific to your address, your roof, your utility, and your market. Under two minutes from input to result.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ WHAT YOU GET / DON'T GET ═══ -->
+    <section class="content-section content-section--navy" id="what-included">
+      <div class="ss-container">
+        <div class="section-intro reveal" style="margin-bottom:48px;">
+          <span class="ss-eyebrow">Transparency</span>
+          <h2 class="ss-section-title" style="color:var(--white);">What Your Pre-Qualification Includes</h2>
+          <p style="color:rgba(255,255,255,0.6); margin-top:12px; font-size:15px;">We believe you should know exactly what you are getting — and what you are not.</p>
+        </div>
+        <div class="compare-grid reveal">
+          <div class="compare-col compare-col--yes">
+            <div class="compare-col__header">What's Included</div>
+            <ul class="compare-list">
+              <li>Estimated annual dollar savings specific to your property</li>
+              <li>Solar suitability assessment for your roof</li>
+              <li>Estimated system size recommendation</li>
+              <li>Local utility context factored into the estimate</li>
+              <li>A report delivered to your inbox to review at your pace</li>
+            </ul>
+          </div>
+          <div class="compare-col compare-col--no">
+            <div class="compare-col__header">What It Is Not</div>
+            <ul class="compare-list">
+              <li>A formal solar quote (that requires a site visit and licensed installer)</li>
+              <li>A binding commitment of any kind</li>
+              <li>A sales process trigger — we don't pass your details to installers unless you ask</li>
+              <li>A guarantee of savings — actual performance depends on installation, usage, and rate changes</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ RESIDENTIAL + COMMERCIAL ═══ -->
+    <section class="audience-section" id="audience">
+      <div class="ss-container">
+        <div class="section-intro reveal">
+          <span class="ss-eyebrow">Who It's For</span>
+          <h2 class="ss-section-title">Built for Residential and Commercial Properties</h2>
+          <p class="ss-section-sub">SolarSight works for homeowners and commercial property owners alike — same speed, same data accuracy.</p>
+        </div>
+        <div class="audience-cards">
+          <div class="audience-card reveal">
+            <div class="audience-card__icon">🏠</div>
+            <h3>For DC &amp; MD Homeowners</h3>
+            <p>You own your home. You pay an electricity bill. SolarSight gives you a clear answer on whether solar makes financial sense before a salesperson steps through your door.</p>
+            <ul>
+              <li>No site visit required</li>
+              <li>No sales call triggered automatically</li>
+              <li>Results in under 2 minutes</li>
+              <li>Covers DC and Maryland utility areas</li>
+            </ul>
+            <a href="/dcpq.html" class="ss-btn ss-btn--primary">Pre-Qualify My Home</a>
+          </div>
+          <div class="audience-card reveal" style="transition-delay:0.1s">
+            <div class="audience-card__icon">🏢</div>
+            <h3>For Commercial Properties</h3>
+            <p>Office building, warehouse, retail space, or multi-unit residential? SolarSight handles commercial rooftop assessments with the same data accuracy, scaled for commercial system sizes.</p>
+            <ul>
+              <li>Commercial rooftop system sizing</li>
+              <li>ROI-framed assessment output</li>
+              <li>DC/MD commercial utility context</li>
+              <li>Indicative assessment — formal proposals require site review</li>
+            </ul>
+            <a href="/contact.html" class="ss-btn ss-btn--navy">Discuss Commercial Assessment</a>
           </div>
         </div>
       </div>
@@ -142,10 +381,10 @@
       <div class="ss-container">
         <div class="cta-banner__inner reveal">
           <div class="cta-banner__text">
-            <h2 class="cta-banner__title">Get your Pre-Qualification Report.</h2>
-            <p>Enter your address. Get your personalised report in under 2 minutes.</p>
+            <h2 class="cta-banner__title">Ready to See the Numbers for Your Property?</h2>
+            <p>No commitment. No salesperson. Under 2 minutes.</p>
           </div>
-          <a href="/#prequal-form" class="ss-btn ss-btn--primary ss-btn--lg">Get My Pre-Qualification</a>
+          <a href="/dcpq.html" class="ss-btn ss-btn--primary-inv ss-btn--lg">Get Your Solar Pre-Qualification</a>
         </div>
       </div>
     </section>
@@ -155,48 +394,47 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
-        <img src="/assets/img/logo/logo-white.png" alt="SolarSight" class="logo-img" />
+        <img src="/assets/img/logo/solar-sight-logo-white.png" alt="SolarSight" class="logo-img" />
         <p>DC and Maryland's solar pre-qualification platform. Real data. Real savings. No pressure.</p>
         <p class="footer-disclaimer">
-          ⚠️ PLACEHOLDER — DC/MD regulatory compliant disclaimer to be provided by Karl/Sam before launch.
-          SolarSight is a pre-qualification service. Results are estimates only. Not a binding quote.
+          SolarSight is a pre-qualification service. Results are estimates only and are not a binding quote. Actual savings depend on installation quality, usage patterns, and utility rate changes.
         </p>
       </div>
       <div class="footer-col">
         <h4>Platform</h4>
         <ul>
-          <li><a href="/#how-it-works">How It Works</a></li>
-          <li><a href="/services.html">What's Included</a></li>
-          <li><a href="/#prequal-form">Get Pre-Qualified</a></li>
+          <li><a href="/services.html">How It Works</a></li>
+          <li><a href="/dcpq.html">Get Pre-Qualified</a></li>
+          <li><a href="/contact.html">Commercial Assessment</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
         <ul>
           <li><a href="/about.html">About SolarSight</a></li>
-          <li><a href="/articles.html">Solar Insights</a></li>
+          <li><a href="/about.html#phoenix">Phoenix Solar Group</a></li>
           <li><a href="/contact.html">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Legal</h4>
+        <h4>Data Sources</h4>
         <ul>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Use</a></li>
+          <li><a href="https://developers.google.com/maps/documentation/solar" target="_blank" rel="noopener">Google Solar API</a></li>
+          <li><a href="https://www.nearmap.com" target="_blank" rel="noopener">Nearmap</a></li>
+          <li><a href="https://www.eia.gov/electricity/data/eia861/" target="_blank" rel="noopener">EIA Form 861</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 SolarSight. A Revark Client. Powered by Phoenix Solar Group.</p>
+      <p>© 2026 SolarSight. Powered by Phoenix Solar Group.</p>
       <ul class="footer-bottom-links">
         <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Disclaimer</a></li>
+        <li><a href="#">Terms of Use</a></li>
       </ul>
     </div>
   </footer>
-  <!-- HubSpot Tracking -->
-  <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/4343906.js"></script>
 
+  <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/4343906.js"></script>
   <script type="module" src="/main.js"></script>
 </body>
 </html>

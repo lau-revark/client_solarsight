@@ -63,6 +63,10 @@ function initPreQualForm() {
 
   const searchBox = document.querySelector('mapbox-search-box');
   if (searchBox) {
+    // Set access token from Vite env (works in both dev and build)
+    const token = import.meta.env.VITE_MAPBOX_TOKEN;
+    if (token) searchBox.accessToken = token;
+
     searchBox.options = {
       country: 'US',
       types: 'address',

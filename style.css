@@ -498,8 +498,16 @@ footer {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2,0.8,0.2,1);
+  /* Safety net: auto-reveal after 2s even if JS never fires */
+  animation: revealFallback 0s 2s forwards;
 }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.visible { opacity: 1; transform: translateY(0); animation: none; }
+
+/* If JS initialises the reveal system, it adds .visible before this fires.
+   If JS crashes, this guarantees content appears after 2s. */
+@keyframes revealFallback {
+  to { opacity: 1; transform: translateY(0); }
+}
 
 /* ─── Mobile ─── */
 @media (max-width: 768px) {

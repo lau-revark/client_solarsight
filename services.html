@@ -92,13 +92,14 @@
     }
     /* What's Included = white card — pops against the navy section background */
     .compare-col--yes {
-      background: var(--white);
-      box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+      background: var(--navy);
+      color: var(--white);
+      box-shadow: var(--shadow-md);
     }
-    /* What It Is Not = ghost panel — de-emphasised */
+    /* What It Is Not = light grey panel — de-emphasised */
     .compare-col--no {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: var(--slate-50);
+      border: 1px solid var(--slate-100);
     }
     .compare-col__header {
       font-size: 14px;
@@ -108,8 +109,8 @@
       margin-bottom: 24px;
       padding-bottom: 16px;
     }
-    .compare-col--yes .compare-col__header { color: var(--navy); border-bottom: 1px solid var(--slate-100); }
-    .compare-col--no .compare-col__header { color: rgba(255,255,255,0.4); border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .compare-col--yes .compare-col__header { color: var(--white); border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .compare-col--no .compare-col__header { color: var(--slate-400); border-bottom: 1px solid var(--slate-100); }
     .compare-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
     .compare-list li {
       display: flex;
@@ -118,14 +119,14 @@
       font-size: 16px;
       line-height: 1.5;
     }
-    .compare-col--yes .compare-list li { color: var(--navy); }
-    .compare-col--no .compare-list li { color: rgba(255,255,255,0.45); }
+    .compare-col--yes .compare-list li { color: var(--white); }
+    .compare-col--no .compare-list li { color: var(--text-muted); }
     .compare-list li::before {
       font-weight: 700;
       flex-shrink: 0;
     }
-    .compare-col--yes .compare-list li::before { content: '\2713'; color: var(--cta); }
-    .compare-col--no .compare-list li::before { content: '\2717'; color: rgba(255,255,255,0.2); }
+    .compare-col--yes .compare-list li::before { content: '\2713'; color: var(--white); }
+    .compare-col--no .compare-list li::before { content: '\2717'; color: var(--slate-400); }
 
     /* Audience tabs */
     .audience-section {
@@ -143,7 +144,17 @@
       border-radius: var(--radius-lg);
       padding: 36px 32px;
       box-shadow: var(--shadow-sm);
+      transition: var(--t);
     }
+    .audience-card--primary {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+      box-shadow: var(--shadow-md);
+    }
+    .audience-card--primary h3 { color: var(--white) !important; }
+    .audience-card--primary p, .audience-card--primary ul li { color: rgba(255,255,255,0.8) !important; }
+
     .audience-card__icon { font-size: 32px; margin-bottom: 16px; }
     .audience-card h3 {
       font-size: 20px;
@@ -308,12 +319,13 @@
     </section>
 
     <!-- ═══ WHAT YOU GET / DON'T GET ═══ -->
-    <section class="content-section content-section--navy" id="what-included">
+    <section class="content-section" id="what-included">
       <div class="ss-container">
         <div class="section-intro reveal" style="margin-bottom:48px;">
           <span class="ss-eyebrow">Transparency</span>
-          <h2 class="ss-section-title" style="color:var(--white);">What Your Pre-Qualification Includes</h2>
-          <p style="color:rgba(255,255,255,0.6); margin-top:12px; font-size:15px;">We believe you should know exactly what you are getting — and what you are not.</p>
+          <h2 class="ss-section-title">What Your Pre-Qualification Includes</h2>
+          <p class="ss-section-sub">We believe you should know exactly what you are getting — and what you are not.</p>
+
         </div>
         <div class="compare-grid reveal">
           <div class="compare-col compare-col--yes">
@@ -348,7 +360,7 @@
           <p class="ss-section-sub">SolarSight works for homeowners and commercial property owners alike — same speed, same data accuracy.</p>
         </div>
         <div class="audience-cards">
-          <div class="audience-card reveal">
+          <div class="audience-card audience-card--primary reveal">
             <div class="audience-card__icon">🏠</div>
             <h3>For DC &amp; MD Homeowners</h3>
             <p>You own your home. You pay an electricity bill. SolarSight gives you a clear answer on whether solar makes financial sense before a salesperson steps through your door.</p>
@@ -358,7 +370,7 @@
               <li>Results in under 2 minutes</li>
               <li>Covers DC and Maryland utility areas</li>
             </ul>
-            <a href="/dcpq.html" class="ss-btn ss-btn--primary">Pre-Qualify My Home</a>
+            <a href="/dcpq.html" class="ss-btn ss-btn--primary-inv">Pre-Qualify My Home</a>
           </div>
           <div class="audience-card reveal" style="transition-delay:0.1s">
             <div class="audience-card__icon">🏢</div>

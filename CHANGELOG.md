@@ -26,3 +26,13 @@ and this project adheres to **Major.Minor.Bugfix** versioning.
 - Corrected broken navigation active states and CTA link alignments.
 - Standardized site-wide responsive grid behavior.
 
+## [0.1.0] - 2026-03-23
+
+### Added
+- Initial project setup with Vite.
+- Folder structure for assets and client inbox.
+- Universal header and footer navigation (in progress).
+- Standard pages: Home, About, Services, Articles, Contact (in progress).
+- GitHub preparation with `.gitignore`.
+
+

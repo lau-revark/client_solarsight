@@ -25,3 +25,7 @@ dist-ssr
 
 .env
 venv/
+
+# Internal / client-only material — never commit
+_inbox/
+assets/Phoenix Solar Group - SolarSight.pdf

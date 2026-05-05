@@ -782,19 +782,13 @@ mapbox-search-box::part(input) {
   color: var(--text-muted);
 }
 
-.hero-review__saving {
+.hero-review__source {
   display: inline-block;
-  font-size: 14px;
-  color: var(--text-muted);
-  background: var(--slate-50);
-  border: 1px solid var(--slate-100);
-  border-radius: 4px;
-  padding: 4px 10px;
-}
-
-.hero-review__saving strong {
-  color: var(--amber);
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--slate-400);
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
 }
 
 /* Carousel footer: dots + CTA */

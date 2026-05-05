@@ -18,6 +18,7 @@ export default defineConfig({
         privacy:   resolve(__dirname, 'privacy.html'),
         terms:     resolve(__dirname, 'terms.html'),
         disclaimer:resolve(__dirname, 'disclaimer.html'),
+        notfound:  resolve(__dirname, '404.html'),
       },
     },
   },

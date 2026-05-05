@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Don't crawl the legacy admin or build artefact paths
+Disallow: /_inbox/
+Disallow: /dist/
+Disallow: /node_modules/
+
+# Sitemap
+Sitemap: https://solarsight.io/sitemap.xml

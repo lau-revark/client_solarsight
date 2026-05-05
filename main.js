@@ -1,5 +1,11 @@
-import '@mapbox/search-js-web';
 import { initTracking, trackLead } from './assets/js/tracking.js';
+
+// Mapbox SDK is only used on the DCPQ page. Lazy-load it so other pages
+// don't pay the ~40KB cost.
+function loadMapboxIfNeeded() {
+  if (!document.querySelector('mapbox-search-box')) return Promise.resolve();
+  return import('@mapbox/search-js-web');
+}
 
 // ─── Sticky Header ────────────────────────────────────
 function initStickyHeader() {
@@ -157,12 +163,14 @@ function initActiveNav() {
 }
 
 // ─── Init ─────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   initTracking();
   initStickyHeader();
   initMobileNav();
   initSmoothScrollCTAs();
-  initPreQualForm();
   initReveal();
   initActiveNav();
+  // Pre-qual form depends on the Mapbox custom element being defined.
+  await loadMapboxIfNeeded();
+  initPreQualForm();
 });

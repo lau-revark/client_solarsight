@@ -5,8 +5,104 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="/assets/img/logo/solar-sight-icon-color.png" />
   <link rel="apple-touch-icon" href="/assets/img/logo/solar-sight-icon-color.png" />
-  <meta name="description" content="SolarSight gives DC and Maryland homeowners a data-backed Solar Pre-Qualification in under 2 minutes. Real savings figures. No salesperson. No commitment." />
-  <title>SolarSight | Solar Pre-Qualification for DC &amp; Maryland Homeowners</title>
+  <meta name="description" content="SolarSight gives Washington DC homeowners a data-backed Solar Pre-Qualification in under 2 minutes. Real savings figures. No salesperson. No commitment." />
+  <title>SolarSight | Solar Pre-Qualification for Washington DC Homeowners</title>
+  <!-- SEO: OG/Twitter/Canonical/JSON-LD -->
+  <link rel="canonical" href="https://solarsight.io/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SolarSight" />
+  <meta property="og:title" content="SolarSight | Solar Pre-Qualification for Washington DC Homeowners" />
+  <meta property="og:description" content="SolarSight gives Washington DC homeowners a data-backed Solar Pre-Qualification in under 2 minutes. Real savings figures. No salesperson. No commitment." />
+  <meta property="og:url" content="https://solarsight.io/" />
+  <meta property="og:image" content="https://solarsight.io/assets/img/og/og-default.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SolarSight | Solar Pre-Qualification for Washington DC Homeowners" />
+  <meta name="twitter:description" content="SolarSight gives Washington DC homeowners a data-backed Solar Pre-Qualification in under 2 minutes. Real savings figures. No salesperson. No commitment." />
+  <meta name="twitter:image" content="https://solarsight.io/assets/img/og/og-default.png" />
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "SolarSight",
+  "url": "https://solarsight.io",
+  "logo": "https://solarsight.io/assets/img/logo/solar-sight-icon-color.png",
+  "image": "https://solarsight.io/assets/img/og/og-default.png",
+  "description": "SolarSight delivers a free, data-backed Solar Pre-Qualification for Washington DC homeowners in under two minutes \u2014 using Google Solar API, Nearmap aerial imagery, and EIA utility data.",
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Washington, DC"
+  },
+  "parentOrganization": {
+    "@type": "Organization",
+    "name": "Phoenix Solar Group Inc.",
+    "url": "https://phoenixsolargroup.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "810 7th Street NE",
+      "addressLocality": "Washington",
+      "addressRegion": "DC",
+      "postalCode": "20002",
+      "addressCountry": "US"
+    },
+    "telephone": "+1-771-333-8553",
+    "email": "contact@phoenixsolargroup.com"
+  },
+  "sameAs": [
+    "https://phoenixsolargroup.com",
+    "https://www.facebook.com/PhoenixSolarGroup/",
+    "https://www.linkedin.com/company/phoenixsolargroup"
+  ]
+}</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Phoenix Solar Group",
+  "image": "https://solarsight.io/assets/img/og/og-default.png",
+  "url": "https://phoenixsolargroup.com",
+  "telephone": "+1-771-333-8553",
+  "email": "contact@phoenixsolargroup.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "810 7th Street NE",
+    "addressLocality": "Washington",
+    "addressRegion": "DC",
+    "postalCode": "20002",
+    "addressCountry": "US"
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Washington, DC"
+  },
+  "priceRange": "Free pre-qualification"
+}</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Solar Pre-Qualification",
+  "provider": {
+    "@type": "Organization",
+    "name": "SolarSight"
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Washington, DC"
+  },
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Homeowner"
+  },
+  "description": "A free, data-backed pre-qualification report for Washington DC homeowners \u2014 built from Google Solar API roof modelling, Nearmap aerial imagery, and EIA utility data. Delivered to your inbox in under two minutes.",
+  "isRelatedTo": [
+    "Google Solar API",
+    "Nearmap Aerial Imagery",
+    "EIA Form 861",
+    "Mapbox Geocoding"
+  ]
+}</script>
+  <!-- /SEO -->
+  
+  <link rel="preload" as="image" href="/assets/img/hero-dc.png" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="./style.css" />
@@ -140,26 +236,41 @@
 
     .tech-cards {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
     }
     .tech-card {
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: var(--radius-lg);
-      padding: 36px 28px;
+      padding: 32px 24px;
       transition: var(--t);
     }
     .tech-card:hover {
       background: rgba(255,255,255,0.1);
       border-color: var(--amber);
     }
-    .tech-card__icon {
-      color: var(--amber);
+    .tech-card__logo {
+      height: 44px;
       margin-bottom: 18px;
-      line-height: 0;
+      display: flex;
+      align-items: center;
     }
-    .tech-card__icon svg { display: block; }
+    .tech-card__logo img {
+      max-height: 36px;
+      width: auto;
+      max-width: 140px;
+      object-fit: contain;
+      /* On dark navy background, white-glow the logo so dark marks remain readable */
+      filter: brightness(0) invert(1);
+      opacity: 0.92;
+    }
+    @media (max-width: 1080px) {
+      .tech-cards { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 540px) {
+      .tech-cards { grid-template-columns: 1fr; }
+    }
     .tech-card h3 {
       font-size: 16px;
       font-weight: 700;
@@ -236,6 +347,114 @@
     .path-card--residential p { color: rgba(255,255,255,0.7); }
     .path-card--commercial p { color: var(--text-muted); }
 
+    /* Case studies */
+    .case-studies {
+      padding: var(--section-v) 0;
+      background: var(--off-white);
+    }
+    .case-studies .section-intro {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 52px;
+    }
+    .case-studies .section-intro p {
+      color: var(--text-muted);
+      margin-top: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .case-card {
+      background: var(--white);
+      border: 1px solid var(--slate-100);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      transition: var(--t);
+    }
+    .case-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    .case-card__media {
+      aspect-ratio: 4 / 3;
+      background: var(--slate-50);
+      overflow: hidden;
+    }
+    .case-card__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .case-card__body { padding: 24px 22px 28px; }
+    .case-card__eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--navy);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .case-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .case-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    @media (max-width: 900px) {
+      .case-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Partner companies */
+    .partners {
+      padding: var(--section-v) 0;
+      background: var(--white);
+      border-top: 1px solid var(--slate-100);
+    }
+    .partners .section-intro { text-align: center; margin-bottom: 48px; }
+    .partners-grid {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 80px;
+      flex-wrap: wrap;
+    }
+    .partner-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 88px;
+    }
+    .partner-card img {
+      max-height: 72px;
+      max-width: 240px;
+      width: auto;
+      object-fit: contain;
+      filter: grayscale(0.05);
+      transition: filter 0.2s ease, transform 0.2s ease;
+    }
+    .partner-card:hover img {
+      filter: none;
+      transform: scale(1.04);
+    }
+    @media (max-width: 600px) {
+      .partners-grid { gap: 36px; }
+      .partner-card img { max-height: 56px; max-width: 180px; }
+    }
+
     /* Footer CTA */
     .home-cta-banner {
       padding: var(--section-v) 0;
@@ -309,6 +528,7 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#app">Skip to main content</a>
 
   <!-- ─── Tracking Pixels ─────────────────────── -->
   <noscript>
@@ -357,7 +577,7 @@
 
         <!-- Left col -->
         <div class="hero__col hero__col--left">
-          <span class="ss-eyebrow">DC &amp; Maryland Solar Pre-Qualification</span>
+          <span class="ss-eyebrow">Washington DC Solar Pre-Qualification</span>
           <h1 class="hero__headline">
             See What Solar Is<br>
             Actually Worth for<br>
@@ -400,40 +620,40 @@
 
               <div class="hero-carousel__slide">
                 <div class="hero-review">
-                  <div class="hero-review__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                  <blockquote class="hero-review__quote">“We had no idea solar was such a good investment for our Capitol Hill rowhouse. SolarSight gave us real numbers in under 2 minutes — no salesman, no pressure. We went solar 6 weeks later.”</blockquote>
+                  <div class="hero-review__stars" role="img" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  <blockquote class="hero-review__quote">“Fantastic team that is so knowledgeable about solar and answered all our questions. They did an amazing job explaining all the steps of the process and the installation went perfectly.”</blockquote>
                   <div class="hero-review__author">
-                    <span class="hero-review__name">Sarah M.</span>
+                    <span class="hero-review__name">Nada H.</span>
                     <span class="hero-review__sep">&bull;</span>
-                    <span class="hero-review__loc">Capitol Hill, DC</span>
+                    <span class="hero-review__loc">Washington DC</span>
                   </div>
-                  <div class="hero-review__saving">Estimated saving: <strong>$2,180/yr</strong></div>
+                  <div class="hero-review__source">Verified Google review</div>
                 </div>
               </div>
 
               <div class="hero-carousel__slide">
                 <div class="hero-review">
-                  <div class="hero-review__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                  <blockquote class="hero-review__quote">“I was skeptical after being burned by solar sales calls before. SolarSight sent a report to my inbox with actual numbers for my Bethesda property. No follow-up until I asked.”</blockquote>
+                  <div class="hero-review__stars" role="img" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  <blockquote class="hero-review__quote">“Worked with this group a few weeks ago and they were outstanding! Really awesome people and great company. Highly recommend to anyone interested in solar.”</blockquote>
                   <div class="hero-review__author">
-                    <span class="hero-review__name">James K.</span>
+                    <span class="hero-review__name">Jason C.</span>
                     <span class="hero-review__sep">&bull;</span>
-                    <span class="hero-review__loc">Bethesda, MD</span>
+                    <span class="hero-review__loc">Washington DC</span>
                   </div>
-                  <div class="hero-review__saving">Estimated saving: <strong>$3,040/yr</strong></div>
+                  <div class="hero-review__source">Verified Google review</div>
                 </div>
               </div>
 
               <div class="hero-carousel__slide">
                 <div class="hero-review">
-                  <div class="hero-review__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                  <blockquote class="hero-review__quote">“Finally a solar tool that gives you the financial picture upfront. I compared three properties. Two made sense, one didn’t. SolarSight told me which was which.”</blockquote>
+                  <div class="hero-review__stars" role="img" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  <blockquote class="hero-review__quote">“Very great experience my husband and I had! The entire team was so helpful and kind! Highly recommend them!”</blockquote>
                   <div class="hero-review__author">
-                    <span class="hero-review__name">Marcus T.</span>
+                    <span class="hero-review__name">Brittany D.</span>
                     <span class="hero-review__sep">&bull;</span>
-                    <span class="hero-review__loc">Silver Spring, MD</span>
+                    <span class="hero-review__loc">Washington DC</span>
                   </div>
-                  <div class="hero-review__saving">Estimated saving: <strong>$2,640/yr</strong></div>
+                  <div class="hero-review__source">Verified Google review</div>
                 </div>
               </div>
 
@@ -605,36 +825,32 @@
         </div>
         <div class="tech-cards">
           <div class="tech-card reveal">
-            <div class="tech-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="24" cy="24" r="6"/>
-                <path d="M24 4v6M24 38v6M4 24h6M38 24h6M9.9 9.9l4.2 4.2M33.9 33.9l4.2 4.2M9.9 38.1l4.2-4.2M33.9 14.1l4.2-4.2"/>
-              </svg>
+            <div class="tech-card__logo">
+              <img src="/assets/img/data-sources/google-solar.png" alt="Google Solar API" loading="lazy" width="120" height="40" />
             </div>
             <h3>Google Solar API</h3>
             <p>Roof assessment and solar irradiance data from Google's satellite and AI analysis of your specific property. Factors in roof size, pitch, orientation, shading, and local irradiance patterns.</p>
           </div>
           <div class="tech-card reveal" style="transition-delay:0.1s">
-            <div class="tech-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M24 6c-6 0-11 4.6-11 10.5C13 26 24 42 24 42s11-16 11-25.5C35 10.6 30 6 24 6Z"/>
-                <circle cx="24" cy="17" r="4"/>
-              </svg>
+            <div class="tech-card__logo">
+              <img src="/assets/img/data-sources/nearmap.png" alt="Nearmap" loading="lazy" width="120" height="40" />
             </div>
             <h3>Nearmap Aerial Imagery</h3>
             <p>High-resolution aerial imagery updated regularly across the US. SolarSight uses this to validate and refine roof geometry data — ensuring your pre-qualification reflects your actual property.</p>
           </div>
           <div class="tech-card reveal" style="transition-delay:0.2s">
-            <div class="tech-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M8 40h32"/>
-                <rect x="12" y="24" width="6" height="14" rx="1"/>
-                <rect x="21" y="16" width="6" height="22" rx="1"/>
-                <rect x="30" y="8" width="6" height="30" rx="1"/>
-              </svg>
+            <div class="tech-card__logo">
+              <img src="/assets/img/data-sources/eia.png" alt="EIA — U.S. Energy Information Administration" loading="lazy" width="120" height="40" />
             </div>
             <h3>EIA Form 861 Data</h3>
             <p>Real utility and market data from the US Energy Information Administration. Your savings estimate is based on the real cost of electricity in your specific area, not a national average.</p>
+          </div>
+          <div class="tech-card reveal" style="transition-delay:0.3s">
+            <div class="tech-card__logo">
+              <img src="/assets/img/data-sources/mapbox.png" alt="Mapbox" loading="lazy" width="120" height="40" />
+            </div>
+            <h3>Mapbox Geocoding</h3>
+            <p>Address autocomplete and geocoding from Mapbox — used to validate every property at the front door so your pre-qualification is tied to the exact parcel you live on, not a near-miss.</p>
           </div>
         </div>
         <p class="tech-trust__proof reveal">No guesswork. No assumptions. SolarSight's pre-qualification is built on the same data infrastructure used by leading solar and energy companies.</p>
@@ -648,7 +864,7 @@
       <div class="ss-container">
         <div class="section-intro reveal">
           <span class="ss-eyebrow">Who It's For</span>
-          <h2 class="ss-section-title">Built for DC &amp; Maryland Property Owners</h2>
+          <h2 class="ss-section-title">Built for Washington DC Property Owners</h2>
           <p class="ss-section-sub">Whether you own a home or a commercial property, SolarSight gives you a clear financial picture before you speak to anyone.</p>
         </div>
         <div class="path-cards">
@@ -685,6 +901,71 @@
     </section>
 
     <!-- ═══════════════════════════════════════════
+         CASE STUDIES — real Phoenix/Prism installs
+    ═══════════════════════════════════════════ -->
+    <section class="case-studies" id="case-studies">
+      <div class="ss-container">
+        <div class="section-intro reveal">
+          <span class="ss-eyebrow">Real DC Installs</span>
+          <h2 class="ss-section-title">Recent Pre-Qualifications That Became Real Solar</h2>
+          <p>Every install starts with the same data SolarSight uses for your pre-qualification — Google Solar imagery, Nearmap aerial validation, and live utility data. Here are three Washington DC homeowners who said yes.</p>
+        </div>
+        <div class="case-grid">
+          <article class="case-card reveal">
+            <div class="case-card__media">
+              <img src="/assets/img/case-studies/gloria-girard-1.webp" alt="Solar install on Gloria's home in Washington DC" loading="lazy" width="800" height="600" />
+            </div>
+            <div class="case-card__body">
+              <span class="case-card__eyebrow">Residential · NE Washington DC</span>
+              <h3>Gloria's first install</h3>
+              <p>Pre-qualified, designed, and installed in partnership with Prism Solar Power.</p>
+            </div>
+          </article>
+          <article class="case-card reveal" style="transition-delay:0.1s">
+            <div class="case-card__media">
+              <img src="/assets/img/case-studies/gloria-otis-1.webp" alt="Solar install on Gloria's second property in Washington DC" loading="lazy" width="800" height="600" />
+            </div>
+            <div class="case-card__body">
+              <span class="case-card__eyebrow">Residential · NE Washington DC</span>
+              <h3>Gloria's second property</h3>
+              <p>A repeat customer — second home, same data-driven process. No site visit needed at the pre-qualification stage.</p>
+            </div>
+          </article>
+          <article class="case-card reveal" style="transition-delay:0.2s">
+            <div class="case-card__media">
+              <img src="/assets/img/case-studies/meseret-sheridan-1.webp" alt="Solar install on Meseret's home in Washington DC" loading="lazy" width="800" height="600" />
+            </div>
+            <div class="case-card__body">
+              <span class="case-card__eyebrow">Residential · NW Washington DC</span>
+              <h3>Meseret's install</h3>
+              <p>Pre-qualified using Google Solar API + EIA utility data, designed and installed by Prism Solar Power.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         PARTNER COMPANIES — logos only, no copy
+    ═══════════════════════════════════════════ -->
+    <section class="partners" id="partners">
+      <div class="ss-container">
+        <div class="section-intro reveal">
+          <span class="ss-eyebrow">Partner Companies</span>
+          <h2 class="ss-section-title">Built and Installed by Trusted DC Solar Operators</h2>
+        </div>
+        <div class="partners-grid reveal">
+          <div class="partner-card">
+            <img src="/assets/img/partners/phoenix-solar-group.png" alt="Phoenix Solar Group" loading="lazy" />
+          </div>
+          <div class="partner-card">
+            <img src="/assets/img/partners/prism-solar-power.png" alt="Prism Solar Power" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
          FOOTER CTA
     ═══════════════════════════════════════════ -->
     <section class="home-cta-banner" id="cta-banner">
@@ -702,7 +983,7 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <img src="/assets/img/logo/solar-sight-logo-white.png" alt="SolarSight" class="logo-img" />
-        <p>DC and Maryland's solar pre-qualification platform. Real data. Real savings. No pressure.</p>
+        <p>Washington DC's solar pre-qualification platform. Real data. Real savings. No pressure.</p>
         <p class="footer-disclaimer">
           SolarSight is a pre-qualification service. Results are estimates only and are not a binding quote. Actual savings depend on installation quality, usage patterns, and utility rate changes.
         </p>

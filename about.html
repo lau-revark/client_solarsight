@@ -28,13 +28,14 @@
       width: 52px;
       height: 52px;
       background: var(--navy);
+      color: var(--amber);
       border-radius: var(--radius);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 22px;
       flex-shrink: 0;
     }
+    .value-card__icon svg { display: block; }
     .value-card h3 {
       font-size: 18px;
       font-weight: 700;
@@ -147,15 +148,15 @@
               <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--navy); margin-bottom:16px;">Data sources powering every assessment</div>
               <div style="display:flex; flex-direction:column; gap:10px;">
                 <div style="display:flex; gap:10px; align-items:center;">
-                  <span style="font-size:18px;">🛰️</span>
+                  <span style="display:inline-flex; color:var(--navy);"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2 2M16.4 16.4l2 2M5.6 18.4l2-2M16.4 7.6l2-2"/></svg></span>
                   <span style="font-size:14px; font-weight:600; color:var(--navy);">Google Solar API</span>
                 </div>
                 <div style="display:flex; gap:10px; align-items:center;">
-                  <span style="font-size:18px;">🗺️</span>
+                  <span style="display:inline-flex; color:var(--navy);"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c-3 0-5.5 2.3-5.5 5.2 0 4.8 5.5 12.8 5.5 12.8s5.5-8 5.5-12.8C17.5 5.3 15 3 12 3Z"/><circle cx="12" cy="8.5" r="2"/></svg></span>
                   <span style="font-size:14px; font-weight:600; color:var(--navy);">Nearmap Aerial Imagery</span>
                 </div>
                 <div style="display:flex; gap:10px; align-items:center;">
-                  <span style="font-size:18px;">📊</span>
+                  <span style="display:inline-flex; color:var(--navy);"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"/><rect x="6" y="12" width="3" height="7" rx="0.5"/><rect x="11" y="8" width="3" height="11" rx="0.5"/><rect x="16" y="4" width="3" height="15" rx="0.5"/></svg></span>
                   <span style="font-size:14px; font-weight:600; color:var(--navy);">EIA Form 861 Data</span>
                 </div>
               </div>
@@ -172,17 +173,17 @@
           <div class="two-col__text reveal">
             <span class="ss-eyebrow">Backed by</span>
             <h2 class="ss-section-title">Built by Phoenix Solar Group</h2>
-            <!-- ⚠️ PLACEHOLDER — Sam/Karl to provide approved Phoenix Solar Group copy, tenure, credentials, and DC/MD track record before launch -->
+            
             <div class="placeholder-block">
-              <div class="placeholder-badge">⚠️ Placeholder — Sam to supply real company copy before launch</div>
+              <div class="placeholder-badge">Placeholder — Sam to supply real company copy before launch</div>
               <p>Phoenix Solar Group is an established solar operations company serving DC and Maryland. [Real company history, years of operation, installations completed, and market focus to be provided by Sam/Karl. Do not fabricate tenure claims, revenue claims, or project counts without confirmation.]</p>
               <p>Phoenix Solar Group also operates through its Prism Solar Power brand for residential and commercial installations in the DC/MD area.</p>
             </div>
           </div>
           <div class="reveal" style="display:flex; flex-direction:column; gap:16px;">
             <div class="stat-highlight">
-              <!-- ⚠️ PLACEHOLDER — Replace all figures with real Phoenix Solar Group data before launch -->
-              <div class="placeholder-badge" style="margin-bottom:16px;">⚠️ Placeholder — replace with real data</div>
+              
+              <div class="placeholder-badge" style="margin-bottom:16px;">Placeholder — replace with real data</div>
               <div class="stat-highlight__num" style="font-size:32px; color:var(--slate-400);">TBD</div>
               <div class="stat-highlight__label">Real Phoenix Solar Group stats to be supplied by Sam/Karl before launch</div>
             </div>
@@ -200,17 +201,17 @@
         </div>
         <div class="values-grid">
           <div class="value-card reveal">
-            <div class="value-card__icon">📊</div>
+            <div class="value-card__icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"/><rect x="6" y="12" width="3" height="7" rx="0.5"/><rect x="11" y="8" width="3" height="11" rx="0.5"/><rect x="16" y="4" width="3" height="15" rx="0.5"/></svg></div>
             <h3>Data, not guesswork.</h3>
             <p>Every SolarSight pre-qualification is built from verified, current data. We do not use national averages or generic estimates. Your pre-qualification reflects your property, your roof, and your local utility rates.</p>
           </div>
           <div class="value-card reveal" style="transition-delay:0.1s">
-            <div class="value-card__icon">🕐</div>
+            <div class="value-card__icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
             <h3>Your timeline, not ours.</h3>
             <p>A pre-qualification is not a trigger for a sales process. You receive your results by email and decide what happens next. If you want to speak to a solar advisor, we make that easy. If you do not, that is equally fine.</p>
           </div>
           <div class="value-card reveal" style="transition-delay:0.2s">
-            <div class="value-card__icon">🤝</div>
+            <div class="value-card__icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12l3-3h4l2 2 2-2h4l3 3"/><path d="M3 12v3l4 4 3-3M21 12v3l-4 4-3-3"/><path d="M10 14l2 2 2-2"/></svg></div>
             <h3>Honesty over hype.</h3>
             <p>If solar does not make financial sense for a property, SolarSight will tell you that. The solar industry has a trust problem. Our job is to be part of the solution — not to maximise conversions at the expense of accuracy.</p>
           </div>

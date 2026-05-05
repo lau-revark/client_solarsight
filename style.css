@@ -501,12 +501,13 @@ footer {
   border-radius: 50%;
   background: #ECFDF5;
   color: #059669;
-  font-size: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 20px;
   border: 2px solid #D1FAE5;
+}
+.success-icon svg { width: 28px; height: 28px;
 }
 
 .prequal-success h3 {

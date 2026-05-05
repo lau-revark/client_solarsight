@@ -34,7 +34,8 @@
       box-shadow: var(--shadow-md);
       border-top-color: var(--navy);
     }
-    .contact-path__icon { font-size: 28px; margin-bottom: 14px; }
+    .contact-path__icon { color: var(--navy); margin-bottom: 14px; line-height: 0; }
+    .contact-path__icon svg { display: block; width: 32px; height: 32px; }
     .contact-path h3 {
       font-size: 16px;
       font-weight: 700;
@@ -109,17 +110,17 @@
         </div>
         <div class="contact-paths">
           <div class="contact-path reveal">
-            <div class="contact-path__icon">📋</div>
+            <div class="contact-path__icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M9 10h6M9 14h6M9 18h4"/></svg></div>
             <h3>Question About My Pre-Qualification</h3>
             <p>Didn't receive your report? Have a question about your results? Use the form below and select "Pre-qualification question" as your enquiry type.</p>
           </div>
           <div class="contact-path reveal" style="transition-delay:0.1s" id="commercial">
-            <div class="contact-path__icon">🏢</div>
+            <div class="contact-path__icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V5h10v16"/><path d="M15 21V11h5v10"/><path d="M8 9h1M11 9h1M8 13h1M11 13h1M8 17h1M11 17h1M17 14h1M17 18h1"/><path d="M3 21h18"/></svg></div>
             <h3>Commercial Assessment Enquiry</h3>
             <p>Office building, warehouse, or multi-unit property? We'd be glad to discuss your property before you use the self-serve tool. Select "Commercial assessment" in the form below.</p>
           </div>
           <div class="contact-path reveal" style="transition-delay:0.2s">
-            <div class="contact-path__icon">🤝</div>
+            <div class="contact-path__icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12l3-3h4l2 2 2-2h4l3 3"/><path d="M3 12v3l4 4 3-3M21 12v3l-4 4-3-3"/><path d="M10 14l2 2 2-2"/></svg></div>
             <h3>Solar Professional or Partner</h3>
             <p>Interested in using SolarSight as part of your installer, broker, or referral workflow? We want to hear from you. Select "Partnership enquiry" in the form below.</p>
           </div>
@@ -161,11 +162,11 @@
               <button type="submit" id="contact-submit" class="ss-btn ss-btn--primary" style="width:100%">
                 Send Message
               </button>
-              <!-- ⚠️ TODO: Route to HubSpot or designated inbox — Don to confirm endpoint -->
+              <!-- TODO: Route to HubSpot or designated inbox — Don to confirm endpoint -->
             </form>
 
             <div id="contact-success" class="prequal-success" style="display:none">
-              <div class="success-icon">✓</div>
+              <div class="success-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg></div>
               <h3>Message sent.</h3>
               <p>We'll get back to you as soon as possible.</p>
             </div>

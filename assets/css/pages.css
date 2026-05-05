@@ -335,9 +335,12 @@ body { padding-top: 68px; }
 }
 
 .coming-soon-icon {
-  font-size: 48px;
+  color: var(--navy);
   margin-bottom: 20px;
+  line-height: 0;
+  display: inline-block;
 }
+.coming-soon-icon svg { display: block; width: 48px; height: 48px; }
 
 .articles-coming-soon h2 {
   font-size: 26px;

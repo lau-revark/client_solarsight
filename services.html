@@ -69,7 +69,8 @@
       box-shadow: var(--shadow-md);
       border-top-color: var(--cta);
     }
-    .data-source-card__icon { font-size: 30px; margin-bottom: 14px; }
+    .data-source-card__icon { color: var(--navy); margin-bottom: 14px; line-height: 0; }
+    .data-source-card__icon svg { display: block; width: 34px; height: 34px; }
     .data-source-card h3 {
       font-size: 18px;
       font-weight: 700;
@@ -157,7 +158,9 @@
     .audience-card--primary h3 { color: var(--white) !important; }
     .audience-card--primary p, .audience-card--primary ul li { color: rgba(255,255,255,0.8) !important; }
 
-    .audience-card__icon { font-size: 32px; margin-bottom: 16px; }
+    .audience-card__icon { margin-bottom: 16px; line-height: 0; color: var(--navy); }
+    .audience-card__icon svg { display: block; width: 36px; height: 36px; }
+    .audience-card--primary .audience-card__icon { color: var(--amber); }
     .audience-card h3 {
       font-size: 20px;
       font-weight: 700;
@@ -297,22 +300,22 @@
         </div>
         <div class="data-source-grid">
           <div class="data-source-card reveal">
-            <div class="data-source-card__icon">🛰️</div>
+            <div class="data-source-card__icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2 2M16.4 16.4l2 2M5.6 18.4l2-2M16.4 7.6l2-2"/></svg></div>
             <h3>Google Solar API</h3>
             <p>Google's Solar API uses aerial imagery and machine learning to assess solar potential at the rooftop level. It factors in roof size, pitch, orientation, shading, and local solar irradiance patterns. It is the same data layer used by major solar installers and energy companies across the US.</p>
           </div>
           <div class="data-source-card reveal" style="transition-delay:0.1s">
-            <div class="data-source-card__icon">🗺️</div>
+            <div class="data-source-card__icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c-3 0-5.5 2.3-5.5 5.2 0 4.8 5.5 12.8 5.5 12.8s5.5-8 5.5-12.8C17.5 5.3 15 3 12 3Z"/><circle cx="12" cy="8.5" r="2"/></svg></div>
             <h3>Nearmap Aerial Imagery</h3>
             <p>Nearmap provides high-resolution aerial photography updated regularly across the US. SolarSight uses this to validate and refine roof geometry data, ensuring your pre-qualification reflects your actual property — not a generic assumption.</p>
           </div>
           <div class="data-source-card reveal" style="transition-delay:0.1s">
-            <div class="data-source-card__icon">📊</div>
+            <div class="data-source-card__icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"/><rect x="6" y="12" width="3" height="7" rx="0.5"/><rect x="11" y="8" width="3" height="11" rx="0.5"/><rect x="16" y="4" width="3" height="15" rx="0.5"/></svg></div>
             <h3>EIA Form 861 Data</h3>
             <p>The US Energy Information Administration's Form 861 provides detailed data on electricity sales, revenue, and pricing by utility. This means your savings estimate is based on the real cost of electricity in your specific area, not a national average or a salesperson's ballpark.</p>
           </div>
           <div class="data-source-card reveal" style="transition-delay:0.2s">
-            <div class="data-source-card__icon">⚙️</div>
+            <div class="data-source-card__icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 0 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 0 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 0 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 0 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></div>
             <h3>SolarSight's Assessment Engine</h3>
             <p>These three data sources are combined by SolarSight's assessment engine to produce a pre-qualification that is specific to your address, your roof, your utility, and your market. Under two minutes from input to result.</p>
           </div>
@@ -363,7 +366,7 @@
         </div>
         <div class="audience-cards">
           <div class="audience-card audience-card--primary reveal">
-            <div class="audience-card__icon">🏠</div>
+            <div class="audience-card__icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg></div>
             <h3>For DC &amp; MD Homeowners</h3>
             <p>You own your home. You pay an electricity bill. SolarSight gives you a clear answer on whether solar makes financial sense before a salesperson steps through your door.</p>
             <ul>
@@ -375,7 +378,7 @@
             <a href="/dcpq.html" class="ss-btn ss-btn--primary-inv">Pre-Qualify My Home</a>
           </div>
           <div class="audience-card reveal" style="transition-delay:0.1s">
-            <div class="audience-card__icon">🏢</div>
+            <div class="audience-card__icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V5h10v16"/><path d="M15 21V11h5v10"/><path d="M8 9h1M11 9h1M8 13h1M11 13h1M8 17h1M11 17h1M17 14h1M17 18h1"/><path d="M3 21h18"/></svg></div>
             <h3>For Commercial Properties</h3>
             <p>Office building, warehouse, retail space, or multi-unit residential? SolarSight handles commercial rooftop assessments with the same data accuracy, scaled for commercial system sizes.</p>
             <ul>

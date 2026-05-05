@@ -312,13 +312,13 @@ mapbox-search-box::part(input) {
   border-radius: 50%;
   background: #ECFDF5;
   color: #059669;
-  font-size: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 20px;
   border: 2px solid #D1FAE5;
 }
+.success-icon svg { width: 28px; height: 28px; }
 
 .prequal-success h3 {
   font-size: 20px;
@@ -493,9 +493,11 @@ mapbox-search-box::part(input) {
 }
 
 .trust-card__icon {
-  font-size: 32px;
+  color: var(--amber);
   margin-bottom: 18px;
+  line-height: 0;
 }
+.trust-card__icon svg { display: block; width: 36px; height: 36px; }
 
 .trust-card h3 {
   font-size: 18px;

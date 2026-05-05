@@ -32,7 +32,7 @@ function initMobileNav() {
 
 // ─── Smooth Scroll Pre-Qual CTAs ─────────────────────
 function initSmoothScrollCTAs() {
-  document.querySelectorAll('a[href*="#prequal-form"], a[href*="#how-it-works"]').forEach(a => {
+  document.querySelectorAll('a[href*="#prequal"], a[href*="#how-it-works"]').forEach(a => {
     a.addEventListener('click', (e) => {
       // Only handle same-page anchors
       const url = new URL(a.href, window.location.href);

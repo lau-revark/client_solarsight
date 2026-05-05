@@ -173,7 +173,13 @@ body { padding-top: 68px; } /* compensate for fixed header */
   color: var(--slate-600);
 }
 
-.trust-icon { font-size: 18px; }
+.trust-icon {
+  display: inline-flex;
+  align-items: center;
+  color: var(--navy);
+  flex-shrink: 0;
+}
+.trust-icon svg { display: block; }
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }

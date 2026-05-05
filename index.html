@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/assets/img/logo/solar-sight-icon-color.png" />
+  <link rel="apple-touch-icon" href="/assets/img/logo/solar-sight-icon-color.png" />
   <meta name="description" content="SolarSight gives DC and Maryland homeowners a data-backed Solar Pre-Qualification in under 2 minutes. Real savings figures. No salesperson. No commitment." />
   <title>SolarSight | Solar Pre-Qualification for DC &amp; Maryland Homeowners</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -153,9 +155,11 @@
       border-color: var(--amber);
     }
     .tech-card__icon {
-      font-size: 28px;
+      color: var(--amber);
       margin-bottom: 18px;
+      line-height: 0;
     }
+    .tech-card__icon svg { display: block; }
     .tech-card h3 {
       font-size: 16px;
       font-weight: 700;
@@ -213,7 +217,10 @@
     }
     .path-card--residential .path-card__eyebrow { color: var(--amber); }
     .path-card--commercial .path-card__eyebrow { color: var(--navy); }
-    .path-card__icon { font-size: 36px; margin-bottom: 4px; }
+    .path-card__icon { margin-bottom: 4px; line-height: 0; }
+    .path-card__icon svg { display: block; }
+    .path-card--residential .path-card__icon { color: var(--amber); }
+    .path-card--commercial .path-card__icon { color: var(--navy); }
     .path-card h3 {
       font-size: 22px;
       font-weight: 800;
@@ -323,7 +330,7 @@
           <li><a href="/contact.html">Contact</a></li>
         </ul>
       </nav>
-      <a href="/dcpq.html" class="ss-btn ss-btn--primary ss-btn--sm header-cta" id="nav-prequal-cta">
+      <a href="https://app.solarsight.io" class="header-login" target="_blank" rel="noopener">Login</a>      <a href="/dcpq.html" class="ss-btn ss-btn--primary ss-btn--sm header-cta" id="nav-prequal-cta">
         Get Pre-Qualified
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -370,15 +377,15 @@
           <!-- Trust bar -->
           <div class="trust-bar">
             <div class="trust-item">
-              <span class="trust-icon">🛰</span>
+              <span class="trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2 2M16.4 16.4l2 2M5.6 18.4l2-2M16.4 7.6l2-2"/></svg></span>
               <span>Google Solar API data</span>
             </div>
             <div class="trust-item">
-              <span class="trust-icon">🗺</span>
+              <span class="trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c-3 0-5.5 2.3-5.5 5.2 0 4.8 5.5 12.8 5.5 12.8s5.5-8 5.5-12.8C17.5 5.3 15 3 12 3Z"/><circle cx="12" cy="8.5" r="2"/></svg></span>
               <span>Nearmap aerial imagery</span>
             </div>
             <div class="trust-item">
-              <span class="trust-icon">⚡</span>
+              <span class="trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3 5 14h6l-1 7 8-11h-6l1-7Z"/></svg></span>
               <span>EIA utility rate data</span>
             </div>
           </div>
@@ -479,8 +486,8 @@
             <div class="metric-item__label">Verified data sources in every assessment</div>
           </div>
           <div class="metric-item reveal">
-            <div class="metric-item__num">0</div>
-            <div class="metric-item__label">Sales calls automatically triggered. Ever.</div>
+            <div class="metric-item__num">100%</div>
+            <div class="metric-item__label">Free pre-qualification. No commitment to install.</div>
           </div>
         </div>
       </div>
@@ -598,17 +605,34 @@
         </div>
         <div class="tech-cards">
           <div class="tech-card reveal">
-            <div class="tech-card__icon">🛰️</div>
+            <div class="tech-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="24" cy="24" r="6"/>
+                <path d="M24 4v6M24 38v6M4 24h6M38 24h6M9.9 9.9l4.2 4.2M33.9 33.9l4.2 4.2M9.9 38.1l4.2-4.2M33.9 14.1l4.2-4.2"/>
+              </svg>
+            </div>
             <h3>Google Solar API</h3>
             <p>Roof assessment and solar irradiance data from Google's satellite and AI analysis of your specific property. Factors in roof size, pitch, orientation, shading, and local irradiance patterns.</p>
           </div>
           <div class="tech-card reveal" style="transition-delay:0.1s">
-            <div class="tech-card__icon">🗺️</div>
+            <div class="tech-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M24 6c-6 0-11 4.6-11 10.5C13 26 24 42 24 42s11-16 11-25.5C35 10.6 30 6 24 6Z"/>
+                <circle cx="24" cy="17" r="4"/>
+              </svg>
+            </div>
             <h3>Nearmap Aerial Imagery</h3>
             <p>High-resolution aerial imagery updated regularly across the US. SolarSight uses this to validate and refine roof geometry data — ensuring your pre-qualification reflects your actual property.</p>
           </div>
           <div class="tech-card reveal" style="transition-delay:0.2s">
-            <div class="tech-card__icon">📊</div>
+            <div class="tech-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 40h32"/>
+                <rect x="12" y="24" width="6" height="14" rx="1"/>
+                <rect x="21" y="16" width="6" height="22" rx="1"/>
+                <rect x="30" y="8" width="6" height="30" rx="1"/>
+              </svg>
+            </div>
             <h3>EIA Form 861 Data</h3>
             <p>Real utility and market data from the US Energy Information Administration. Your savings estimate is based on the real cost of electricity in your specific area, not a national average.</p>
           </div>
@@ -630,14 +654,28 @@
         <div class="path-cards">
           <div class="path-card path-card--residential reveal">
             <div class="path-card__eyebrow">Residential</div>
-            <div class="path-card__icon">🏠</div>
+            <div class="path-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 22 24 8l18 14"/>
+                <path d="M10 20v18h28V20"/>
+                <path d="M20 38V28h8v10"/>
+              </svg>
+            </div>
             <h3>For Homeowners</h3>
             <p>You own your home. You pay an electricity bill. See what solar could mean for your annual costs — in under two minutes. No site visit. No salesperson.</p>
             <a href="/dcpq.html" class="ss-btn ss-btn--primary-inv" style="margin-top:8px; align-self:flex-start;">Pre-Qualify My Home</a>
           </div>
           <div class="path-card path-card--commercial reveal" style="transition-delay:0.1s">
             <div class="path-card__eyebrow">Commercial</div>
-            <div class="path-card__icon">🏢</div>
+            <div class="path-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 40V12h18v28"/>
+                <path d="M26 40V20h14v20"/>
+                <path d="M14 18h2M14 24h2M14 30h2M20 18h2M20 24h2M20 30h2"/>
+                <path d="M30 26h2M30 32h2M36 26h2M36 32h2"/>
+                <path d="M4 40h40"/>
+              </svg>
+            </div>
             <h3>For Commercial Properties</h3>
             <p>Multi-unit or commercial rooftop? SolarSight handles commercial assessments with the same speed and data accuracy — offices, warehouses, retail, and multi-unit residential.</p>
             <a href="/contact.html" class="ss-btn ss-btn--navy" style="margin-top:8px; align-self:flex-start;">Explore Commercial Pre-Qualification</a>

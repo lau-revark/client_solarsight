@@ -255,7 +255,7 @@ header.scrolled {
 }
 
 .logo img {
-  height: 32px;
+  height: 44px;
   width: auto;
   display: block;
 }
@@ -281,6 +281,36 @@ nav a {
 nav a:hover, nav a.active { color: var(--navy); background: var(--slate-50); }
 
 .header-cta { flex-shrink: 0; }
+
+.header-login {
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  transition: var(--t);
+  border: 1.5px solid transparent;
+}
+.header-login:hover {
+  border-color: var(--slate-100);
+  background: var(--slate-50);
+}
+
+/* Mapbox search-box web component must render block-level
+   or its shadow-DOM input collapses to zero width. */
+mapbox-search-box {
+  display: block;
+  width: 100%;
+  --MapboxSearchBox-Input-Background: var(--white);
+  --MapboxSearchBox-Input-Color: var(--text);
+  --MapboxSearchBox-Input-FontFamily: var(--font);
+}
+mapbox-search-box::part(InputContainer) {
+  border: 1.5px solid var(--slate-100);
+  border-radius: var(--radius);
+}
 
 /* Mobile nav */
 .nav-toggle {

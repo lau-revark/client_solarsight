@@ -1,10 +1,25 @@
 import { initTracking, trackLead } from './assets/js/tracking.js';
 
-// Mapbox SDK is only used on the DCPQ page. Lazy-load it so other pages
-// don't pay the ~40KB cost.
+// Mapbox SDK is only used on the DCPQ page. Lazy-load it from Mapbox's
+// official CDN so we don't pay the ~140KB cost on every other page, and
+// so it works in both bundled (Vite) and raw (GitHub Pages) deployments.
+const MAPBOX_SEARCH_JS_URL = 'https://api.mapbox.com/search-js/v1.0.0-beta.21/web.js';
+let mapboxLoaderPromise = null;
 function loadMapboxIfNeeded() {
   if (!document.querySelector('mapbox-search-box')) return Promise.resolve();
-  return import('@mapbox/search-js-web');
+  if (window.customElements && window.customElements.get('mapbox-search-box')) {
+    return Promise.resolve();
+  }
+  if (mapboxLoaderPromise) return mapboxLoaderPromise;
+  mapboxLoaderPromise = new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = MAPBOX_SEARCH_JS_URL;
+    s.async = true;
+    s.onload = () => resolve();
+    s.onerror = () => reject(new Error('Failed to load Mapbox search-js'));
+    document.head.appendChild(s);
+  }).then(() => customElements.whenDefined('mapbox-search-box'));
+  return mapboxLoaderPromise;
 }
 
 // ─── Sticky Header ────────────────────────────────────

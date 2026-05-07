@@ -84,9 +84,19 @@ function initPreQualForm() {
 
   const searchBox = document.querySelector('mapbox-search-box');
   if (searchBox) {
-    // Set access token from Vite env (works in both dev and build)
-    const token = import.meta.env.VITE_MAPBOX_TOKEN;
+    // Resolve the Mapbox token. We try, in order:
+    //   1. <meta name="mapbox-token" content="pk..."> on the page
+    //   2. window.MAPBOX_TOKEN (set by an inline script if you prefer)
+    //   3. Vite's import.meta.env.VITE_MAPBOX_TOKEN (for `vite dev` / build)
+    // Mapbox public (pk.) tokens are designed for client-side use; protect
+    // them with URL restrictions in the Mapbox dashboard, not by hiding.
+    const meta = document.querySelector('meta[name="mapbox-token"]');
+    const token =
+      (meta && meta.getAttribute('content')) ||
+      (typeof window !== 'undefined' && window.MAPBOX_TOKEN) ||
+      (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_MAPBOX_TOKEN);
     if (token) searchBox.accessToken = token;
+    else console.warn('[SolarSight] No Mapbox access token found — address autocomplete disabled.');
 
     searchBox.options = {
       country: 'US',

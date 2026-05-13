@@ -130,12 +130,15 @@ function initPreQualForm() {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
   }
 
+  const INTAKE_ENDPOINT = 'https://app.solarsight.io/api/intake';
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     hideError();
 
     const address = addressInput?.value.trim() || '';
     const email   = emailInput?.value.trim() || '';
+    const state   = document.getElementById('state')?.value.trim() || '';
 
     // Validation
     if (!address) { showError('Please select a valid property address.'); if (searchBox) searchBox.focus(); return; }
@@ -143,24 +146,36 @@ function initPreQualForm() {
     if (!isValidEmail(email)) { showError('Please enter a valid email address.'); emailInput?.focus(); return; }
 
     // Loading state
+    const originalLabel = submitBtn.textContent;
     submitBtn.disabled = true;
     submitBtn.textContent = 'Analysing your roof data…';
     form.style.opacity = '0.7';
 
-    // ─── HubSpot Integration ──────────────────────────
-    // TODO: Replace this stub with the real HubSpot form endpoint once supplied by Don.
-    console.log('[SolarSight] Pre-Qual submission (HubSpot stub):', { address, email });
+    try {
+      const response = await fetch(INTAKE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ address, email, state, source: 'dcpq' })
+      });
 
-    // Simulate async (remove once real endpoint is live)
-    await new Promise(r => setTimeout(r, 1800));
+      if (!response.ok) {
+        throw new Error(`Intake request failed with status ${response.status}`);
+      }
 
-    // Success state
-    form.style.display = 'none';
-    if (loadingEl) loadingEl.style.display = 'none';
-    if (successEl) successEl.style.display = 'block';
+      // Success state
+      form.style.display = 'none';
+      if (loadingEl) loadingEl.style.display = 'none';
+      if (successEl) successEl.style.display = 'block';
 
-    // ─── Tracking ─────────────────────────────────────
-    trackLead();
+      // ─── Tracking ─────────────────────────────────────
+      trackLead();
+    } catch (err) {
+      console.error('[SolarSight] Pre-Qual intake failed:', err);
+      showError('Something went wrong submitting your details. Please try again, or contact us if the issue persists.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalLabel;
+      form.style.opacity = '1';
+    }
   });
 }
 

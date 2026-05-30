@@ -130,7 +130,7 @@ function initPreQualForm() {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
   }
 
-  const INTAKE_ENDPOINT = 'https://app.solarsight.io/api/intake';
+  const INTAKE_ENDPOINT = 'https://dev-app.solarsight.io/api/intake';
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();

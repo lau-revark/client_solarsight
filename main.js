@@ -75,9 +75,11 @@ function initPreQualForm() {
   const form        = document.getElementById('prequal-form');
   if (!form) return;
 
-  const addressInput = form.querySelector('#address');
-  const emailInput   = form.querySelector('#email');
-  const submitBtn    = form.querySelector('#prequal-submit');
+  const addressInput   = form.querySelector('#address');
+  const emailInput     = form.querySelector('#email');
+  const firstNameInput = form.querySelector('#firstName');
+  const lastNameInput  = form.querySelector('#lastName');
+  const submitBtn      = form.querySelector('#prequal-submit');
   const loadingEl    = document.getElementById('prequal-loading');
   const successEl    = document.getElementById('prequal-success');
   const errorEl      = document.getElementById('prequal-error');
@@ -136,9 +138,11 @@ function initPreQualForm() {
     e.preventDefault();
     hideError();
 
-    const address = addressInput?.value.trim() || '';
-    const email   = emailInput?.value.trim() || '';
-    const state   = document.getElementById('state')?.value.trim() || '';
+    const address   = addressInput?.value.trim() || '';
+    const email     = emailInput?.value.trim() || '';
+    const firstName = firstNameInput?.value.trim() || '';
+    const lastName  = lastNameInput?.value.trim() || '';
+    const state     = document.getElementById('state')?.value.trim() || '';
 
     // Validation
     if (!address) { showError('Please select a valid property address.'); if (searchBox) searchBox.focus(); return; }
@@ -154,8 +158,9 @@ function initPreQualForm() {
     try {
       const response = await fetch(INTAKE_ENDPOINT, {
         method: 'POST',
+        credentials: 'include',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ address, email, state, source: 'dcpq' })
+        body: JSON.stringify({ address, email, firstName, lastName, state, source: 'dcpq' })
       });
 
       if (!response.ok) {

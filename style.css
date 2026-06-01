@@ -466,6 +466,12 @@ footer {
   letter-spacing: 0.2px;
 }
 
+.form-group label .form-optional {
+  font-weight: 400;
+  color: var(--slate-100);
+  margin-left: 4px;
+}
+
 .form-group input,
 .form-group textarea,
 .form-group select {

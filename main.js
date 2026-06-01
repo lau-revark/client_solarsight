@@ -71,17 +71,18 @@ function initSmoothScrollCTAs() {
 }
 
 // ─── Pre-Qual Form Handler ────────────────────────────
+// The form does a native HTML POST to https://app.solarsight.io/api/intake.
+// The intake endpoint creates the HubSpot contact and 302-redirects the
+// browser to app.solarsight.io. This file only handles:
+//   1. Mapbox autocomplete → write address + state into hidden inputs
+//   2. Enable the submit button once a valid address is selected
+//   3. On submit, guard against an unselected address and fire tracking
 function initPreQualForm() {
-  const form        = document.getElementById('prequal-form');
+  const form = document.getElementById('prequal-form');
   if (!form) return;
 
-  const addressInput   = form.querySelector('#address');
-  const emailInput     = form.querySelector('#email');
-  const firstNameInput = form.querySelector('#firstName');
-  const lastNameInput  = form.querySelector('#lastName');
-  const submitBtn      = form.querySelector('#prequal-submit');
-  const loadingEl    = document.getElementById('prequal-loading');
-  const successEl    = document.getElementById('prequal-success');
+  const addressInput = form.querySelector('#address');
+  const submitBtn    = form.querySelector('#prequal-submit');
   const errorEl      = document.getElementById('prequal-error');
 
   const searchBox = document.querySelector('mapbox-search-box');
@@ -112,13 +113,15 @@ function initPreQualForm() {
       const [feature] = e.detail.features;
       if (!feature) return;
 
-      const [lng, lat] = feature.geometry.coordinates;
       const address = feature.properties.full_address;
-      const state = feature.properties.context.region.region_code;
-      
+      const state   = feature.properties.context.region.region_code;
+
       if (addressInput) addressInput.value = address;
       const stateInput = document.getElementById('state');
       if (stateInput) stateInput.value = state;
+
+      // Address is now valid — unlock the submit button.
+      if (submitBtn) submitBtn.disabled = false;
     });
   }
 
@@ -128,70 +131,32 @@ function initPreQualForm() {
   function hideError() {
     if (errorEl) errorEl.style.display = 'none';
   }
-  function isValidEmail(v) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
-  }
 
-  const INTAKE_ENDPOINT = 'https://app.solarsight.io/api/intake';
-  const APP_ORIGIN      = 'https://app.solarsight.io';
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+  form.addEventListener('submit', (e) => {
     hideError();
 
-    const address   = addressInput?.value.trim() || '';
-    const email     = emailInput?.value.trim() || '';
-    const firstName = firstNameInput?.value.trim() || '';
-    const lastName  = lastNameInput?.value.trim() || '';
-    const state     = document.getElementById('state')?.value.trim() || '';
+    // Double-check that an address was actually selected from Mapbox
+    // suggestions (rather than just typed). If not, block the submit.
+    if (!addressInput?.value) {
+      e.preventDefault();
+      showError('Please select an address from the suggestions.');
+      if (searchBox) searchBox.focus();
+      return;
+    }
 
-    // Validation
-    if (!address) { showError('Please select a valid property address.'); if (searchBox) searchBox.focus(); return; }
-    if (!email)   { showError('Please enter your email address.'); emailInput?.focus(); return; }
-    if (!isValidEmail(email)) { showError('Please enter a valid email address.'); emailInput?.focus(); return; }
-
-    // Loading state
-    const originalLabel = submitBtn.textContent;
+    // Show loading state while the browser POSTs and follows the 302
+    // from /api/intake to app.solarsight.io.
     submitBtn.disabled = true;
     submitBtn.textContent = 'Analysing your roof data…';
     form.style.opacity = '0.7';
 
-    try {
-      const response = await fetch(INTAKE_ENDPOINT, {
-        method: 'POST',
-        credentials: 'include',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ address, email, firstName, lastName, state, source: 'dcpq' })
-      });
+    // Fire Meta Pixel Lead event just before native form submission.
+    // fbq queues the beacon; the browser will let it complete in
+    // most cases before navigating away.
+    trackLead();
 
-      if (!response.ok) {
-        throw new Error(`Intake request failed with status ${response.status}`);
-      }
-
-      // ─── Tracking ─────────────────────────────────────
-      trackLead();
-
-      // Hand off to the app. /api/intake sets a session cookie on
-      // .solarsight.io (credentials: 'include' above sends/stores it),
-      // and we also pass the form fields as query params as a belt-and-
-      // braces fallback so the app can pre-fill regardless.
-      const params = new URLSearchParams();
-      if (firstName) params.set('firstName', firstName);
-      if (lastName)  params.set('lastName',  lastName);
-      if (email)     params.set('email',     email);
-      if (address)   params.set('address',   address);
-      // Brief delay so the Meta Pixel beacon has a chance to fire
-      // before navigation tears the page down.
-      setTimeout(() => {
-        window.location.href = `${APP_ORIGIN}/?${params.toString()}`;
-      }, 250);
-    } catch (err) {
-      console.error('[SolarSight] Pre-Qual intake failed:', err);
-      showError('Something went wrong submitting your details. Please try again, or contact us if the issue persists.');
-      submitBtn.disabled = false;
-      submitBtn.textContent = originalLabel;
-      form.style.opacity = '1';
-    }
+    // Form submits natively — browser navigates to /api/intake which
+    // returns a 302 to app.solarsight.io.
   });
 }
 

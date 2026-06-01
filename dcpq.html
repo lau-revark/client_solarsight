@@ -144,7 +144,7 @@
             <p class="hero__form-sub">Just your address and your email — your results will be ready in under 60 seconds.</p>
 
             <div class="prequal__form-wrap">
-              <form id="prequal-form" class="prequal-form" novalidate>
+              <form id="prequal-form" class="prequal-form" method="POST" action="https://app.solarsight.io/api/intake">
                 <div class="form-group">
                   <label for="address">Property Address</label>
                   <mapbox-search-box
@@ -157,24 +157,26 @@
 
                 <div class="form-row">
                   <div class="form-group">
-                    <label for="firstName">First Name <span class="form-optional">(optional)</span></label>
+                    <label for="firstName">First Name</label>
                     <input
                       type="text"
                       id="firstName"
                       name="firstName"
                       placeholder="First name"
                       autocomplete="given-name"
+                      required
                     />
                   </div>
 
                   <div class="form-group">
-                    <label for="lastName">Last Name <span class="form-optional">(optional)</span></label>
+                    <label for="lastName">Last Name</label>
                     <input
                       type="text"
                       id="lastName"
                       name="lastName"
                       placeholder="Last name"
                       autocomplete="family-name"
+                      required
                     />
                   </div>
                 </div>
@@ -193,7 +195,7 @@
 
                 <div id="prequal-error" class="form-error" role="alert" style="display:none;"></div>
 
-                <button type="submit" id="prequal-submit" class="ss-btn ss-btn--primary ss-btn--lg prequal-submit-btn">
+                <button type="submit" id="prequal-submit" class="ss-btn ss-btn--primary ss-btn--lg prequal-submit-btn" disabled>
                   Get My Pre-Qualification
                 </button>
 

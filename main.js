@@ -3,7 +3,7 @@ import { initTracking, trackLead } from './assets/js/tracking.js';
 // Mapbox SDK is only used on the DCPQ page. Lazy-load it from Mapbox's
 // official CDN so we don't pay the ~140KB cost on every other page, and
 // so it works in both bundled (Vite) and raw (GitHub Pages) deployments.
-const MAPBOX_SEARCH_JS_URL = 'https://api.mapbox.com/search-js/v1.0.0-beta.21/web.js';
+const MAPBOX_SEARCH_JS_URL = 'https://api.mapbox.com/search-js/v1.0.0-beta.22/web.js';
 let mapboxLoaderPromise = null;
 function loadMapboxIfNeeded() {
   if (!document.querySelector('mapbox-search-box')) return Promise.resolve();
@@ -78,12 +78,12 @@ function initSmoothScrollCTAs() {
 //   2. Enable the submit button once a valid address is selected
 //   3. On submit, guard against an unselected address and fire tracking
 function initPreQualForm() {
-  const form = document.getElementById('prequal-form');
+  const form = document.getElementById('landing-form');
   if (!form) return;
 
-  const addressInput = form.querySelector('#address');
-  const submitBtn    = form.querySelector('#prequal-submit');
-  const errorEl      = document.getElementById('prequal-error');
+  const addressHidden = form.querySelector('#address-value');
+  const submitBtn     = form.querySelector('#submit-button');
+  const errorEl       = document.getElementById('prequal-error');
 
   const searchBox = document.querySelector('mapbox-search-box');
   if (searchBox) {
@@ -106,22 +106,27 @@ function initPreQualForm() {
       types: 'address',
       language: 'en',
       limit: 5,
+      // DC proximity bias — kept by product decision (not in spec doc).
+      // SolarSight currently targets Washington DC homeowners only;
+      // strict USA-wide search would surface confusing out-of-area hits.
       proximity: '-77.0369,38.9072'
     };
 
+    // When user selects a suggestion → store full address and unlock submit.
     searchBox.addEventListener('retrieve', (e) => {
       const [feature] = e.detail.features;
       if (!feature) return;
 
-      const address = feature.properties.full_address;
-      const state   = feature.properties.context.region.region_code;
+      const fullAddress = feature.properties.full_address || feature.properties.place_name;
+      if (addressHidden) addressHidden.value = fullAddress;
+      if (submitBtn)    submitBtn.disabled = false;
+    });
 
-      if (addressInput) addressInput.value = address;
-      const stateInput = document.getElementById('state');
-      if (stateInput) stateInput.value = state;
-
-      // Address is now valid — unlock the submit button.
-      if (submitBtn) submitBtn.disabled = false;
+    // If user clears or edits the text after selecting, require a new
+    // selection by clearing the hidden value and re-disabling submit.
+    searchBox.addEventListener('input', () => {
+      if (addressHidden) addressHidden.value = '';
+      if (submitBtn)    submitBtn.disabled = true;
     });
   }
 
@@ -137,7 +142,7 @@ function initPreQualForm() {
 
     // Double-check that an address was actually selected from Mapbox
     // suggestions (rather than just typed). If not, block the submit.
-    if (!addressInput?.value) {
+    if (!addressHidden?.value) {
       e.preventDefault();
       showError('Please select an address from the suggestions.');
       if (searchBox) searchBox.focus();

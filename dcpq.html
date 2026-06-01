@@ -48,6 +48,7 @@
   <!-- /SEO -->
   
     <link rel="preconnect" href="https://api.mapbox.com" crossorigin />
+    <link rel="stylesheet" href="https://api.mapbox.com/search-js/v1.0.0-beta.22/web/style.css" />
     <!-- Mapbox public access token. Restrict to solarsight.io in the
          Mapbox dashboard (Account → Tokens → URL restrictions). -->
     <meta name="mapbox-token" content="pk.eyJ1IjoiZG9ucGhvZW5peCIsImEiOiJjbWxzeTdhcDYwMGRmM2ZvNzR3am9xN2V5In0.Vb9_SjaZWJzpUigtLjxhMA" />
@@ -144,14 +145,15 @@
             <p class="hero__form-sub">Just your address and your email — your results will be ready.</p>
 
             <div class="prequal__form-wrap">
-              <form id="prequal-form" class="prequal-form" method="POST" action="https://app.solarsight.io/api/intake">
+              <form id="landing-form" class="prequal-form" method="POST" action="https://app.solarsight.io/api/intake">
                 <div class="form-group">
-                  <label for="address">Property Address</label>
-                  <mapbox-search-box
-                    placeholder="Start typing your Washington DC address…"
-                  ></mapbox-search-box>
-                  <input type="hidden" id="address" name="address" required />
-                  <input type="hidden" id="state" name="state" />
+                  <label for="address-input">Property Address</label>
+                  <div id="address-container">
+                    <mapbox-search-box
+                      placeholder="Start typing your Washington DC address…"
+                    ></mapbox-search-box>
+                  </div>
+                  <input type="hidden" id="address-value" name="address" required />
                   <!-- Mapbox autocomplete attached via main.js -->
                 </div>
 
@@ -195,7 +197,7 @@
 
                 <div id="prequal-error" class="form-error" role="alert" style="display:none;"></div>
 
-                <button type="submit" id="prequal-submit" class="ss-btn ss-btn--primary ss-btn--lg prequal-submit-btn" disabled>
+                <button type="submit" id="submit-button" class="ss-btn ss-btn--primary ss-btn--lg prequal-submit-btn" disabled>
                   Get My Pre-Qualification
                 </button>
 

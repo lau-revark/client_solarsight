@@ -132,7 +132,8 @@ function initPreQualForm() {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
   }
 
-  const INTAKE_ENDPOINT = 'https://dev-app.solarsight.io/api/intake';
+  const INTAKE_ENDPOINT = 'https://app.solarsight.io/api/intake';
+  const APP_ORIGIN      = 'https://app.solarsight.io';
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -167,13 +168,23 @@ function initPreQualForm() {
         throw new Error(`Intake request failed with status ${response.status}`);
       }
 
-      // Success state
-      form.style.display = 'none';
-      if (loadingEl) loadingEl.style.display = 'none';
-      if (successEl) successEl.style.display = 'block';
-
       // ─── Tracking ─────────────────────────────────────
       trackLead();
+
+      // Hand off to the app. /api/intake sets a session cookie on
+      // .solarsight.io (credentials: 'include' above sends/stores it),
+      // and we also pass the form fields as query params as a belt-and-
+      // braces fallback so the app can pre-fill regardless.
+      const params = new URLSearchParams();
+      if (firstName) params.set('firstName', firstName);
+      if (lastName)  params.set('lastName',  lastName);
+      if (email)     params.set('email',     email);
+      if (address)   params.set('address',   address);
+      // Brief delay so the Meta Pixel beacon has a chance to fire
+      // before navigation tears the page down.
+      setTimeout(() => {
+        window.location.href = `${APP_ORIGIN}/?${params.toString()}`;
+      }, 250);
     } catch (err) {
       console.error('[SolarSight] Pre-Qual intake failed:', err);
       showError('Something went wrong submitting your details. Please try again, or contact us if the issue persists.');

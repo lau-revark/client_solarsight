@@ -37,7 +37,7 @@ export const PIXEL_IDS = {
  * never goes dark; flipping it before GTM is on the page is also safe (the
  * hardcoded pixel only stands down when GTM is actually present — see gtmActive).
  */
-const GTM_OWNS_META = false;
+const GTM_OWNS_META = true;
 
 // ─── Helpers ────────────────────────────────────────────
 

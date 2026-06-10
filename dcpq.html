@@ -2,6 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PLRZ3T8Q');</script>
+  <!-- End Google Tag Manager -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="/assets/img/logo/solar-sight-icon-color.png" />
   <link rel="apple-touch-icon" href="/assets/img/logo/solar-sight-icon-color.png" />
@@ -59,6 +66,10 @@
     <link rel="stylesheet" href="./assets/css/home.css" />
   </head>
   <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PLRZ3T8Q"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <a class="skip-link" href="#app">Skip to main content</a>
     <!-- ─── Tracking Pixels (Noscript Fallbacks) ─────── -->
     <noscript>
@@ -194,6 +205,15 @@
                     required
                   />
                 </div>
+
+                <!-- Meta CAPI dedup + match signals. Populated by main.js on
+                     submit and forwarded to /api/intake, which fires the
+                     server-side Lead. See docs/meta-capi-spec.md. -->
+                <input type="hidden" name="event_id"         id="fb-event-id" />
+                <input type="hidden" name="event_source_url" id="fb-event-source-url" />
+                <input type="hidden" name="fbp"              id="fb-fbp" />
+                <input type="hidden" name="fbc"              id="fb-fbc" />
+                <input type="hidden" name="fbclid"           id="fb-fbclid" />
 
                 <div id="prequal-error" class="form-error" role="alert" style="display:none;"></div>
 

@@ -1,4 +1,8 @@
-import { initTracking, trackLead } from './assets/js/tracking.js';
+import { initTracking, trackLead, generateEventID, getMetaSignals } from './assets/js/tracking.js';
+
+// Expose trackLead for non-module inline page scripts (e.g. the contact form,
+// which fires a Lead from its own <script> block rather than importing here).
+window.trackLead = trackLead;
 
 // Mapbox SDK is only used on the DCPQ page. Lazy-load it from Mapbox's
 // official CDN so we don't pay the ~140KB cost on every other page, and
@@ -68,6 +72,13 @@ function initSmoothScrollCTAs() {
       window.scrollTo({ top, behavior: 'smooth' });
     });
   });
+}
+
+// Set a hidden input's value if the field exists. Used to forward the Meta
+// match signals (eventID, _fbp, _fbc, fbclid, source URL) on the native POST.
+function setHiddenValue(form, selector, value) {
+  const el = form.querySelector(selector);
+  if (el) el.value = value || '';
 }
 
 // ─── Pre-Qual Form Handler ────────────────────────────
@@ -149,16 +160,37 @@ function initPreQualForm() {
       return;
     }
 
+    // Generate one eventID shared by the browser Pixel (below) and the
+    // server-side CAPI Lead that /api/intake fires, so Meta deduplicates the
+    // two and counts the lead once. Forward the Meta match signals
+    // (_fbp / _fbc / fbclid) and source URL via hidden inputs on the native
+    // POST so the server can attach them to the CAPI event. See
+    // docs/meta-capi-spec.md.
+    const eventID = generateEventID();
+    const { fbp, fbc, fbclid, eventSourceUrl } = getMetaSignals();
+    setHiddenValue(form, '#fb-event-id', eventID);
+    setHiddenValue(form, '#fb-event-source-url', eventSourceUrl);
+    setHiddenValue(form, '#fb-fbp', fbp);
+    setHiddenValue(form, '#fb-fbc', fbc);
+    setHiddenValue(form, '#fb-fbclid', fbclid);
+
+    // Collect details for Meta Advanced Matching (hashed in-browser by the Pixel).
+    const user = {
+      email:     form.querySelector('#email')?.value.trim(),
+      firstName: form.querySelector('#firstName')?.value.trim(),
+      lastName:  form.querySelector('#lastName')?.value.trim()
+    };
+
     // Show loading state while the browser POSTs and follows the 302
     // from /api/intake to app.solarsight.io.
     submitBtn.disabled = true;
     submitBtn.textContent = 'Analysing your roof data…';
     form.style.opacity = '0.7';
 
-    // Fire Meta Pixel Lead event just before native form submission.
-    // fbq queues the beacon; the browser will let it complete in
-    // most cases before navigating away.
-    trackLead();
+    // Fire Meta Pixel Lead event just before native form submission, using the
+    // shared eventID. fbq queues the beacon; the browser lets it complete in
+    // most cases — and the server CAPI Lead is the guaranteed-delivery backstop.
+    trackLead(user, { eventID });
 
     // Form submits natively — browser navigates to /api/intake which
     // returns a 302 to app.solarsight.io.

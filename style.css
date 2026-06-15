@@ -4,12 +4,14 @@
    Palette: Deep navy primary, solar amber accent
    ===================================================== */
 
-/* Solar Sight uses Lota Grotesque for Typography */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* Solar Sight uses Lota Grotesque for Typography.
+   'Inter' stays in the --font stack as a system fallback but is no longer fetched
+   from Google Fonts — that @import was render-blocking and effectively unused, as
+   the self-hosted primary below always wins. */
 
 @font-face {
   font-family: 'Lota Grotesque';
-  src: url('/assets/fonts/lota-grotesque-alt-1/Los Andes  Lota Grotesque Alt 1 Regular.otf') format('opentype');
+  src: url('/assets/fonts/lota-grotesque-alt-1/Los Andes  Lota Grotesque Alt 1 Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -17,7 +19,7 @@
 
 @font-face {
   font-family: 'Lota Grotesque';
-  src: url('/assets/fonts/lota-grotesque-alt-1/Los Andes  Lota Grotesque Alt 1 Semi Bold.otf') format('opentype');
+  src: url('/assets/fonts/lota-grotesque-alt-1/Los Andes  Lota Grotesque Alt 1 Semi Bold.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -25,7 +27,7 @@
 
 @font-face {
   font-family: 'Lota Grotesque';
-  src: url('/assets/fonts/lota-grotesque-alt-1/Los Andes  Lota Grotesque Alt 1 Bold.otf') format('opentype');
+  src: url('/assets/fonts/lota-grotesque-alt-1/Los Andes  Lota Grotesque Alt 1 Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -33,7 +35,7 @@
 
 @font-face {
   font-family: 'Lota Grotesque';
-  src: url('/assets/fonts/lota-grotesque-alt-1/Los Andes  Lota Grotesque Alt 1 Black.otf') format('opentype');
+  src: url('/assets/fonts/lota-grotesque-alt-1/Los Andes  Lota Grotesque Alt 1 Black.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
   font-display: swap;

@@ -63,9 +63,10 @@
          Mapbox dashboard (Account → Tokens → URL restrictions). -->
     <meta name="mapbox-token" content="pk.eyJ1IjoiZG9ucGhvZW5peCIsImEiOiJjbWxzeTdhcDYwMGRmM2ZvNzR3am9xN2V5In0.Vb9_SjaZWJzpUigtLjxhMA" />
     <link rel="preload" as="image" href="/assets/img/hero-dc.webp" fetchpriority="high" />
-    <!-- Preload the two above-the-fold weights (headline body + bold) to cut FOUT. -->
-    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/lota-grotesque-alt-1/Los Andes  Lota Grotesque Alt 1 Regular.woff2" crossorigin />
-    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/lota-grotesque-alt-1/Los Andes  Lota Grotesque Alt 1 Bold.woff2" crossorigin />
+    <!-- Fonts are NOT preloaded on purpose: the hero <img> is the LCP element, and on
+         throttled connections preloaded fonts contend for its bandwidth. With
+         font-display:swap the headline paints immediately in a fallback and the
+         woff2 swaps in once the network is free. -->
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./assets/css/home.css" />
   </head>

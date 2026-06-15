@@ -110,9 +110,8 @@
   <!-- /SEO -->
   
   <link rel="preload" as="image" href="/assets/img/hero-dc.webp" fetchpriority="high" />
-  <!-- Preload the two above-the-fold weights (headline body + bold) to cut FOUT. -->
-  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/lota-grotesque-alt-1/Los Andes  Lota Grotesque Alt 1 Regular.woff2" crossorigin />
-  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/lota-grotesque-alt-1/Los Andes  Lota Grotesque Alt 1 Bold.woff2" crossorigin />
+  <!-- Fonts intentionally not preloaded — the hero <img> is the LCP element and
+       preloaded fonts would contend for its bandwidth. font-display:swap covers FOUT. -->
   <link rel="stylesheet" href="./style.css" />
   <link rel="stylesheet" href="./assets/css/home.css" />
 

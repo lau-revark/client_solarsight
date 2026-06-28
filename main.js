@@ -1,4 +1,4 @@
-import { initTracking, trackLead, generateEventID, getMetaSignals } from './assets/js/tracking.js';
+import { initTracking, trackLead, generateEventID, getMetaSignals, getUtmParams } from './assets/js/tracking.js';
 
 // Expose trackLead for non-module inline page scripts (e.g. the contact form,
 // which fires a Lead from its own <script> block rather than importing here).
@@ -173,6 +173,14 @@ function initPreQualForm() {
     setHiddenValue(form, '#fb-fbp', fbp);
     setHiddenValue(form, '#fb-fbc', fbc);
     setHiddenValue(form, '#fb-fbclid', fbclid);
+
+    // Forward campaign UTMs (first-touch, captured by initTracking) so
+    // /api/intake can stamp them on the HubSpot contact for attribution.
+    // The hidden input id mirrors the name (utm_source → #utm-source, etc.).
+    const utms = getUtmParams();
+    for (const [key, value] of Object.entries(utms)) {
+      setHiddenValue(form, '#' + key.replace('_', '-'), value);
+    }
 
     // Collect details for Meta Advanced Matching (hashed in-browser by the Pixel).
     const user = {

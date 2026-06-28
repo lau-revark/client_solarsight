@@ -220,6 +220,15 @@
                 <input type="hidden" name="fbc"              id="fb-fbc" />
                 <input type="hidden" name="fbclid"           id="fb-fbclid" />
 
+                <!-- Campaign attribution. First-touch UTMs captured on page
+                     load (tracking.js) and stamped on submit (main.js), then
+                     forwarded to /api/intake for the HubSpot contact. -->
+                <input type="hidden" name="utm_source"   id="utm-source" />
+                <input type="hidden" name="utm_medium"   id="utm-medium" />
+                <input type="hidden" name="utm_campaign" id="utm-campaign" />
+                <input type="hidden" name="utm_content"  id="utm-content" />
+                <input type="hidden" name="utm_term"     id="utm-term" />
+
                 <div id="prequal-error" class="form-error" role="alert" style="display:none;"></div>
 
                 <button type="submit" id="submit-button" class="ss-btn ss-btn--primary ss-btn--lg prequal-submit-btn" disabled>

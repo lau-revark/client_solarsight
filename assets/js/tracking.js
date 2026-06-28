@@ -106,6 +106,62 @@ export function getMetaSignals() {
   return { fbp, fbc, fbclid, eventSourceUrl: window.location.href };
 }
 
+// ─── UTM / campaign attribution ─────────────────────────
+
+/**
+ * The campaign parameters we forward to /api/intake (→ HubSpot) for
+ * attribution. Standard Google/Meta UTM set; phone is never involved here.
+ */
+export const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+const UTM_STORAGE_KEY = 'ss_utms';
+
+/**
+ * Persist the UTM parameters present on the current URL for the session, so
+ * they survive in-site navigation. Ads land on the page *with* `utm_*` on the
+ * URL, but a later page view (or even reading them at form-submit after a
+ * smooth-scroll) may no longer carry them. First-touch wins: we never overwrite
+ * an already-stored set, so the original campaign isn't clobbered if the visitor
+ * later arrives via a second tagged link. Safe to call on every page load.
+ */
+export function captureUtmParams() {
+  if (typeof window === 'undefined') return;
+  try {
+    if (sessionStorage.getItem(UTM_STORAGE_KEY)) return; // first-touch already recorded
+    const params = new URLSearchParams(window.location.search);
+    const found = {};
+    for (const key of UTM_KEYS) {
+      const val = params.get(key);
+      if (val) found[key] = val;
+    }
+    if (Object.keys(found).length) {
+      sessionStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(found));
+    }
+  } catch { /* sessionStorage unavailable (private mode / blocked) — ignore */ }
+}
+
+/**
+ * Read the session's UTM parameters: the persisted first-touch set, falling
+ * back to whatever is on the current URL for any key not stored. Returns a flat
+ * object of only the `utm_*` keys that actually have a value.
+ * @returns {Record<string, string>}
+ */
+export function getUtmParams() {
+  let stored = {};
+  try {
+    const raw = typeof window !== 'undefined' && sessionStorage.getItem(UTM_STORAGE_KEY);
+    if (raw) stored = JSON.parse(raw) || {};
+  } catch { /* ignore malformed/blocked storage */ }
+  const params = typeof window !== 'undefined'
+    ? new URLSearchParams(window.location.search)
+    : new URLSearchParams();
+  const out = {};
+  for (const key of UTM_KEYS) {
+    const val = stored[key] || params.get(key); // first-touch wins, URL fills gaps
+    if (val) out[key] = val;
+  }
+  return out;
+}
+
 /**
  * Initialize tracking.
  *  - If GTM is installed, it owns page views + all pixels. Do nothing here.
@@ -114,6 +170,10 @@ export function getMetaSignals() {
  */
 export function initTracking() {
   window.dataLayer = window.dataLayer || [];
+
+  // Record the campaign's UTMs on first touch so they're still available at
+  // form submit even after in-site navigation. Independent of GTM/bridge mode.
+  captureUtmParams();
 
   if (gtmActive()) {
     console.log('[SolarSight] GTM owns Meta + GA4; hardcoded pixel standing down.');

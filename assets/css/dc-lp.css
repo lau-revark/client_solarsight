@@ -1,0 +1,615 @@
+/* ============================================================
+   SolarSight — shared DC landing-page stylesheet (v2 "trigger-complete")
+   ADDITIVE. Loads after style.css + home.css.
+   Styles the new v2 sections: data strip (how-we-know), offer/value-stack,
+   timing/why-now, expanded proof + objections, risk reversal, FAQ.
+   Hero / form / how-it-works / cta-banner / header / footer are styled by
+   the existing style.css + home.css (reused classes), not redefined here.
+   Tokens mirror SS brand.json: bg #FFFFFF / secondary #F1F3F7,
+   text #1A1A1A / #5A6478, accent #2474B8 / #76BCE8. Font: Lota Grotesque (inherited).
+   No em-dashes in code comments per house rules. No scarcity/countdown UI (brand filter).
+   ============================================================ */
+
+:root {
+  --ssp-bg: #FFFFFF;
+  --ssp-bg-2: #F1F3F7;
+  --ssp-ink: #1A1A1A;
+  --ssp-ink-2: #5A6478;
+  --ssp-accent: #2474B8;
+  --ssp-accent-2: #76BCE8;
+  --ssp-border: #E2E7EF;
+  --ssp-radius: 14px;
+  --ssp-maxline: 64ch;
+  --star: #F5A623; /* gold/amber star token. ALL stars use this. Never blue. */
+}
+
+/* ---------- Gold star (inline SVG, reusable) ---------- */
+.ss-stars { display: inline-flex; align-items: center; gap: 1px; line-height: 0; }
+.ss-stars svg { width: 16px; height: 16px; display: block; fill: var(--star); }
+.ss-stars--sm svg { width: 14px; height: 14px; }
+
+/* ---------- Official 4-colour Google G (inline SVG) ---------- */
+.ss-google-g { width: 16px; height: 16px; display: inline-block; vertical-align: middle; flex: none; }
+
+/* ---------- Hero social-proof bar ---------- */
+.ss-hero-proof {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.85rem;
+  margin: 1.25rem 0 0;
+  font-size: 0.92rem;
+  color: var(--ssp-ink);
+}
+.ss-hero-proof__item { display: inline-flex; align-items: center; gap: 0.4rem; }
+.ss-hero-proof__sep { width: 1px; height: 1rem; background: var(--ssp-border); display: inline-block; }
+.ss-hero-proof b { font-weight: 700; }
+.ss-verified { width: 16px; height: 16px; flex: none; }
+
+/* ---------- Hero review excerpt card ---------- */
+.ss-hero-review {
+  margin-top: 1rem;
+  max-width: 30rem;
+  background: var(--ssp-bg);
+  border: 1px solid var(--ssp-border);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  box-shadow: 0 1px 2px rgba(16,24,40,0.05);
+}
+.ss-hero-review__quote { margin: 0.4rem 0 0.55rem; font-size: 0.95rem; line-height: 1.45; color: var(--ssp-ink); }
+.ss-hero-review__meta { display: flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: var(--ssp-ink-2); flex-wrap: wrap; }
+.ss-hero-review__name { font-weight: 600; color: var(--ssp-ink); }
+.ss-hero-review__meta .ss-google-g { width: 14px; height: 14px; }
+
+/* ---------- Hero trust strip (chips with line icons) ---------- */
+.ss-trust-strip { display: flex; flex-wrap: wrap; gap: 0.55rem; margin: 1.1rem 0 0; padding: 0; list-style: none; }
+.ss-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.75rem;
+  background: var(--ssp-bg);
+  border: 1px solid var(--ssp-border);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ssp-ink);
+}
+.ss-chip svg { width: 16px; height: 16px; flex: none; stroke: var(--ssp-accent); fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.ss-review .ss-stars { margin-bottom: 0.55rem; }
+
+/* Shared section rhythm for the new blocks */
+.ss-datastrip,
+.ss-proof,
+.ss-offer,
+.ss-risk,
+.ss-objections,
+.ss-timing,
+.ss-faq {
+  padding: clamp(3rem, 7vw, 5.5rem) 0;
+}
+.ss-datastrip { background: var(--ssp-bg-2); }
+.ss-proof  { background: var(--ssp-bg); }
+.ss-offer  { background: var(--ssp-bg-2); }
+.ss-risk   { background: var(--ssp-bg-2); }
+.ss-objections { background: var(--ssp-bg); }
+.ss-timing { background: var(--ssp-bg-2); }
+.ss-faq    { background: var(--ssp-bg-2); }
+
+.ss-datastrip__hdr,
+.ss-proof__hdr,
+.ss-offer__hdr,
+.ss-risk__hdr,
+.ss-objections__hdr,
+.ss-timing__hdr,
+.ss-faq__hdr {
+  text-align: center;
+  max-width: 40rem;
+  margin: 0 auto clamp(2rem, 4vw, 3rem);
+}
+
+/* ---------- Section 3: Proof / credibility ---------- */
+.ss-proof__feature {
+  max-width: 46rem;
+  margin: 0 auto;
+  text-align: center;
+}
+.ss-proof__quote {
+  font-size: clamp(1.35rem, 3.2vw, 2rem);
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--ssp-ink);
+  margin: 0 0 1rem;
+  text-wrap: balance;
+}
+.ss-proof__cite {
+  display: block;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--ssp-accent);
+  margin-bottom: 0.85rem;
+}
+.ss-proof__frame {
+  color: var(--ssp-ink-2);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 34rem;
+  margin: 0 auto;
+}
+.ss-proof__prism {
+  max-width: 44rem;
+  margin: clamp(2rem, 4vw, 2.75rem) auto;
+  padding: 1.1rem 1.4rem;
+  border-left: 4px solid var(--ssp-accent);
+  background: var(--ssp-bg-2);
+  border-radius: 0 var(--ssp-radius) var(--ssp-radius) 0;
+  color: var(--ssp-ink);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+.ss-proof__reviews {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.25rem;
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+.ss-review {
+  margin: 0;
+  padding: 1.5rem;
+  background: var(--ssp-bg);
+  border: 1px solid var(--ssp-border);
+  border-radius: var(--ssp-radius);
+}
+.ss-risk .ss-review,
+.ss-faq .ss-review { background: var(--ssp-bg); }
+.ss-review p {
+  color: var(--ssp-ink);
+  line-height: 1.6;
+  margin: 0 0 0.85rem;
+}
+.ss-review__stars {
+  color: #F5A623;
+  letter-spacing: 2px;
+  font-size: 0.95rem;
+  margin-bottom: 0.6rem;
+}
+.ss-review cite {
+  display: block;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--ssp-ink-2);
+  font-size: 0.95rem;
+}
+.ss-review__src {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--ssp-accent);
+  font-weight: 600;
+}
+
+/* ---------- Section 4: Risk reversal ---------- */
+.ss-risk__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 40rem;
+  display: grid;
+  gap: 0.85rem;
+}
+.ss-risk__list li {
+  position: relative;
+  padding: 1rem 1rem 1rem 3rem;
+  background: var(--ssp-bg);
+  border: 1px solid var(--ssp-border);
+  border-radius: var(--ssp-radius);
+  color: var(--ssp-ink);
+  line-height: 1.55;
+}
+.ss-risk__list li::before {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  top: 1.15rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background: var(--ssp-accent);
+  /* check mark */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.ss-risk__summary {
+  max-width: 40rem;
+  margin: 1.5rem auto 0;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--ssp-ink);
+}
+
+/* ---------- Section 5: Objection handling ---------- */
+.ss-objections .ss-container {
+  max-width: 46rem;
+}
+.ss-objection {
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--ssp-border);
+}
+.ss-objection:first-of-type { border-top: 0; }
+.ss-objection h3 {
+  font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+  color: var(--ssp-ink);
+  margin: 0 0 0.6rem;
+  line-height: 1.3;
+}
+.ss-objection p {
+  color: var(--ssp-ink-2);
+  line-height: 1.65;
+  margin: 0;
+  max-width: var(--ssp-maxline);
+}
+
+/* ---------- Section 6: FAQ (native details) ---------- */
+.ss-faq__list {
+  max-width: 46rem;
+  margin: 0 auto;
+  display: grid;
+  gap: 0.75rem;
+}
+.ss-faq__item {
+  background: var(--ssp-bg);
+  border: 1px solid var(--ssp-border);
+  border-radius: var(--ssp-radius);
+  overflow: hidden;
+}
+.ss-faq__item summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 1.1rem 3rem 1.1rem 1.25rem;
+  font-weight: 600;
+  color: var(--ssp-ink);
+  position: relative;
+  line-height: 1.4;
+}
+.ss-faq__item summary::-webkit-details-marker { display: none; }
+.ss-faq__item summary::after {
+  content: "+";
+  position: absolute;
+  right: 1.1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--ssp-accent);
+  line-height: 1;
+}
+.ss-faq__item[open] summary::after { content: "\2212"; } /* minus */
+.ss-faq__item summary:focus-visible {
+  outline: 3px solid var(--ssp-accent-2);
+  outline-offset: -3px;
+}
+.ss-faq__a {
+  padding: 0 1.25rem 1.2rem;
+}
+.ss-faq__a p {
+  margin: 0;
+  color: var(--ssp-ink-2);
+  line-height: 1.65;
+}
+
+/* ---------- v2 Section 3: How we know (data strip) ---------- */
+.ss-datastrip__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1rem;
+  max-width: 60rem;
+  margin: 0 auto;
+}
+.ss-datasource {
+  background: var(--ssp-bg);
+  border: 1px solid var(--ssp-border);
+  border-radius: var(--ssp-radius);
+  padding: 1.25rem;
+}
+.ss-datasource h3 {
+  font-size: 1rem;
+  margin: 0 0 0.35rem;
+  color: var(--ssp-ink);
+}
+.ss-datasource p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--ssp-ink-2);
+}
+.ss-datastrip__stat {
+  max-width: 44rem;
+  margin: clamp(1.5rem, 3vw, 2.25rem) auto 0;
+  text-align: center;
+  padding: 1.25rem 1.5rem;
+  background: var(--ssp-bg);
+  border: 1px solid var(--ssp-border);
+  border-left: 4px solid var(--ssp-accent);
+  border-radius: var(--ssp-radius);
+}
+.ss-datastrip__stat .num {
+  display: block;
+  font-size: clamp(2rem, 6vw, 2.75rem);
+  font-weight: 800;
+  color: var(--ssp-accent);
+  line-height: 1.1;
+}
+.ss-datastrip__method {
+  max-width: 44rem;
+  margin: 1.25rem auto 0;
+  text-align: center;
+  color: var(--ssp-ink-2);
+  line-height: 1.6;
+}
+
+/* ---------- v2 Section 4 additions: proof stat + wards ---------- */
+.ss-proof__statbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2.5rem;
+  justify-content: center;
+  align-items: center;
+  max-width: 46rem;
+  margin: 0 auto clamp(1.5rem, 3vw, 2.25rem);
+  text-align: center;
+}
+.ss-proof__stat {
+  font-size: 1rem;
+  color: var(--ssp-ink-2);
+}
+.ss-proof__stat b {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--ssp-accent);
+  line-height: 1.1;
+}
+.ss-proof__wards {
+  text-align: center;
+  color: var(--ssp-ink-2);
+  font-size: 0.95rem;
+  margin: 1.25rem auto 0;
+  max-width: 46rem;
+}
+
+/* ---------- v2 Section 5: Offer / value stack ---------- */
+.ss-offer__stack {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 42rem;
+  display: grid;
+  gap: 0.75rem;
+}
+.ss-offer__item {
+  position: relative;
+  padding: 1.1rem 1.25rem 1.1rem 3.2rem;
+  background: var(--ssp-bg);
+  border: 1px solid var(--ssp-border);
+  border-radius: var(--ssp-radius);
+  color: var(--ssp-ink);
+  line-height: 1.55;
+}
+.ss-offer__item::before {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  top: 1.2rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background: var(--ssp-accent);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.ss-offer__item b { color: var(--ssp-ink); }
+.ss-offer__econ {
+  max-width: 42rem;
+  margin: 1.5rem auto 0;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--ssp-ink);
+}
+
+/* ---------- v2 Section 7: Timing / why now (factual, no countdown) ---------- */
+.ss-timing__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.25rem;
+  max-width: 50rem;
+  margin: 0 auto;
+}
+.ss-timing__card {
+  background: var(--ssp-bg);
+  border: 1px solid var(--ssp-border);
+  border-radius: var(--ssp-radius);
+  padding: 1.5rem;
+}
+.ss-timing__card h3 {
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+  color: var(--ssp-ink);
+}
+.ss-timing__card p {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--ssp-ink-2);
+}
+.ss-timing__close {
+  max-width: 44rem;
+  margin: 1.5rem auto 0;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ssp-ink);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .ss-proof__quote { font-size: 1.3rem; }
+  .ss-risk__list li { padding-left: 2.75rem; }
+  .ss-offer__item { padding-left: 2.9rem; }
+}
+
+/* Respect reduced motion (reveal animation is owned by the existing CSS;
+   this is a safety net for the new blocks if .reveal is not yet visible). */
+@media (prefers-reduced-motion: reduce) {
+  .ss-datastrip .reveal,
+  .ss-proof .reveal,
+  .ss-offer .reveal,
+  .ss-risk .reveal,
+  .ss-objections .reveal,
+  .ss-timing .reveal,
+  .ss-faq .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+/* ============================================================
+   v3 VISUAL / ZIGZAG REDESIGN
+   ============================================================ */
+
+/* ---------- A. Mobile form bug fixes ----------
+   Override home.css (this sheet loads later). The hero form is a blue panel
+   (.hero__col--right) wrapping a white card (.prequal__form-wrap); both had big
+   padding that doubled up and squeezed the fields on mobile. */
+@media (max-width: 480px) {
+  .hero__col--right { padding: 16px; }
+  .hero__col--right .prequal__form-wrap { padding: 16px; }
+}
+@media (max-width: 380px) {
+  .hero__col--right { padding: 14px; }
+  .hero__col--right .prequal__form-wrap { padding: 14px; }
+}
+/* Mapbox search box was overflowing its container on mobile (clear control poked
+   out). Constrain the widget + wrapper + every field so nothing exceeds the card. */
+#address-container,
+mapbox-search-box,
+.prequal-form,
+.prequal-form .form-group,
+.prequal-form .form-row,
+.prequal-form input {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+mapbox-search-box { display: block; }
+mapbox-search-box::part(InputContainer) { max-width: 100%; box-sizing: border-box; }
+.prequal-form .form-row { display: flex; gap: 12px; }
+.prequal-form .form-row .form-group { min-width: 0; } /* allow flex children to shrink */
+
+/* ---------- B. Zigzag bands ---------- */
+.ss-band { padding: clamp(2.75rem, 6.5vw, 5.5rem) 0; }
+.ss-band:nth-of-type(even of .ss-band) { background: var(--ssp-bg-2); }
+.ss-band--alt { background: var(--ssp-bg-2); }
+.ss-band__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.75rem, 4.5vw, 3.5rem);
+  align-items: center;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+.ss-band__media { order: 1; }
+.ss-band__text  { order: 2; }
+.ss-band--reverse .ss-band__media { order: 2; }
+.ss-band--reverse .ss-band__text  { order: 1; }
+.ss-band__text .ss-eyebrow { display: inline-block; margin-bottom: 0.5rem; }
+.ss-band__text h2 {
+  font-size: clamp(1.5rem, 3.6vw, 2.1rem);
+  line-height: 1.2;
+  color: var(--ssp-ink);
+  margin: 0 0 0.9rem;
+  text-wrap: balance;
+}
+.ss-band__text > p { color: var(--ssp-ink-2); line-height: 1.65; margin: 0 0 1rem; max-width: 36rem; }
+
+/* Image slot (placeholder-safe: figure holds size even if the webp is missing) */
+.ss-band__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--ssp-radius);
+  overflow: hidden;
+  background: linear-gradient(135deg, #EAF1F8, #F1F3F7);
+  border: 1px solid var(--ssp-border);
+}
+.ss-band__img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ss-imgph-note {
+  position: absolute; left: 8px; bottom: 8px;
+  font-size: 0.7rem; color: var(--ssp-ink-2);
+  background: rgba(255,255,255,0.85); border: 1px solid var(--ssp-border);
+  border-radius: 6px; padding: 2px 7px;
+}
+
+/* In-band step list / value list */
+.ss-band__steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+.ss-band__steps li { display: grid; grid-template-columns: auto 1fr; gap: 0.85rem; align-items: start; }
+.ss-band__steps .n {
+  width: 1.9rem; height: 1.9rem; border-radius: 50%; flex: none;
+  background: var(--ssp-accent); color: #fff; font-weight: 700; font-size: 0.9rem;
+  display: grid; place-items: center;
+}
+.ss-band__steps h3 { margin: 0 0 0.15rem; font-size: 1.02rem; color: var(--ssp-ink); }
+.ss-band__steps p { margin: 0; color: var(--ssp-ink-2); line-height: 1.55; font-size: 0.95rem; }
+.ss-band__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+.ss-band__list li { position: relative; padding-left: 1.9rem; color: var(--ssp-ink); line-height: 1.5; }
+.ss-band__list li::before {
+  content: ""; position: absolute; left: 0; top: 0.15rem; width: 1.2rem; height: 1.2rem; border-radius: 50%;
+  background: var(--ssp-accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 13l4 4L19 7'/%3E%3C/svg%3E") center / 12px no-repeat;
+}
+
+/* Before/after bill mini-visual (band 3) */
+.ss-billcompare { display: flex; align-items: center; gap: 1rem; justify-content: center; height: 100%; }
+.ss-bill { text-align: center; background: #fff; border: 1px solid var(--ssp-border); border-radius: var(--ssp-radius); padding: 1.25rem 1.5rem; min-width: 7.5rem; }
+.ss-bill__label { font-size: 0.78rem; color: var(--ssp-ink-2); text-transform: uppercase; letter-spacing: 0.04em; }
+.ss-bill__amt { font-size: clamp(1.6rem, 5vw, 2.4rem); font-weight: 800; line-height: 1.1; }
+.ss-bill--before .ss-bill__amt { color: var(--ssp-ink); }
+.ss-bill--after .ss-bill__amt { color: #1F9D55; }
+.ss-billcompare__arrow { color: var(--ssp-accent); flex: none; }
+
+/* ---------- Locked-rate CSS/SVG line chart (band 4) ---------- */
+.ss-chart { width: 100%; height: auto; display: block; background: #fff; border: 1px solid var(--ssp-border); border-radius: var(--ssp-radius); padding: 0.5rem; }
+.ss-chart .grid { stroke: #E8ECF2; stroke-width: 1; }
+.ss-chart .axis { stroke: #C7CFDA; stroke-width: 1.5; }
+.ss-chart .pepco { fill: none; stroke: #E4572E; stroke-width: 3; }
+.ss-chart .solar { fill: none; stroke: var(--ssp-accent); stroke-width: 3; }
+.ss-chart .lbl { font: 600 13px/1 system-ui, sans-serif; fill: var(--ssp-ink); }
+.ss-chart .tick { font: 500 11px/1 system-ui, sans-serif; fill: var(--ssp-ink-2); }
+.ss-chart-legend { display: flex; gap: 1.25rem; margin-top: 0.75rem; font-size: 0.85rem; color: var(--ssp-ink); }
+.ss-chart-legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+.ss-chart-legend i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+.ss-chart-legend .pepco { background: #E4572E; }
+.ss-chart-legend .solar { background: var(--ssp-accent); }
+
+/* ---------- C. Proof ROW (band 5): kill the centred soup ---------- */
+.ss-proofrow { padding: clamp(2.75rem, 6.5vw, 5.5rem) 0; background: var(--ssp-bg); }
+.ss-proofrow__hdr { max-width: 1080px; margin: 0 auto 2rem; padding: 0 1.25rem; }
+.ss-proofrow__hdr h2 { font-size: clamp(1.5rem, 3.6vw, 2.1rem); color: var(--ssp-ink); margin: 0.4rem 0 0; }
+.ss-proofrow__inner { max-width: 1080px; margin: 0 auto; padding: 0 1.25rem; display: grid; gap: 1.25rem; }
+.ss-proofrow__featured {
+  display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: center;
+  background: var(--ssp-bg-2); border: 1px solid var(--ssp-border); border-radius: var(--ssp-radius);
+  padding: 1.5rem 1.75rem; text-align: left;
+}
+.ss-proofrow__ba { display: flex; align-items: center; gap: 0.6rem; }
+.ss-proofrow__quote { margin: 0.5rem 0 0.6rem; font-size: clamp(1.05rem, 2.4vw, 1.3rem); line-height: 1.4; color: var(--ssp-ink); font-weight: 600; }
+.ss-proofrow__cite { font-style: normal; font-weight: 600; color: var(--ssp-accent); font-size: 0.92rem; }
+.ss-proofrow__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.ss-proofrow .ss-review { margin: 0; text-align: left; }
+
+@media (max-width: 768px) {
+  /* Zigzag stacks; image ALWAYS above text on mobile */
+  .ss-band__inner { grid-template-columns: 1fr; gap: 1.5rem; }
+  .ss-band__media, .ss-band--reverse .ss-band__media { order: 1; }
+  .ss-band__text,  .ss-band--reverse .ss-band__text  { order: 2; }
+  .ss-proofrow__featured { grid-template-columns: 1fr; text-align: left; }
+  .ss-proofrow__grid { grid-template-columns: 1fr; }
+}

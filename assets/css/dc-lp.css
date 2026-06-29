@@ -605,6 +605,32 @@ mapbox-search-box::part(InputContainer) { max-width: 100%; box-sizing: border-bo
 .ss-proofrow__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
 .ss-proofrow .ss-review { margin: 0; text-align: left; }
 
+/* ─── HOW IT WORKS: real-app screenshot walkthrough (lives inside band 2) ─── */
+.ss-screens { max-width: 1140px; margin: 0 auto; }
+.ss-screens__head { text-align: center; max-width: 46rem; margin: 0 auto clamp(1.75rem, 4vw, 2.75rem); }
+.ss-screens__head .ss-eyebrow { display: inline-block; margin-bottom: 0.5rem; }
+.ss-screens__head h2 { font-size: clamp(1.45rem, 3vw, 2.05rem); line-height: 1.22; margin: 0 0 0.6rem; color: var(--ssp-ink); }
+.ss-screens__head p { color: var(--ssp-ink-2); line-height: 1.6; margin: 0 auto; max-width: 40rem; }
+.ss-screens__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.1rem, 2.5vw, 1.9rem); }
+.ss-screen { display: flex; flex-direction: column; }
+.ss-screen__shot { position: relative; }
+.ss-screen__step {
+  position: absolute; top: -0.65rem; left: -0.65rem; z-index: 2;
+  width: 2.1rem; height: 2.1rem; border-radius: 50%;
+  background: var(--ssp-accent); color: #fff; font-weight: 700; font-size: 0.98rem;
+  display: grid; place-items: center; box-shadow: 0 2px 8px rgba(20, 40, 80, 0.28);
+}
+.ss-screen__frame {
+  border: 1px solid var(--ssp-border); border-radius: 12px; overflow: hidden;
+  background: #fff; box-shadow: 0 14px 34px -16px rgba(20, 40, 80, 0.32);
+}
+.ss-screen__dots { display: flex; gap: 5px; padding: 9px 12px; background: var(--ssp-bg-2); border-bottom: 1px solid var(--ssp-border); }
+.ss-screen__dots i { width: 9px; height: 9px; border-radius: 50%; background: #cdd4df; display: block; }
+.ss-screen__frame img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top center; display: block; }
+.ss-screen h3 { margin: 1rem 0 0.3rem; font-size: 1.05rem; color: var(--ssp-ink); }
+.ss-screen p { margin: 0; color: var(--ssp-ink-2); line-height: 1.55; font-size: 0.95rem; }
+.ss-screens__cta { text-align: center; margin-top: clamp(1.75rem, 4vw, 2.5rem); }
+
 @media (max-width: 768px) {
   /* Zigzag stacks; image ALWAYS above text on mobile */
   .ss-band__inner { grid-template-columns: 1fr; gap: 1.5rem; }
@@ -612,4 +638,6 @@ mapbox-search-box::part(InputContainer) { max-width: 100%; box-sizing: border-bo
   .ss-band__text,  .ss-band--reverse .ss-band__text  { order: 2; }
   .ss-proofrow__featured { grid-template-columns: 1fr; text-align: left; }
   .ss-proofrow__grid { grid-template-columns: 1fr; }
+  /* Screenshots stack to a single readable column */
+  .ss-screens__grid { grid-template-columns: 1fr; gap: 1.9rem; max-width: 27rem; margin: 0 auto; }
 }

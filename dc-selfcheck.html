@@ -236,21 +236,51 @@
         </div>
       </section>
 
-      <!-- ZIGZAG BAND 2 - HOW IT WORKS (image LEFT / text RIGHT). Image: satellite roof -> number. -->
+      <!-- BAND 2 - HOW IT WORKS (real app screenshots, 3-step walkthrough). Replaces the placeholder aerial.
+           Kept as .ss-band id="how-it-works" so the page background striping is unchanged. -->
       <section class="ss-band" id="how-it-works" aria-labelledby="hiw-title">
-        <div class="ss-band__inner">
-          <figure class="ss-band__media reveal">
-            <img class="ss-band__img" onerror="this.style.display='none'" src="/assets/img/lp/lp-roof-aerial.webp" alt="Satellite aerial of a Washington DC rooftop with its solar area mapped from above" width="720" height="540" loading="lazy" decoding="async" />
-          </figure>
-          <div class="ss-band__text reveal">
+        <div class="ss-screens">
+          <div class="ss-screens__head reveal">
             <span class="ss-eyebrow">How it works</span>
             <h2 id="hiw-title">The whole thing is three steps. Your number on your screen, not in a sales call.</h2>
-            <p>No site visit. No salesperson. You decide what happens next.</p>
-            <ol class="ss-band__steps">
-              <li><span class="n" aria-hidden="true">1</span><div><h3>Enter your address</h3><p>We use your address to find your roof from satellite, plus your name and email so the number is saved to you. A real roof beats a rough average.</p></div></li>
-              <li><span class="n" aria-hidden="true">2</span><div><h3>Confirm your roof and a couple of details</h3><p>Next you pick your building, add your last bill and your utility, and verify your number by text so we know it's you. Then we price it against today's Pepco rates, so the number is yours, not a house like yours.</p></div></li>
-              <li><span class="n" aria-hidden="true">3</span><div><h3>See your number on screen</h3><p>Your real number appears right there on your screen, yours to keep whether or not you go further. No one calls unless you ask. There is no next step you didn't choose.</p></div></li>
-            </ol>
+            <p>This is the actual SolarSight tool, not a mock-up. No site visit, no salesperson. You see your number, then you decide what happens next.</p>
+          </div>
+          <ol class="ss-screens__grid">
+            <li class="ss-screen reveal">
+              <div class="ss-screen__shot">
+                <span class="ss-screen__step" aria-hidden="true">1</span>
+                <div class="ss-screen__frame">
+                  <span class="ss-screen__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <img src="/assets/img/screenshots/enter-address.png" alt="SolarSight step one: a Washington DC address entered and verified, with the roof shown from satellite." width="1600" height="927" loading="lazy" decoding="async" />
+                </div>
+              </div>
+              <h3>Enter your address</h3>
+              <p>We read your roof straight from satellite the moment your address checks out. That is the only thing we need to start.</p>
+            </li>
+            <li class="ss-screen reveal">
+              <div class="ss-screen__shot">
+                <span class="ss-screen__step" aria-hidden="true">2</span>
+                <div class="ss-screen__frame">
+                  <span class="ss-screen__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <img src="/assets/img/screenshots/select-buildings.png" alt="SolarSight step two: the tool highlighting your building's roof on satellite imagery for solar analysis." width="1600" height="927" loading="lazy" decoding="async" />
+                </div>
+              </div>
+              <h3>Confirm your roof</h3>
+              <p>The tool picks out your building from high-resolution imagery. You confirm it is yours, add a couple of details, and verify by text.</p>
+            </li>
+            <li class="ss-screen reveal">
+              <div class="ss-screen__shot">
+                <span class="ss-screen__step" aria-hidden="true">3</span>
+                <div class="ss-screen__frame">
+                  <span class="ss-screen__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <img src="/assets/img/screenshots/estimate-screen.png" alt="SolarSight result screen: system size, monthly bill, zero upfront cost and 20-year savings shown on screen." width="1600" height="1131" loading="lazy" decoding="async" />
+                </div>
+              </div>
+              <h3>See your number on screen</h3>
+              <p>Your system size, your savings and your $0-upfront options appear right there on screen. Yours to keep, whether or not you go further.</p>
+            </li>
+          </ol>
+          <div class="ss-screens__cta reveal">
             <a href="#prequal" class="ss-btn ss-btn--navy">Get my solar number</a>
           </div>
         </div>
